@@ -10,6 +10,8 @@ export default function config(phase: string): NextConfig {
     output: 'export',
     pageExtensions: tools ? ['dev.tsx', 'tsx', 'ts'] : ['tsx', 'ts'],
     images: { unoptimized: true },
+    // CSS прямо в <head>: на 4G это минус один блокирующий запрос до первой отрисовки
+    experimental: { inlineCss: true },
     devIndicators: false,
   }
 }

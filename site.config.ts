@@ -21,4 +21,4 @@ export function absoluteUrl(path: string): string {
  * Токен сайта в Cloudflare Web Analytics (публичный: он всё равно виден в коде страницы).
  * Пока пустой, счётчик не подключается.
  */
-export const CF_BEACON_TOKEN = '' // TODO: токен из Web Analytics для concepts.<поддомен>.workers.dev
+export const CF_BEACON_TOKEN = '7b64e9b60f974c7d88ebd84cd3a61d6b'

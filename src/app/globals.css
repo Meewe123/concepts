@@ -1,6 +1,234 @@
 @import 'tailwindcss';
 
+/*
+ * Семантические токены. Значения задаёт направление (directions/<id>/style.ts)
+ * на обёртке .concept — поэтому одни и те же секции выглядят в каждом направлении по-своему.
+ */
+@theme inline {
+  --color-bg: var(--c-bg);
+  --color-bg-2: var(--c-bg-2);
+  --color-surface: var(--c-surface);
+  --color-ink: var(--c-ink);
+  --color-ink-2: var(--c-ink-2);
+  --color-accent: var(--c-accent);
+  --color-accent-ink: var(--c-accent-ink);
+  --color-line: var(--c-line);
+  --font-display: var(--f-display);
+  --font-body: var(--f-body);
+}
+
 html {
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+.concept {
+  background: var(--c-bg);
+  color: var(--c-ink);
+  font-family: var(--f-body);
+  font-variant-numeric: tabular-nums;
+  overflow-x: clip;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.concept :focus-visible {
+  outline: 2px solid var(--c-focus, var(--c-accent));
+  outline-offset: 3px;
+}
+
+.concept [id] {
+  scroll-margin-top: 1rem;
+}
+
+@layer components {
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-height: 3rem;
+    padding: 0 1.4rem;
+    border-radius: var(--radius-btn, 0);
+    background: var(--c-accent);
+    color: var(--c-accent-ink);
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    text-decoration: none;
+    transition:
+      transform 0.2s ease,
+      background-color 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+  .btn:active {
+    transform: scale(0.98);
+  }
+  .btn-ghost {
+    background: transparent;
+    color: var(--c-ink);
+    box-shadow: inset 0 0 0 1px var(--c-line);
+  }
+  .btn-icon {
+    width: 3rem;
+    padding: 0;
+  }
+
+  /* «пример» — пометка у всех данных, которых мы не знаем */
+  .ex-tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.1rem 0.5rem;
+    border: 1px dashed currentColor;
+    border-radius: 999px;
+    font-family: var(--f-body);
+    font-size: 0.75rem;
+    font-weight: 500;
+    line-height: 1.4;
+    letter-spacing: 0.02em;
+    opacity: 0.8;
+    white-space: nowrap;
+  }
+  .ex-tag-lg {
+    font-size: 0.95rem;
+    padding: 0.2rem 0.75rem;
+    opacity: 1;
+  }
+
+  .field {
+    display: grid;
+    gap: 0.4rem;
+  }
+  .field > span {
+    font-size: 0.875rem;
+    color: var(--c-ink-2);
+  }
+  .field input {
+    min-height: 3rem;
+    width: 100%;
+    padding: 0 0.9rem;
+    border-radius: var(--radius-field, 0);
+    background: var(--c-field, transparent);
+    color: var(--c-ink);
+    border: 1px solid var(--c-line);
+    font: inherit;
+    font-size: 1rem;
+  }
+  .field input:focus {
+    border-color: var(--c-accent);
+    outline: none;
+    box-shadow: 0 0 0 1px var(--c-accent);
+  }
+
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.75rem;
+    padding: 0 1rem;
+    border-radius: var(--radius-chip, 999px);
+    border: 1px solid var(--c-line);
+    color: var(--c-ink);
+    cursor: pointer;
+    user-select: none;
+    transition:
+      background-color 0.2s ease,
+      color 0.2s ease,
+      border-color 0.2s ease;
+  }
+  input:checked + .chip,
+  .chip[aria-pressed='true'] {
+    background: var(--c-ink);
+    color: var(--c-bg);
+    border-color: var(--c-ink);
+  }
+  input:focus-visible + .chip {
+    outline: 2px solid var(--c-focus, var(--c-accent));
+    outline-offset: 2px;
+  }
+
+  /* FAQ на <details>, без JS */
+  .faq summary {
+    list-style: none;
+    cursor: pointer;
+  }
+  .faq summary::-webkit-details-marker {
+    display: none;
+  }
+  .faq summary .faq-mark {
+    transition: transform 0.25s ease;
+  }
+  .faq details[open] summary .faq-mark {
+    transform: rotate(45deg);
+  }
+
+  /* Ползунок «Сколько гостей?» */
+  .range {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 2.75rem;
+    background: transparent;
+    cursor: pointer;
+    --p: 50%;
+  }
+  .range::-webkit-slider-runnable-track {
+    height: 4px;
+    border-radius: 4px;
+    background: linear-gradient(to right, var(--c-accent) var(--p), var(--c-line) var(--p));
+  }
+  .range::-moz-range-track {
+    height: 4px;
+    border-radius: 4px;
+    background: linear-gradient(to right, var(--c-accent) var(--p), var(--c-line) var(--p));
+  }
+  .range::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 28px;
+    height: 28px;
+    margin-top: -12px;
+    border-radius: var(--radius-thumb, 50%);
+    background: var(--c-accent);
+    border: 3px solid var(--c-bg);
+    box-shadow: 0 0 0 1px var(--c-accent);
+  }
+  .range::-moz-range-thumb {
+    width: 22px;
+    height: 22px;
+    border-radius: var(--radius-thumb, 50%);
+    background: var(--c-accent);
+    border: 3px solid var(--c-bg);
+    box-shadow: 0 0 0 1px var(--c-accent);
+  }
+
+  /*
+   * Схема зала: столы — серверный SVG, островок меняет только --filled.
+   * Стол i «занят», если i < --filled: clamp(0, filled − i, 1) даёт 0 или 1 без JS-перерисовки.
+   */
+  .hall-scheme .t {
+    --on: clamp(0, calc(var(--filled, 0) - var(--i)), 1);
+  }
+  .hall-scheme .t-on {
+    opacity: var(--on);
+    transition: opacity 0.3s ease calc(min(var(--i), 40) * 5ms);
+  }
+  .hall-scheme .t-off {
+    opacity: calc(1 - var(--on) * 0.65);
+    transition: opacity 0.3s ease;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .concept *,
+  .concept *::before,
+  .concept *::after {
+    animation-duration: 1ms !important;
+    animation-delay: 0ms !important;
+    transition-duration: 1ms !important;
+    transition-delay: 0ms !important;
+  }
 }

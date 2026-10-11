@@ -6,3 +6,5 @@ out/
 next-env.d.ts
 .env*.local
 .dev.vars
+public/islands/
+review/*/full*.png

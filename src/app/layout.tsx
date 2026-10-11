@@ -1,11 +1,9 @@
 import type { Metadata, Viewport } from 'next'
 import type { ReactNode } from 'react'
-import { Onest } from 'next/font/google'
 import { Analytics } from '@/core/analytics'
+import { onest } from '@/core/fonts'
 import { SITE_URL } from '@/site.config'
 import './globals.css'
-
-const onest = Onest({ subsets: ['latin', 'cyrillic'], weight: ['400', '600'], variable: '--font-onest' })
 
 export const metadata: Metadata = {
   ...(SITE_URL ? { metadataBase: new URL(SITE_URL) } : {}),

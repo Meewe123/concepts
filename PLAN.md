@@ -1,6 +1,6 @@
 # Фабрика концепт-сайтов — план (Фаза 0)
 
-Статус: репозиторий и деплой согласованы; Фаза 1 ждёт «ок». Исходное ТЗ — `prompt_concept_factory.md` (у заказчика).
+Статус: Фаза 1 готова; актуальное состояние — в `PROGRESS.md`. Исходное ТЗ — `prompt_concept_factory.md` (у заказчика).
 Дата плана: 11 октября 2026.
 
 ---
@@ -11,7 +11,7 @@
 2. **Деплой — Cloudflare Workers, статика без кода.** Проект `concepts` в Workers подключён к репозиторию и собирается на каждый пуш в `main`: Build command — пусто, Deploy command `npx wrangler deploy`, Root directory `/`. Настройки воркера — в `wrangler.jsonc`: сборка перед деплоем (`build.command`), статика из `out/`, `html_handling: auto-trailing-slash`, `not_found_handling: 404-page`, `preview_urls: false`. Адрес — `https://concepts.<поддомен>.workers.dev`; поддомен вписывается в `site.config.ts`, оттуда берутся ссылки, `link.txt` и `og:image`.
    - Сеть контейнера: npm и Google Fonts открыты; Cloudflare (`api.cloudflare.com`, `*.workers.dev`, `static.cloudflareinsights.com`), Яндекс и Google закрыты. Живой сайт отсюда не открыть — проверяю локально через `wrangler dev`, на живой ссылке проверяете вы. Если добавить `workers.dev` в разрешённые домены окружения, проверю сам.
    - Данные лидов беру из таблицы в ТЗ как есть: перепроверить карточки Яндекса отсюда не могу.
-3. **Next.js и «JS только для островков».** App Router всегда грузит рантайм React, около 100 КБ gzip. Остаюсь на Next, как задано. Бюджет — не больше 130 КБ gzip JS на концепт; сигнатурный интерактив подгружается лениво, остальное — серверные компоненты, то есть чистый HTML и CSS.
+3. **Next.js и «JS только для островков».** Решено в Фазе 1: после `next build` скрипт `strip-runtime` убирает рантайм Next/React со всех страниц, интерактив — островки на чистом TypeScript (banquet — 3,6 КБ). Lighthouse mobile — 99–100.
 4. **Плагин `frontend-design`** в сессии не установлен; он есть в каталоге Anthropic. Работаю по правилам из ТЗ. Если хотите, включите плагин, и в следующей сессии я его загружу.
 
 ---

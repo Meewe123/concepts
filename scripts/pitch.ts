@@ -61,7 +61,8 @@ export function message(lead: Lead, locale: Locale): string | null {
     case 'sent':
       return ru
         ? `Добрый день! Чтобы не объяснять на словах — сделал концепт сайта ${lead.name}: ${link}. ${pitch}. Если интересно, доведу до рабочего сайта за неделю.`
-        : `Assalomu alaykum! Qisqasi, ${lead.name} uchun sayt konseptini tayyorladim: ${link}. ${pitch}. Qiziq boʻlsa, bir haftada ishlaydigan saytga aylantiraman.`
+        : // TODO: проверить носителем — вступление «Soʻz bilan tushuntirgandan koʻra koʻrsatish osonroq»
+          `Assalomu alaykum! Soʻz bilan tushuntirgandan koʻra koʻrsatish osonroq — ${lead.name} uchun sayt konseptini tayyorladim: ${link}. ${pitch}. Qiziq boʻlsa, bir haftada ishlaydigan saytga aylantiraman.`
     default:
       return null
   }

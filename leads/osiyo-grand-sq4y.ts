@@ -1,5 +1,5 @@
 import { defineLead } from '@/core/define'
-import { yandexSearch } from '@/core/format'
+import { mapsUrlFor } from './maps'
 
 export default defineLead({
   slug: 'osiyo-grand-sq4y',
@@ -11,8 +11,7 @@ export default defineLead({
   phones: ['+998 98 128 00 09', '+998 97 402 44 44'],
   instagram: 'osiyo_grand',
   telegram: '+998555117111',
-  // В таблице нет ссылки на карточку — поиск по адресу. TODO: заменить ссылкой карточки организации.
-  mapsUrl: yandexSearch('Osiyo Grand, Ташкент, улица Лабзак, 5'),
+  mapsUrl: mapsUrlFor('osiyo-grand-sq4y'),
   facts: [
     {
       text: { ru: '≈ 93 тыс. подписчиков в Instagram', uz: 'Instagramda ≈ 93 ming obunachi' },
@@ -85,7 +84,6 @@ export default defineLead({
   notes: [
     'Показать: схему зала с ползунком «Сколько гостей?» и меню-карточку пакетов.',
     'Если ответят — спросить: сколько залов и на сколько гостей, есть ли готовые пакеты, как сейчас принимают заявки (директ, телефон), кто ведёт Instagram.',
-    'Ссылка «Открыть в Яндекс Картах» — пока поиск по адресу; заменить ссылкой на карточку.',
     'Владелец, по-видимому, Gold Vision Group — в разговоре не упоминать, пока не скажут сами.',
   ],
 })

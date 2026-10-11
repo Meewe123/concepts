@@ -11,8 +11,8 @@
 
 | Лид | Ссылка | Направление | Статус | Набор |
 |---|---|---|---|---|
-| Osiyo Grand | https://concepts.saidanarkulov23.workers.dev/c/osiyo-grand-sq4y (`/uz`) | suzani-night | read-silent | `pitch/osiyo-grand-sq4y/` |
-| Billur | https://concepts.saidanarkulov23.workers.dev/c/billur-wgah (`/uz`) | crystal-facet | sent | `pitch/billur-wgah/` |
+| Osiyo Grand | https://concepts.yettikun.workers.dev/c/osiyo-grand-sq4y (`/uz`) | suzani-night | read-silent | `pitch/osiyo-grand-sq4y/` |
+| Billur | https://concepts.yettikun.workers.dev/c/billur-wgah (`/uz`) | crystal-facet | sent | `pitch/billur-wgah/` |
 
 ### Самопроверка (2 раунда)
 
@@ -54,7 +54,7 @@
 - Настройки проекта `concepts` в Cloudflare: Build command — пусто, Deploy command `npx wrangler deploy`, Root directory `/`. Сборку запускает wrangler: `build.command` в `wrangler.jsonc` = `npm run build`.
 - `npm run build` = островки (esbuild) → `next build` → `strip-runtime`.
 - `wrangler.jsonc`: статика из `out/`; `/c/<slug>` → `out/c/<slug>.html` без редиректа; неизвестный адрес → `404.html`; `preview_urls` выключены.
-- Адрес — `https://concepts.saidanarkulov23.workers.dev` (`WORKERS_SUBDOMAIN` в `site.config.ts`). Свой домен — `SITE_URL` при сборке. Совет заказчику: сменить поддомен на название студии до рассылки.
+- Адрес — `https://concepts.yettikun.workers.dev` (`WORKERS_SUBDOMAIN` в `site.config.ts`). Свой домен — `SITE_URL` при сборке.
 
 ## Принятые решения
 
@@ -75,7 +75,7 @@
 ## Известные ограничения и что дальше учесть
 
 - В общий CSS попадают `@font-face` всех направлений (~90 правил на два направления). Файлы шрифтов грузятся только нужные, но CSS растёт с числом направлений — к Фазе 3 вынести шрифты направлений из общего бандла.
-- У Osiyo Grand ссылка «Открыть в Яндекс Картах» — поиск по адресу, а не карточка организации (ссылки нет в таблице).
+- Ссылки на карточки Яндекс Карт для всех 23 лидов — `leads/maps.ts` (`mapsUrlFor(slug)`).
 - Район Osiyo Grand в таблице не указан — на странице «на Лабзаке».
 - Узбекские тексты (страницы и сообщения) помечены TODO: проверить носителем.
 - Скриншоты `review/*/full*.png` не коммитятся (большие, пересоздаются `npm run shoot`).
@@ -88,7 +88,7 @@
 
 ## Открытые вопросы к заказчику
 
-1. Название студии (страница `/`, подпись на плашке), свой домен или смена поддомена workers.dev.
+1. Название студии для страницы `/` и плашки (поддомен — yettikun).
 2. Позже: ссылка на демо очереди (Urus), канал для Chilanzar Dental, Telegram студии.
 
 ## Журнал
@@ -97,3 +97,4 @@
 - 2026-10-11 — Переезд в `Meewe123/concepts` (main). Каркас Next.js + Cloudflare Workers static assets, noindex, robots, аналитика с `?me=1`.
 - 2026-10-11 — Деплой падал без `out/`: сборка перенесена в `build.command` wrangler. Деплой прошёл, поддомен и токен Web Analytics вписаны.
 - 2026-10-11 — Фаза 1: движок, ниша banquet, suzani-night (Osiyo Grand), crystal-facet (Billur), RU/UZ, островки без React, OG, pitch-наборы, 2 раунда самопроверки, Lighthouse 99–100.
+- 2026-10-11 — Поддомен yettikun, ссылки на карточки Яндекс Карт для всех лидов (`leads/maps.ts`), новое узбекское вступление в сообщениях (TODO: проверить носителем). OG и pitch-наборы Фазы 1 пересобраны.

@@ -19,7 +19,7 @@
 ## Деплой
 
 Пуш в `main` → Cloudflare Workers Builds: Deploy command `npx wrangler deploy` (сборку запускает `build.command` в `wrangler.jsonc`).
-Адрес: `https://concepts.saidanarkulov23.workers.dev`. Свои просмотры — открывать с `?me=1`.
+Адрес: `https://concepts.yettikun.workers.dev`. Свои просмотры — открывать с `?me=1`.
 
 ## Режим «продакшн»
 

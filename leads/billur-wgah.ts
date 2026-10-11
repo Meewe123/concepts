@@ -1,4 +1,5 @@
 import { defineLead } from '@/core/define'
+import { mapsUrlFor } from './maps'
 
 export default defineLead({
   slug: 'billur-wgah',
@@ -13,7 +14,7 @@ export default defineLead({
   phones: ['+998 97 133 55 00'],
   instagram: 'billur_restaurant_',
   telegram: '+998971335500',
-  mapsUrl: 'https://yandex.uz/maps/org/billur/163081899955/',
+  mapsUrl: mapsUrlFor('billur-wgah'),
   rating: { value: 5.0, count: 955, source: 'Яндекс Карты', asOf: '2026-10' },
   facts: [],
   hook: 'в карточке Billur на Яндекс Картах указан billur.com, но этот адрес ведёт на сайт хостинг-компании: гости, которые нажимают на ссылку, к вам не попадают',

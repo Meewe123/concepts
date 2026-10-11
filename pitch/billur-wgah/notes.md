@@ -1,7 +1,7 @@
 # Billur — что отправить
 
-- RU: https://concepts.saidanarkulov23.workers.dev/c/billur-wgah
-- UZ: https://concepts.saidanarkulov23.workers.dev/c/billur-wgah/uz
+- RU: https://concepts.yettikun.workers.dev/c/billur-wgah
+- UZ: https://concepts.yettikun.workers.dev/c/billur-wgah/uz
 
 - Статус: **sent**, канал: **telegram**, первым отправлять: **message-ru.txt**
 - Свои просмотры — открывать со ссылкой `?me=1`, тогда счётчик их не учтёт.

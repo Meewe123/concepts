@@ -1,7 +1,7 @@
 # Osiyo Grand — что отправить
 
-- RU: https://concepts.saidanarkulov23.workers.dev/c/osiyo-grand-sq4y
-- UZ: https://concepts.saidanarkulov23.workers.dev/c/osiyo-grand-sq4y/uz
+- RU: https://concepts.yettikun.workers.dev/c/osiyo-grand-sq4y
+- UZ: https://concepts.yettikun.workers.dev/c/osiyo-grand-sq4y/uz
 
 - Статус: **read-silent**, канал: **telegram**, первым отправлять: **message-ru.txt**
 - Свои просмотры — открывать со ссылкой `?me=1`, тогда счётчик их не учтёт.
@@ -14,7 +14,6 @@
 
 - Показать: схему зала с ползунком «Сколько гостей?» и меню-карточку пакетов.
 - Если ответят — спросить: сколько залов и на сколько гостей, есть ли готовые пакеты, как сейчас принимают заявки (директ, телефон), кто ведёт Instagram.
-- Ссылка «Открыть в Яндекс Картах» — пока поиск по адресу; заменить ссылкой на карточку.
 - Владелец, по-видимому, Gold Vision Group — в разговоре не упоминать, пока не скажут сами.
 
 ## Факты на странице (публичные)

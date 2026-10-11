@@ -1,0 +1,17 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  // Воркер без кода: только статика, которую Next.js собирает в out/ (output: 'export').
+  "name": "concepts",
+  "compatibility_date": "2026-09-01",
+  "assets": {
+    "directory": "./out",
+    // /c/billur-wgah отдаёт out/c/billur-wgah.html без редиректа
+    "html_handling": "auto-trailing-slash",
+    // неизвестный адрес — out/404.html с кодом 404
+    "not_found_handling": "404-page"
+  },
+  // Сайт живёт на concepts.<поддомен>.workers.dev
+  "workers_dev": true,
+  // Адреса версий <version>-concepts.<поддомен>.workers.dev не нужны: это лишние публичные копии концептов
+  "preview_urls": false
+}

@@ -1,0 +1,16 @@
+# Демо-концепты не индексируются. Ботам превью ссылок (Telegram, Instagram/Facebook, WhatsApp)
+# доступ открыт: без него в мессенджере не будет карточки со ссылкой.
+User-agent: TelegramBot
+Allow: /
+
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Facebot
+Allow: /
+
+User-agent: WhatsApp
+Allow: /
+
+User-agent: *
+Disallow: /

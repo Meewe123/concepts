@@ -60,6 +60,10 @@ export interface BanquetPackage {
 export interface BanquetData {
   halls: BanquetHall[]
   packages: BanquetPackage[]
+  /** Выездной кейтеринг: свои пакеты, переключатель в планировщике */
+  catering?: { packages: BanquetPackage[] }
+  /** Пометка к залам, если вместимость взята из отзывов: «по отзывам, уточнить» */
+  hallsNote?: L10n
   /** Сколько гостей стоит на ползунке при открытии. */
   defaultGuests: number
 }
@@ -149,6 +153,8 @@ export interface Lead {
   facts: Fact[]
   /** Хук для сообщения — одна фраза про них. */
   hook: string
+  /** Название в сообщении, если его нужно склонять: «сайт «Версаля»» */
+  messageName?: L10n
   /** Хук на узбекском — нужен, если сообщение на узбекском начинается с хука. TODO: проверить носителем. */
   hookUz?: string
   direction: string

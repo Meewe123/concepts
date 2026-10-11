@@ -39,7 +39,7 @@ export function EducationPage({ lead, locale, dir }: { lead: Lead; locale: Local
   return (
     <>
       <skin.Hero lead={lead} locale={locale} langSwitch={<LangSwitch lead={lead} locale={locale} />} />
-      <div className="relative">
+      <main className="relative">
         {skin.order.map((id, i) => {
           const S = sections[id]
           return (
@@ -50,7 +50,7 @@ export function EducationPage({ lead, locale, dir }: { lead: Lead; locale: Local
           )
         })}
         <EducationStickyBar lead={lead} locale={locale} dir={dir} />
-      </div>
+      </main>
       <Footer lead={lead} locale={locale} stroke={dir.iconStroke} />
       {/* Островок: тест уровня и демо-форма. Единственный JS страницы, кроме счётчика. */}
       <script type="module" src="/islands/education.js" data-concept="" />

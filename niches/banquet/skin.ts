@@ -1,7 +1,7 @@
 import type { FC, ReactNode } from 'react'
 import type { Lead, Locale } from '@/core/types'
 
-export type BanquetSectionId = 'planner' | 'halls' | 'packages' | 'includes' | 'steps' | 'faq' | 'location' | 'booking'
+export type BanquetSectionId = 'planner' | 'halls' | 'packages' | 'bar' | 'includes' | 'steps' | 'faq' | 'location' | 'booking'
 
 export interface BanquetHeroProps {
   lead: Lead
@@ -44,6 +44,13 @@ export interface BanquetSkin {
   order: BanquetSectionId[]
   Halls?: FC<SectionProps>
   Packages?: FC<SectionProps>
+  /** Секция бара — только у залов с баром */
+  Bar?: FC<SectionProps>
+  /**
+   * Иллюстрация над схемой зала. Может реагировать на CSS-переменную --ratio (0…1, доля гостей
+   * от вместимости самого большого зала) и атрибут data-active-hall у обёртки — их ставит островок.
+   */
+  PlannerArt?: FC<{ halls: { id: string; capacity: number }[] }>
 }
 
 /** Схема зала направления: рисуется в островке HallPlanner, регистрируется в directions/schemes.ts. */

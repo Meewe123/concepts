@@ -1,0 +1,75 @@
+import { defineLead } from '@/core/define'
+import { mapsUrlFor } from './maps'
+
+export default defineLead({
+  slug: 'riks-yxk6',
+  name: 'Riks',
+  niche: 'education',
+  district: { ru: 'Ташкент', uz: 'Toshkent' },
+  where: { ru: 'на Айбека', uz: 'Oybek koʻchasidagi' },
+  address: { ru: 'Ташкент, ул. Айбека, 18/1', uz: 'Toshkent, Oybek koʻchasi, 18/1' },
+  phones: ['+998 71 200 38 33', '+998 98 115 66 88'],
+  instagram: 'rikseducation',
+  mapsUrl: mapsUrlFor('riks-yxk6'),
+  facts: [],
+  hook: 'на riks.uz с 2020 года висит текст-заглушка: нет ни цен, ни формы заявки',
+  direction: 'campus-bold',
+  langs: ['ru'],
+  map: { kind: 'street', street: { ru: 'ул. Айбека', uz: 'Oybek koʻchasi' }, house: '18/1' },
+  contactStatus: 'sent',
+  channel: 'instagram',
+  messageLang: 'ru',
+  signaturePitch: {
+    ru: 'Ученик проходит тест из пяти вопросов, а уровень, ориентир по IELTS и подходящая группа сразу выезжают на табло',
+    uz: 'Oʻquvchi beshta savollik testni topshiradi, darajasi, IELTS moʻljali va mos guruh darhol tabloda paydo boʻladi',
+  },
+  education: {
+    ielts: true,
+    formats: ['offline', 'online'],
+    courses: [
+      {
+        id: 'ielts',
+        name: { ru: 'IELTS Intensive', uz: 'IELTS Intensive' },
+        levels: 'B1+',
+        duration: { ru: '2 месяца', uz: '2 oy' },
+        pricePerMonth: 1_100_000,
+        note: { ru: 'Пробный экзамен каждые две недели', uz: 'Har ikki haftada sinov imtihoni' },
+        example: true,
+      },
+      {
+        id: 'general',
+        name: { ru: 'General English', uz: 'General English' },
+        levels: 'A1–C1',
+        duration: { ru: '3 месяца на уровень', uz: 'har bir daraja 3 oy' },
+        pricePerMonth: 550_000,
+        example: true,
+      },
+      {
+        id: 'teens',
+        name: { ru: 'English for Teens', uz: 'English for Teens' },
+        levels: '12–16 лет',
+        duration: { ru: 'учебный год', uz: 'oʻquv yili' },
+        pricePerMonth: 500_000,
+        example: true,
+      },
+    ],
+    groups: [
+      { id: 'a1', level: 'A1', course: { ru: 'General English', uz: 'General English' }, days: { ru: 'Пн, Ср, Пт', uz: 'Du, Chor, Ju' }, time: '10:00', format: 'offline', example: true },
+      { id: 'a2', level: 'A2', course: { ru: 'General English', uz: 'General English' }, days: { ru: 'Вт, Чт, Сб', uz: 'Se, Pa, Sha' }, time: '17:00', format: 'offline', example: true },
+      { id: 'b1', level: 'B1', course: { ru: 'IELTS Foundation', uz: 'IELTS Foundation' }, days: { ru: 'Пн, Ср, Пт', uz: 'Du, Chor, Ju' }, time: '15:00', format: 'offline', example: true },
+      { id: 'b2', level: 'B2', course: { ru: 'IELTS Intensive', uz: 'IELTS Intensive' }, days: { ru: 'Вт, Чт, Сб', uz: 'Se, Pa, Sha' }, time: '19:00', format: 'offline', example: true },
+      { id: 'c1', level: 'C1', course: { ru: 'IELTS Advanced', uz: 'IELTS Advanced' }, days: { ru: 'Сб, Вс', uz: 'Sha, Ya' }, time: '10:00', format: 'online', example: true },
+    ],
+    teachers: [
+      { initials: 'А. Р.', role: { ru: 'IELTS Intensive', uz: 'IELTS Intensive' }, example: true },
+      { initials: 'Г. М.', role: { ru: 'General English', uz: 'General English' }, example: true },
+      { initials: 'Б. Т.', role: { ru: 'English for Teens', uz: 'English for Teens' }, example: true },
+      { initials: 'С. Х.', role: { ru: 'IELTS Speaking', uz: 'IELTS Speaking' }, example: true },
+    ],
+  },
+  notes: [
+    'Показать: тест уровня — результат и группа выезжают на табло; расписание групп тоже табло.',
+    'Хук для разговора: на riks.uz с 2020 года заглушка без цен и формы — этот концепт можно поставить на тот же домен.',
+    'Если ответят — спросить: какие курсы и цены, есть ли онлайн, кто отвечает на заявки, доступ к домену riks.uz.',
+  ],
+})

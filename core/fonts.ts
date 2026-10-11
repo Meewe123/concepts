@@ -1,4 +1,4 @@
-import { Commissioner, Onest, Spectral, Unbounded } from 'next/font/google'
+import { Commissioner, Literata, Onest, Playfair_Display, Source_Code_Pro, Spectral, Tektur, Unbounded, Ysabeau_Office } from 'next/font/google'
 
 /**
  * Onest — общий текстовый шрифт: страница студии и большинство направлений.
@@ -36,6 +36,53 @@ export const spectral = Spectral({
   weight: ['300', '400', '600'],
   style: ['normal', 'italic'],
   variable: '--font-spectral',
+  display: 'swap',
+  preload: false,
+})
+
+/** Literata — warm-paper, marble-brass, family-warm. */
+export const literata = Literata({
+  subsets: ['latin', 'cyrillic'],
+  weight: ['400', '600'],
+  style: ['normal', 'italic'],
+  variable: '--font-literata',
+  display: 'swap',
+  preload: false,
+})
+
+/** Ysabeau Office — текстовый у warm-paper, garden-light, family-warm, sound-silence. */
+export const ysabeau = Ysabeau_Office({
+  subsets: ['latin', 'cyrillic'],
+  weight: 'variable',
+  variable: '--font-ysabeau',
+  display: 'swap',
+  preload: false,
+})
+
+/** Tektur — night-vet, workshop-concrete. */
+export const tektur = Tektur({
+  subsets: ['latin', 'cyrillic'],
+  weight: 'variable',
+  variable: '--font-tektur',
+  display: 'swap',
+  preload: false,
+})
+
+/** Source Code Pro — цифры, часы, табло. */
+export const sourceCode = Source_Code_Pro({
+  subsets: ['latin', 'cyrillic'],
+  weight: 'variable',
+  variable: '--font-source-code',
+  display: 'swap',
+  preload: false,
+})
+
+/** Playfair Display — crimson-velvet, retro-gastronom. */
+export const playfair = Playfair_Display({
+  subsets: ['latin', 'cyrillic'],
+  weight: 'variable',
+  style: ['normal', 'italic'],
+  variable: '--font-playfair',
   display: 'swap',
   preload: false,
 })

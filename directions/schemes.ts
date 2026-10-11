@@ -1,5 +1,8 @@
 import type { SchemeSkin } from '@/niches/banquet/skin'
+import { scheme as crimsonVelvet } from './crimson-velvet/scheme'
 import { scheme as crystalFacet } from './crystal-facet/scheme'
+import { scheme as gardenLight } from './garden-light/scheme'
+import { scheme as marbleBrass } from './marble-brass/scheme'
 import { scheme as suzaniNight } from './suzani-night/scheme'
 
 /**
@@ -9,4 +12,7 @@ import { scheme as suzaniNight } from './suzani-night/scheme'
 export const schemes: Record<string, SchemeSkin> = {
   'suzani-night': suzaniNight,
   'crystal-facet': crystalFacet,
+  'crimson-velvet': crimsonVelvet,
+  'garden-light': gardenLight,
+  'marble-brass': marbleBrass,
 }

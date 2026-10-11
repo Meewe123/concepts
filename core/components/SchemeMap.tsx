@@ -54,7 +54,7 @@ function Street({ rand, lead, locale }: { rand: () => number; lead: Lead; locale
     minor.push(`M ${r1(x)} -10 L ${r1(x + (rand() - 0.5) * 50)} ${H + 10}`)
   }
   const main = `M -20 ${H * 0.78} C ${W * 0.3} ${H * 0.64}, ${W * 0.62} ${H * 0.5}, ${W + 20} ${H * 0.2}`
-  const street = `${tx(lead.map.street, locale)}, ${lead.map.house}`
+  const street = lead.map.house ? `${tx(lead.map.street, locale)}, ${lead.map.house}` : tx(lead.map.street, locale)
   return (
     <>
       <g className="stroke-line" strokeWidth={1} fill="none">

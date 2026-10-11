@@ -34,6 +34,13 @@ export const copy = {
     floor: { ru: 'танцпол', uz: 'raqs maydoni' },
     legend: { ru: 'стол на 10 гостей', uz: '10 kishilik stol' },
     sliderLabel: { ru: 'Сколько гостей', uz: 'Mehmonlar soni' },
+    format: { ru: 'Где праздник', uz: 'Bayram qayerda' },
+    modeHall: { ru: 'В зале', uz: 'Zalda' },
+    modeCatering: { ru: 'Выездной кейтеринг', uz: 'Koʻchma keytering' },
+    cateringNote: {
+      ru: 'Привезём кухню, посуду и команду официантов на вашу площадку — дома, в саду или в офисе.',
+      uz: 'Oshxona, idish-tovoq va ofitsiantlar jamoasini sizning joyingizga olib boramiz — uyda, bogʻda yoki ofisda.',
+    },
   },
   halls: {
     title: { ru: 'Залы', uz: 'Zallar' },

@@ -25,6 +25,7 @@ export function BanquetPage({ lead, locale, dir }: { lead: Lead; locale: Locale;
     planner: PlannerSection,
     halls: skin.Halls ? (p) => skin.Halls!({ lead: p.lead, locale: p.locale }) : DefaultHalls,
     packages: skin.Packages ? (p) => skin.Packages!({ lead: p.lead, locale: p.locale }) : DefaultPackages,
+    bar: skin.Bar ? (p) => skin.Bar!({ lead: p.lead, locale: p.locale }) : () => null,
     includes: Includes,
     steps: Steps,
     faq: FaqSection,
@@ -35,7 +36,7 @@ export function BanquetPage({ lead, locale, dir }: { lead: Lead; locale: Locale;
   return (
     <>
       <skin.Hero lead={lead} locale={locale} langSwitch={<LangSwitch lead={lead} locale={locale} />} />
-      <div className="relative">
+      <main className="relative">
         {skin.order.map((id, i) => {
           const S = sections[id]
           return (
@@ -46,7 +47,7 @@ export function BanquetPage({ lead, locale, dir }: { lead: Lead; locale: Locale;
           )
         })}
         <BanquetStickyBar lead={lead} locale={locale} dir={dir} />
-      </div>
+      </main>
       <Footer lead={lead} locale={locale} stroke={dir.iconStroke} />
       {/* Островок: ползунок гостей и демо-форма. Единственный JS страницы, кроме счётчика. */}
       <script type="module" src="/islands/banquet.js" data-concept="" />

@@ -20,13 +20,16 @@ function heroFontPreload(html: string): string | null {
   const m = html.match(/data-hero-font="([^"|]+)\|(\d+)\|(\w+)"/)
   if (!m) return null
   const [, family, weight, style] = m
+  // какое подмножество нужно заголовку: кириллица («Зооцентр») или латиница («Billur»)
+  const h1 = html.match(/<h1[^>]*>([\s\S]*?)<\/h1>/)?.[1]?.replace(/<[^>]+>/g, '') ?? ''
+  const range = /[А-Яа-яЁё]/.test(h1) ? /unicode-range:U\+(301,)?U?\+?400-45F/i : /unicode-range:U\+(\?\?|0-FF|0000-00FF)/i
   const faces = html.match(/@font-face\{[^}]*\}/g) ?? []
   const face = faces.find(
     (f) =>
       new RegExp(`font-family:\\s*"?${family!.replace(/ /g, '\\s')}"?;`).test(f) &&
       f.includes(`font-style:${style}`) &&
-      f.includes(`font-weight:${weight}`) &&
-      /unicode-range:U\+(\?\?|0-FF|0000-00FF)/i.test(f),
+      new RegExp(`font-weight:(${weight}|\\d+ \\d+)`).test(f) &&
+      range.test(f),
   )
   const url = face?.match(/url\(([^)]+\.woff2)\)/)?.[1]
   return url ? `<link rel="preload" href="${url}" as="font" type="font/woff2" crossorigin=""/>` : null
@@ -44,12 +47,18 @@ function keepOwnFonts(html: string): string {
   })
 }
 
+/** Предзагрузка шрифтов, чьих @font-face на странице не осталось (Onest на чужих концептах), только отнимает канал у первого экрана. */
+function dropOrphanFontPreloads(html: string): string {
+  const used = new Set((html.match(/@font-face\{[^}]*\}/g) ?? []).flatMap((f) => [...f.matchAll(/url\(([^)]+)\)/g)].map((m) => m[1])))
+  return html.replace(/<link rel="preload" href="([^"]+)" as="font"[^>]*\/?>/g, (link, href: string) => (used.has(href) ? link : ''))
+}
+
 let stripped = 0
 for (const file of htmlFiles(OUT)) {
   const before = fs.readFileSync(file, 'utf8')
   let html = before.replace(/<script\b(?![^>]*\bdata-concept\b)[^>]*>[\s\S]*?<\/script>/g, '')
   html = html.replace(/<link rel="preload" as="script"[^>]*\/?>/g, '')
-  html = keepOwnFonts(html)
+  html = dropOrphanFontPreloads(keepOwnFonts(html))
   const preload = heroFontPreload(html)
   if (preload && !html.includes(preload)) html = html.replace(/<head>/, `<head>${preload}`)
   if (html !== before) {

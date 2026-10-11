@@ -1,7 +1,7 @@
 import { formatSum, groupDigits } from '@/core/format'
 import { initDemoForm, prefillForm } from '@/core/islands/form'
 import { countWord } from '@/core/text'
-import { GUESTS_RU, TABLES_RU, plannerState, type PlannerConfig } from './planner-shared'
+import { GUESTS_RU, TABLES_RU, plannerState, type PlannerConfig, type PlannerMode } from './planner-shared'
 
 /**
  * Островок ниши banquet — единственный JS на странице концепта (кроме счётчика).
@@ -15,10 +15,18 @@ function initPlanner(root: HTMLElement): void {
   const cfg = JSON.parse(cfgEl.textContent) as PlannerConfig
   const set = (key: string, value: string) => root.querySelectorAll<HTMLElement>(`[data-o="${key}"]`).forEach((el) => (el.textContent = value))
   const radios = root.querySelectorAll<HTMLInputElement>('input[name=planner-package]')
+  const cateringRadios = root.querySelectorAll<HTMLInputElement>('input[name=planner-package-catering]')
+  const modes = root.querySelectorAll<HTMLInputElement>('input[name=planner-mode]')
   let pkgId = [...radios].find((r) => r.checked)?.value ?? cfg.packages[0]!.id
+  let cateringId = [...cateringRadios].find((r) => r.checked)?.value ?? ''
+  let mode: PlannerMode = 'hall'
 
   function render(): void {
-    const s = plannerState(cfg, Number(range!.value), pkgId)
+    const s = plannerState(cfg, Number(range!.value), mode === 'catering' ? cateringId : pkgId, mode)
+    root.querySelectorAll<HTMLElement>('[data-mode-part]').forEach((el) => (el.hidden = el.dataset.modePart !== mode))
+    root.querySelectorAll<HTMLElement>('[data-pkgs]').forEach((el) => (el.hidden = el.dataset.pkgs !== mode))
+    stage!.dataset.activeHall = s.hall.id
+    stage!.style.setProperty('--ratio', String(s.ratio))
     set('guests', groupDigits(s.guests))
     set('guestsWord', countWord(s.guests, cfg.locale, GUESTS_RU, 'mehmon'))
     set('tables', String(s.tables))
@@ -42,6 +50,8 @@ function initPlanner(root: HTMLElement): void {
 
   range.addEventListener('input', render)
   radios.forEach((r) => r.addEventListener('change', () => ((pkgId = r.value), render())))
+  cateringRadios.forEach((r) => r.addEventListener('change', () => ((cateringId = r.value), render())))
+  modes.forEach((r) => r.addEventListener('change', () => ((mode = r.value as PlannerMode), render())))
   root.querySelectorAll<HTMLButtonElement>('[data-hall]').forEach((btn) =>
     btn.addEventListener('click', () => {
       const hall = cfg.halls.find((h) => h.id === btn.dataset.hall)

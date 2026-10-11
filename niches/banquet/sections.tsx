@@ -27,6 +27,7 @@ function banquet(lead: Lead) {
 
 export function PlannerSection({ lead, locale, dir }: BanquetSectionProps) {
   const data = banquet(lead)
+  const skin = dir.banquet!
   const p = copy.planner
   return (
     <Section id="zal">
@@ -42,8 +43,12 @@ export function PlannerSection({ lead, locale, dir }: BanquetSectionProps) {
             capacityLabel: tx(capacityLabel(h.capacity), locale),
           })),
           packages: data.packages.map((pk) => ({ id: pk.id, name: tx(pk.name, locale), price: pk.pricePerGuest })),
+          catering: data.catering && {
+            packages: data.catering.packages.map((pk) => ({ id: pk.id, name: tx(pk.name, locale), price: pk.pricePerGuest })),
+          },
           defaultGuests: data.defaultGuests,
         }}
+        art={skin.PlannerArt && <skin.PlannerArt halls={data.halls.map((h) => ({ id: h.id, capacity: h.capacity }))} />}
         labels={{
           sliderLabel: tx(p.sliderLabel, locale),
           perTable: tx(p.perTable, locale),
@@ -55,6 +60,10 @@ export function PlannerSection({ lead, locale, dir }: BanquetSectionProps) {
           legend: tx(p.legend, locale),
           stage: tx(p.stage, locale),
           floor: tx(p.floor, locale),
+          format: tx(p.format, locale),
+          modeHall: tx(p.modeHall, locale),
+          modeCatering: tx(p.modeCatering, locale),
+          cateringNote: tx(p.cateringNote, locale),
         }}
       />
     </Section>

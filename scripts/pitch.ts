@@ -44,15 +44,16 @@ export function message(lead: Lead, locale: Locale): string | null {
     return cap(dot(hook))
   }
   const ru = locale === 'ru'
+  const name = lead.messageName?.[locale] ?? lead.name
   switch (lead.contactStatus) {
     case 'not-contacted':
       return ru
-        ? `Здравствуйте! ${needHook()}. Набросал, как мог бы выглядеть сайт ${lead.name}: ${link} — это концепт, удобнее смотреть с телефона. Если понравится, доведу до рабочего сайта с вашими фото и ценами за неделю.`
-        : `Assalomu alaykum! ${needHook()}. ${lead.name} sayti qanday boʻlishi mumkinligini chizib koʻrdim: ${link} — bu konsept, telefonda koʻrish qulayroq. Yoqsa, bir haftada suratlaringiz va narxlaringiz bilan ishlaydigan saytga aylantiraman.`
+        ? `Здравствуйте! ${needHook()}. Набросал, как мог бы выглядеть сайт ${name}: ${link} — это концепт, удобнее смотреть с телефона. Если понравится, доведу до рабочего сайта с вашими фото и ценами за неделю.`
+        : `Assalomu alaykum! ${needHook()}. ${name} sayti qanday boʻlishi mumkinligini chizib koʻrdim: ${link} — bu konsept, telefonda koʻrish qulayroq. Yoqsa, bir haftada suratlaringiz va narxlaringiz bilan ishlaydigan saytga aylantiraman.`
     case 'unread':
       return ru
-        ? `Здравствуйте! ${needHook()}. Набросал концепт сайта ${lead.name}: ${link} — удобнее смотреть с телефона.`
-        : `Assalomu alaykum! ${needHook()}. ${lead.name} uchun sayt konseptini chizdim: ${link} — telefonda koʻrish qulayroq.`
+        ? `Здравствуйте! ${needHook()}. Набросал концепт сайта ${name}: ${link} — удобнее смотреть с телефона.`
+        : `Assalomu alaykum! ${needHook()}. ${name} uchun sayt konseptini chizdim: ${link} — telefonda koʻrish qulayroq.`
     case 'forwarded':
       return ru
         ? `Добрый день! Ваш контакт мне дали в ${lead.name}. Сделал концепт сайта: ${link} — ${low(pitch)}. Если интересно, доведу до рабочего сайта за неделю.`
@@ -60,9 +61,9 @@ export function message(lead: Lead, locale: Locale): string | null {
     case 'read-silent':
     case 'sent':
       return ru
-        ? `Добрый день! Чтобы не объяснять на словах — сделал концепт сайта ${lead.name}: ${link}. ${pitch}. Если интересно, доведу до рабочего сайта за неделю.`
+        ? `Добрый день! Чтобы не объяснять на словах — сделал концепт сайта ${name}: ${link}. ${pitch}. Если интересно, доведу до рабочего сайта за неделю.`
         : // TODO: проверить носителем — вступление «Soʻz bilan tushuntirgandan koʻra koʻrsatish osonroq»
-          `Assalomu alaykum! Soʻz bilan tushuntirgandan koʻra koʻrsatish osonroq — ${lead.name} uchun sayt konseptini tayyorladim: ${link}. ${pitch}. Qiziq boʻlsa, bir haftada ishlaydigan saytga aylantiraman.`
+          `Assalomu alaykum! Soʻz bilan tushuntirgandan koʻra koʻrsatish osonroq — ${name} uchun sayt konseptini tayyorladim: ${link}. ${pitch}. Qiziq boʻlsa, bir haftada ishlaydigan saytga aylantiraman.`
     default:
       return null
   }

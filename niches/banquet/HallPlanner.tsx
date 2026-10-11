@@ -1,4 +1,4 @@
-import type { CSSProperties } from 'react'
+import type { CSSProperties, ReactNode } from 'react'
 import { formatSum, groupDigits } from '@/core/format'
 import { countWord } from '@/core/text'
 import { schemes } from '@/directions/schemes'
@@ -16,6 +16,11 @@ export interface PlannerLabels {
   legend: string
   stage: string
   floor: string
+  /** Для залов с кейтерингом */
+  format?: string
+  modeHall?: string
+  modeCatering?: string
+  cateringNote?: string
 }
 
 /**
@@ -23,7 +28,18 @@ export interface PlannerLabels {
  * Здесь — готовая разметка в начальном состоянии. Оживляет её островок island.ts (несколько КБ, без React):
  * он меняет --filled у схемы, подписи и видимость схем залов.
  */
-export function HallPlanner({ config, direction, labels }: { config: PlannerConfig; direction: string; labels: PlannerLabels }) {
+export function HallPlanner({
+  config,
+  direction,
+  labels,
+  art,
+}: {
+  config: PlannerConfig
+  direction: string
+  labels: PlannerLabels
+  /** Иллюстрация направления над схемой (BanquetSkin.PlannerArt) */
+  art?: ReactNode
+}) {
   const skin = schemes[direction]
   if (!skin) throw new Error(`Нет схемы зала для направления ${direction}`)
   const { locale, packages } = config
@@ -73,7 +89,19 @@ export function HallPlanner({ config, direction, labels }: { config: PlannerConf
         </div>
       </div>
 
-      <div className="planner-stage self-start [grid-area:scheme] md:sticky md:top-6" data-o="stage" style={{ '--filled': s.tables } as CSSProperties}>
+      <div
+        className="planner-stage self-start [grid-area:scheme] md:sticky md:top-6"
+        data-o="stage"
+        data-active-hall={s.hall.id}
+        style={{ '--filled': s.tables, '--ratio': s.ratio } as CSSProperties}
+      >
+        {art}
+        {config.catering && (
+          <p data-mode-part="catering" hidden className="planner-catering border border-line p-6 text-lg">
+            {labels.cateringNote}
+          </p>
+        )}
+        <div data-mode-part="hall">
         <p className="mb-3 flex items-baseline justify-between gap-3 text-sm text-ink-2">
           <span className="text-ink" data-o="hallName">
             {s.hall.name}
@@ -98,10 +126,24 @@ export function HallPlanner({ config, direction, labels }: { config: PlannerConf
           </svg>
           {labels.legend}
         </p>
+        </div>
       </div>
 
       <div className="grid content-start gap-6 [grid-area:rest]">
-        <div className="grid gap-1" role="group" aria-label={labels.fits}>
+        {config.catering && (
+          <fieldset>
+            <legend className="mb-3 text-sm text-ink-2">{labels.format}</legend>
+            <div className="flex flex-wrap gap-2">
+              {(['hall', 'catering'] as const).map((m) => (
+                <label key={m}>
+                  <input type="radio" name="planner-mode" value={m} className="sr-only" defaultChecked={m === 'hall'} />
+                  <span className="chip">{m === 'hall' ? labels.modeHall : labels.modeCatering}</span>
+                </label>
+              ))}
+            </div>
+          </fieldset>
+        )}
+        <div className="grid gap-1" role="group" aria-label={labels.fits} data-mode-part="hall">
           {s.sorted.map((h) => (
             <button
               key={h.id}
@@ -121,7 +163,7 @@ export function HallPlanner({ config, direction, labels }: { config: PlannerConf
           ))}
         </div>
 
-        <fieldset>
+        <fieldset data-pkgs="hall">
           <legend className="mb-3 text-sm text-ink-2">{labels.package}</legend>
           <div className="flex flex-wrap gap-2">
             {packages.map((p) => (
@@ -132,6 +174,19 @@ export function HallPlanner({ config, direction, labels }: { config: PlannerConf
             ))}
           </div>
         </fieldset>
+        {config.catering && (
+          <fieldset data-pkgs="catering" hidden>
+            <legend className="mb-3 text-sm text-ink-2">{labels.package}</legend>
+            <div className="flex flex-wrap gap-2">
+              {config.catering.packages.map((p, i) => (
+                <label key={p.id}>
+                  <input type="radio" name="planner-package-catering" value={p.id} className="sr-only" defaultChecked={i === 0} />
+                  <span className="chip">{p.name}</span>
+                </label>
+              ))}
+            </div>
+          </fieldset>
+        )}
 
         <div className="planner-estimate grid gap-2 border-t border-line pt-5" aria-live="polite">
           <p className="flex flex-wrap items-center gap-3 text-sm text-ink-2">

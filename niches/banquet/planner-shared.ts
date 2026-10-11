@@ -11,16 +11,21 @@ export interface PlannerConfig {
   locale: Locale
   halls: { id: string; name: string; capacity: number; capacityLabel: string }[]
   packages: { id: string; name: string; price: number }[]
+  /** Выездной кейтеринг: свои пакеты */
+  catering?: { packages: { id: string; name: string; price: number }[] }
   defaultGuests: number
 }
 
-export function plannerState(cfg: PlannerConfig, guests: number, pkgId: string) {
+export type PlannerMode = 'hall' | 'catering'
+
+export function plannerState(cfg: PlannerConfig, guests: number, pkgId: string, mode: PlannerMode = 'hall') {
   const ru = cfg.locale === 'ru'
   const sorted = [...cfg.halls].sort((a, b) => a.capacity - b.capacity)
   const biggest = sorted[sorted.length - 1]!
   const hall = sorted.find((h) => h.capacity >= guests) ?? biggest
   const tables = Math.ceil(guests / 10)
-  const pkg = cfg.packages.find((p) => p.id === pkgId) ?? cfg.packages[0]!
+  const list = mode === 'catering' && cfg.catering ? cfg.catering.packages : cfg.packages
+  const pkg = list.find((p) => p.id === pkgId) ?? list[0]!
   const total = guests * pkg.price
   const guestsWord = countWord(guests, cfg.locale, GUESTS_RU, 'mehmon')
   return {
@@ -32,11 +37,12 @@ export function plannerState(cfg: PlannerConfig, guests: number, pkgId: string) 
     pkg,
     total,
     progress: ((guests - 10) / (biggest.capacity - 10)) * 100,
+    ratio: guests / biggest.capacity,
     valueText: `${guests} ${guestsWord}`,
     tablesOf: `${tables} / ${Math.ceil(hall.capacity / 10)}`,
     cta: ru ? `Проверить дату на ${guests} ${guestsWord}` : `${guests} mehmon uchun sanani tekshirish`,
     calc: ru
-      ? `${groupDigits(guests)} ${guestsWord} × ${formatSum(pkg.price, cfg.locale)}, пакет «${pkg.name}»`
-      : `${groupDigits(guests)} mehmon × ${formatSum(pkg.price, cfg.locale)}, «${pkg.name}» paketi`,
+      ? `${groupDigits(guests)} ${guestsWord} × ${formatSum(pkg.price, cfg.locale)}, ${mode === 'catering' ? 'кейтеринг' : 'пакет'} «${pkg.name}»`
+      : `${groupDigits(guests)} mehmon × ${formatSum(pkg.price, cfg.locale)}, «${pkg.name}» ${mode === 'catering' ? 'keyteringi' : 'paketi'}`,
   }
 }

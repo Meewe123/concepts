@@ -3,6 +3,11 @@
   // Воркер без кода: только статика, которую Next.js собирает в out/ (output: 'export').
   "name": "concepts",
   "compatibility_date": "2026-09-01",
+  // wrangler deploy и wrangler dev сначала сами собирают сайт,
+  // поэтому Build command в Cloudflare можно оставить пустым.
+  "build": {
+    "command": "npm run build"
+  },
   "assets": {
     "directory": "./out",
     // /c/billur-wgah отдаёт out/c/billur-wgah.html без редиректа

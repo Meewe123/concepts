@@ -14,7 +14,7 @@
 - Настройки проекта `concepts` в Cloudflare: Build command — пусто, Deploy command `npx wrangler deploy`, Root directory `/`. Сборку запускает сам wrangler: поле `build.command` в `wrangler.jsonc` (`npm run build`) выполняется перед деплоем. Зависимости Workers Builds ставит сам по `package-lock.json`. Node — из `.node-version` (22).
 - Первая сборка упала с «assets.directory … /opt/buildhome/repo/out does not exist»: деплой шёл без сборки. Исправлено через `build.command`; проверено `wrangler deploy --dry-run` с удалённой `out/`.
 - `wrangler.jsonc`: воркер без кода, статика из `out/`; `/c/<slug>` отдаёт `out/c/<slug>.html` без редиректа; неизвестный адрес — `404.html` с кодом 404; адреса версий (`preview_urls`) выключены.
-- Адрес сайта — `https://concepts.<поддомен>.workers.dev`. Поддомен — `WORKERS_SUBDOMAIN` в `site.config.ts` (**пока пустой**); `absoluteUrl()` бросает ошибку, пока его нет, чтобы не собрать ссылку-пустышку. Свой домен — через `SITE_URL` при сборке.
+- Адрес сайта — `https://concepts.<поддомен>.workers.dev`. Поддомен — `WORKERS_SUBDOMAIN` в `site.config.ts`: `saidanarkulov23`, то есть `https://concepts.saidanarkulov23.workers.dev`. Деплой работает. Без поддомена `absoluteUrl()` бросает ошибку, чтобы не собрать ссылку-пустышку. Свой домен — через `SITE_URL` при сборке.
 - Локальная проверка: `npm run preview` (wrangler dev сам собирает и отдаёт `out/`).
 
 ## Принятые решения
@@ -36,13 +36,13 @@
 
 ## Открытые вопросы к заказчику
 
-1. Поддомен workers.dev.
-2. Токен Cloudflare Web Analytics для `concepts.<поддомен>.workers.dev`.
-3. Название студии (страница `/`, подпись на плашке), свой домен — по желанию.
-4. Позже: ссылка на демо очереди (Urus), канал для Chilanzar Dental, Telegram студии.
+1. Токен Cloudflare Web Analytics для `concepts.<поддомен>.workers.dev`.
+2. Название студии (страница `/`, подпись на плашке), свой домен — по желанию.
+3. Позже: ссылка на демо очереди (Urus), канал для Chilanzar Dental, Telegram студии.
 
 ## Журнал
 
 - 2026-10-11 — Фаза 0: план, таблица лидов, slug, правки направлений.
 - 2026-10-11 — Переезд в `Meewe123/concepts` (main). Каркас Next.js + Cloudflare Workers static assets, noindex, robots, аналитика с `?me=1`. Сборка, `wrangler dev` и `wrangler deploy --dry-run` проходят.
 - 2026-10-11 — Деплой падал без `out/`: сборка перенесена в `build.command` wrangler, Build command в Cloudflare не нужен.
+- 2026-10-11 — Деплой прошёл: https://concepts.saidanarkulov23.workers.dev — поддомен вписан в `site.config.ts`.

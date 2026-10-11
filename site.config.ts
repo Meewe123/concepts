@@ -4,7 +4,7 @@
  * Поддомен аккаунта виден в панели Cloudflare: Workers & Pages → concepts → Settings → Domains & Routes.
  * Если позже появится свой домен, его можно задать переменной окружения SITE_URL при сборке.
  */
-export const WORKERS_SUBDOMAIN = '' // TODO: поддомен аккаунта Cloudflare
+export const WORKERS_SUBDOMAIN = 'saidanarkulov23'
 
 export const SITE_URL: string =
   process.env.SITE_URL ?? (WORKERS_SUBDOMAIN ? `https://concepts.${WORKERS_SUBDOMAIN}.workers.dev` : '')

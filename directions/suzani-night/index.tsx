@@ -236,6 +236,7 @@ export const suzaniNight: Direction = {
 .sz-photo pattern g { stroke: rgba(212, 176, 106, 0.28); }`,
   iconStroke: STROKE,
   themeColor: '#0b2620',
+  fontFamilies: ['Cormorant Garamond', 'Onest'],
   heroFont: { family: 'Cormorant Garamond', weight: 400, style: 'normal' },
   Heading,
   PhotoArt,

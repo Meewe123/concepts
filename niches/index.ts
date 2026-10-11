@@ -3,6 +3,10 @@ import type { Lead, Locale, NicheId } from '@/core/types'
 import type { Direction } from '@/directions/types'
 import { BanquetPage } from './banquet/BanquetPage'
 import { banquetMeta } from './banquet/meta'
+import { EducationPage } from './education/EducationPage'
+import { educationMeta } from './education/meta'
+import { vetMeta } from './vet/meta'
+import { VetPage } from './vet/VetPage'
 
 export interface NicheModule {
   Page: FC<{ lead: Lead; locale: Locale; dir: Direction }>
@@ -11,6 +15,8 @@ export interface NicheModule {
 
 const niches: Partial<Record<NicheId, NicheModule>> = {
   banquet: { Page: BanquetPage, meta: banquetMeta },
+  vet: { Page: VetPage, meta: vetMeta },
+  education: { Page: EducationPage, meta: educationMeta },
 }
 
 export function getNiche(id: NicheId): NicheModule {

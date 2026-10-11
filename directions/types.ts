@@ -1,6 +1,8 @@
 import type { FC, ReactNode } from 'react'
 import type { Lead, Locale } from '@/core/types'
 import type { BanquetSkin } from '@/niches/banquet/skin'
+import type { EducationSkin } from '@/niches/education/skin'
+import type { VetSkin } from '@/niches/vet/skin'
 
 export interface HeadingProps {
   title: string
@@ -31,6 +33,8 @@ export interface Direction {
   themeColor: string
   /** Шрифт главного заголовка — его латиницу предзагружаем (scripts/strip-runtime.ts) */
   heroFont: { family: string; weight: number; style: 'normal' | 'italic' }
+  /** Семейства шрифтов направления (как в CSS) — остальные @font-face вырезаются со страницы */
+  fontFamilies: string[]
   Heading: FC<HeadingProps>
   /** Генеративная заглушка на месте фото с подписью «здесь будут ваши фото» */
   PhotoArt: FC<PhotoArtProps>
@@ -39,4 +43,6 @@ export interface Direction {
   /** Карточка превью ссылки 1200×630 */
   Og: FC<{ lead: Lead; locale: Locale }>
   banquet?: BanquetSkin
+  vet?: VetSkin
+  education?: EducationSkin
 }

@@ -69,7 +69,7 @@ export function message(lead: Lead, locale: Locale): string | null {
 }
 
 /** Правила сообщений: до 350 знаков, без эмодзи, без «!!», без запрещённых фраз, ссылка ровно одна. */
-export function lintMessage(text: string, link: string): string[] {
+export function lintMessage(text: string, link: string, locale: Locale, name: string): string[] {
   const errors: string[] = []
   const length = [...text].length
   if (length > MAX) errors.push(`${length} знаков — больше ${MAX}`)
@@ -77,7 +77,8 @@ export function lintMessage(text: string, link: string): string[] {
   if (/!\s*!/.test(text)) errors.push('восклицательные знаки подряд')
   for (const f of FORBIDDEN) if (text.toLowerCase().includes(f)) errors.push(`запрещённая фраза «${f}»`)
   if (text.split(link).length !== 2) errors.push('ссылка должна встречаться ровно один раз')
-  if (/['‘’`]/.test(text)) errors.push('апостроф вместо ʻ/ʼ')
+  // в узбекском тексте апостроф вместо ʻ/ʼ — ошибка; название компании не трогаем (Mr. Gordon’s)
+  if (locale === 'uz' && /['‘’`]/.test(text.split(name).join(''))) errors.push('апостроф вместо ʻ/ʼ')
   return errors
 }
 
@@ -122,7 +123,7 @@ export async function pitch(slugs: string[], withOg = true): Promise<void> {
       if (!lead.langs.includes(locale)) continue
       const text = message(lead, locale)
       if (text === null) continue
-      const errors = lintMessage(text, linkFor(lead, locale))
+      const errors = lintMessage(text, linkFor(lead, locale), locale, lead.name)
       if (errors.length) throw new Error(`${lead.slug} message-${locale}: ${errors.join('; ')}\n${text}`)
       out[locale] = text
     }

@@ -13,6 +13,7 @@ export function ConceptShell({ dir, locale, children }: { dir: Direction; locale
       className={`concept ${dir.fontClass}`}
       data-direction={dir.id}
       data-hero-font={`${dir.heroFont.family}|${dir.heroFont.weight}|${dir.heroFont.style}`}
+      data-fonts={dir.fontFamilies.join('|')}
       lang={locale}
     >
       <style dangerouslySetInnerHTML={{ __html: dir.css }} />

@@ -11,7 +11,7 @@ import {
   Includes,
   Location,
   PlannerSection,
-  StickyBar,
+  BanquetStickyBar,
   Steps,
   type BanquetSectionProps,
 } from './sections'
@@ -45,7 +45,7 @@ export function BanquetPage({ lead, locale, dir }: { lead: Lead; locale: Locale;
             </div>
           )
         })}
-        <StickyBar lead={lead} locale={locale} dir={dir} />
+        <BanquetStickyBar lead={lead} locale={locale} dir={dir} />
       </div>
       <Footer lead={lead} locale={locale} stroke={dir.iconStroke} />
       {/* Островок: ползунок гостей и демо-форма. Единственный JS страницы, кроме счётчика. */}

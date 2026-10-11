@@ -1,8 +1,10 @@
 import type { Lead } from '@/core/types'
 import billur from './billur-wgah'
+import doctorAnimals from './doctor-animals-htt4'
+import gordons from './gordons-gc3t'
 import osiyoGrand from './osiyo-grand-sq4y'
 
-export const leads: Lead[] = [osiyoGrand, billur]
+export const leads: Lead[] = [osiyoGrand, billur, doctorAnimals, gordons]
 
 // Внутри ниши направления не повторяются: пять залов — пять разных миров.
 const seen = new Map<string, string>()

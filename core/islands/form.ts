@@ -13,10 +13,13 @@ export function initDemoForm(root: HTMLElement): void {
 
   form.addEventListener('submit', (e) => {
     e.preventDefault()
-    const data = new FormData(form)
-    const ok = ['name', 'phone', 'date'].every((k) => String(data.get(k) ?? '').trim())
+    const required = [...form.querySelectorAll<HTMLInputElement>('input[required]')]
+    const ok = required.every((i) => i.value.trim())
     error.hidden = ok
-    if (!ok) return
+    if (!ok) {
+      required.find((i) => !i.value.trim())?.focus()
+      return
+    }
     form.hidden = true
     sent.hidden = false
     sent.focus()
@@ -29,8 +32,18 @@ export function initDemoForm(root: HTMLElement): void {
   })
 }
 
-/** Подставить число гостей в форму — из сигнатурного интерактива. */
-export function prefillGuests(guests: number): void {
-  const input = document.querySelector<HTMLInputElement>('[data-demo-form] input[name=guests]')
-  if (input) input.value = String(guests)
+/**
+ * Передать в форму то, что человек выбрал в сигнатурном интерактиве:
+ * для радиокнопок отмечается вариант с таким значением, для остальных полей — значение.
+ */
+export function prefillForm(values: Record<string, string | number>): void {
+  const form = document.querySelector<HTMLFormElement>('[data-demo-form] form')
+  if (!form) return
+  for (const [name, value] of Object.entries(values)) {
+    const inputs = form.querySelectorAll<HTMLInputElement>(`input[name="${name}"]`)
+    inputs.forEach((i) => {
+      if (i.type === 'radio') i.checked = i.value === String(value)
+      else i.value = String(value)
+    })
+  }
 }

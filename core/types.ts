@@ -64,6 +64,69 @@ export interface BanquetData {
   defaultGuests: number
 }
 
+/** Строка прайса. Неизвестные цены — example: true. */
+export interface PriceItem {
+  id: string
+  name: L10n
+  price: number
+  /** «от 150 000 сум» */
+  from?: boolean
+  note?: L10n
+  example: boolean
+}
+
+export type Pet = 'cat' | 'dog'
+
+export interface VetData {
+  services: PriceItem[]
+  /** При клинике есть аптека */
+  pharmacy?: boolean
+  /** При клинике есть зоомагазин */
+  shop?: boolean
+  /** Товары магазина к прививке — пример, для направления с ценниками */
+  shopItems?: PriceItem[]
+  defaultPet: Pet
+}
+
+export type StudyFormat = 'offline' | 'online'
+
+export interface Course {
+  id: string
+  name: L10n
+  /** 'A2–B1' */
+  levels: string
+  duration: L10n
+  pricePerMonth: number
+  note?: L10n
+  example: boolean
+}
+
+export interface StudyGroup {
+  id: string
+  /** Уровень по шкале CEFR, к которому ведёт тест: A1, A2, B1, B2, C1 */
+  level: 'A1' | 'A2' | 'B1' | 'B2' | 'C1'
+  course: L10n
+  days: L10n
+  time: string
+  format: StudyFormat
+  example: boolean
+}
+
+export interface Teacher {
+  initials: string
+  role: L10n
+  example: boolean
+}
+
+export interface EducationData {
+  courses: Course[]
+  groups: StudyGroup[]
+  teachers: Teacher[]
+  formats: StudyFormat[]
+  /** Показывать ориентир по IELTS в результате теста */
+  ielts?: boolean
+}
+
 export interface Lead {
   slug: string
   name: string
@@ -71,6 +134,8 @@ export interface Lead {
   district: L10n
   /** Окончание фразы «Банкетный зал …»: «на Лабзаке» / «Labzakdagi». */
   where: L10n
+  /** Своё название вида заведения вместо нишевого: «Школа английского» / «ingliz tili akademiyasi» */
+  kind?: L10n
   address: L10n
   /** '+998 98 128 00 09' */
   phones: string[]
@@ -97,6 +162,12 @@ export interface Lead {
   /** Одна фраза про сигнатурный интерактив — для сообщений read-silent и sent. */
   signaturePitch: L10n
   banquet?: BanquetData
+  vet?: VetData
+  education?: EducationData
+  /** Работает круглосуточно (публичный факт из карточки) */
+  is24h?: boolean
+  /** Часы работы из карточки, если известны */
+  hours?: L10n
   /** Заметки для pitch/<slug>/notes.md: что показать, о чём спросить. */
   notes?: string[]
 }

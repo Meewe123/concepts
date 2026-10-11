@@ -1,9 +1,8 @@
-import { Unbounded } from 'next/font/google'
 import { Check, Phone, Star } from 'lucide-react'
 import type { CSSProperties } from 'react'
 import { ExampleTag } from '@/core/components/ExampleTag'
 import { Section } from '@/core/components/Section'
-import { onest } from '@/core/fonts'
+import { onest, unbounded } from '@/core/fonts'
 import { formatRating, groupDigits, telHref } from '@/core/format'
 import { ui } from '@/core/i18n'
 import { r1, seeded } from '@/core/random'
@@ -14,14 +13,6 @@ import type { BanquetHeroProps, BanquetSkin, SectionProps } from '@/niches/banqu
 import type { Direction, HeadingProps, PhotoArtProps } from '../types'
 import { SPECTRUM } from './spectrum'
 import { css } from './style'
-
-const unbounded = Unbounded({
-  subsets: ['latin', 'cyrillic'],
-  weight: ['300', '800'],
-  variable: '--font-unbounded',
-  display: 'swap',
-  preload: false,
-})
 
 const STROKE = 1.5
 
@@ -289,6 +280,7 @@ export const crystalFacet: Direction = {
   css,
   iconStroke: STROKE,
   themeColor: '#f2f5f8',
+  fontFamilies: ['Unbounded', 'Onest'],
   heroFont: { family: 'Unbounded', weight: 800, style: 'normal' },
   Heading,
   PhotoArt,

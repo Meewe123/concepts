@@ -3,32 +3,36 @@ import { Check } from 'lucide-react'
 export interface DemoFormLabels {
   name: string
   phone: string
-  date: string
-  guests: string
-  choice: string
   submit: string
   sent: string
   sentNote: string
   again: string
+  /** Текст ошибки, если не заполнены обязательные поля */
   required: string
+}
+
+export interface DemoFormChoice {
+  name: string
+  label: string
+  options: string[]
 }
 
 /**
  * Демо-форма: показывает «Заявка отправлена» и никуда ничего не отправляет (логика — в островке core/islands/form.ts).
  * method="dialog": даже без JS отправка не уводит со страницы и не кладёт телефон в адрес.
- * В продакшне здесь будет запрос к воркеру, который перешлёт заявку в Telegram-бот клиента.
+ * Поля ниши: дата, число и группы вариантов-«чипов». В продакшне — запрос к воркеру → Telegram-бот клиента.
  */
 export function DemoForm({
   labels,
-  choices,
-  defaultGuests,
-  maxGuests,
+  date,
+  number,
+  choices = [],
   stroke,
 }: {
   labels: DemoFormLabels
-  choices: string[]
-  defaultGuests: number
-  maxGuests: number
+  date?: { label: string; required?: boolean }
+  number?: { name: string; label: string; value: number; min: number; max: number; step: number }
+  choices?: DemoFormChoice[]
   stroke: number
 }) {
   return (
@@ -43,26 +47,40 @@ export function DemoForm({
             <span>{labels.phone}</span>
             <input name="phone" type="tel" inputMode="tel" autoComplete="tel" placeholder="+998" required />
           </label>
-          <label className="field">
-            <span>{labels.date}</span>
-            <input name="date" type="date" required />
-          </label>
-          <label className="field">
-            <span>{labels.guests}</span>
-            <input name="guests" type="number" inputMode="numeric" min={10} max={maxGuests} step={10} defaultValue={defaultGuests} />
-          </label>
+          {date && (
+            <label className="field">
+              <span>{date.label}</span>
+              <input name="date" type="date" required={date.required ?? true} />
+            </label>
+          )}
+          {number && (
+            <label className="field">
+              <span>{number.label}</span>
+              <input
+                name={number.name}
+                type="number"
+                inputMode="numeric"
+                min={number.min}
+                max={number.max}
+                step={number.step}
+                defaultValue={number.value}
+              />
+            </label>
+          )}
         </div>
-        <fieldset className="grid gap-3">
-          <legend className="mb-3 text-sm text-ink-2">{labels.choice}</legend>
-          <div className="flex flex-wrap gap-2">
-            {choices.map((c, i) => (
-              <label key={c}>
-                <input type="radio" name="event" value={c} defaultChecked={i === 0} className="sr-only" />
-                <span className="chip">{c}</span>
-              </label>
-            ))}
-          </div>
-        </fieldset>
+        {choices.map((c) => (
+          <fieldset key={c.name} className="grid gap-3">
+            <legend className="mb-3 text-sm text-ink-2">{c.label}</legend>
+            <div className="flex flex-wrap gap-2">
+              {c.options.map((o, i) => (
+                <label key={o}>
+                  <input type="radio" name={c.name} value={o} defaultChecked={i === 0} className="sr-only" />
+                  <span className="chip">{o}</span>
+                </label>
+              ))}
+            </div>
+          </fieldset>
+        ))}
         <p role="alert" data-error="" hidden className="text-sm font-semibold">
           {labels.required}
         </p>

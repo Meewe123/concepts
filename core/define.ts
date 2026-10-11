@@ -50,6 +50,12 @@ export function defineLead(lead: Lead): Lead {
     }
   }
 
+  if (lead.niche === 'vet' && (!lead.vet || lead.vet.services.length === 0)) errors.push(`${at} для vet нужны услуги`)
+  if (lead.niche === 'education') {
+    const e = lead.education
+    if (!e || e.courses.length === 0 || e.groups.length === 0) errors.push(`${at} для education нужны курсы и группы`)
+  }
+
   errors.push(...lintL10n(lead, at))
   if (errors.length) throw new Error(errors.join('\n'))
   return lead

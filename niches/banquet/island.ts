@@ -1,5 +1,5 @@
 import { formatSum, groupDigits } from '@/core/format'
-import { initDemoForm, prefillGuests } from '@/core/islands/form'
+import { initDemoForm, prefillForm } from '@/core/islands/form'
 import { countWord } from '@/core/text'
 import { GUESTS_RU, TABLES_RU, plannerState, type PlannerConfig } from './planner-shared'
 
@@ -53,7 +53,7 @@ function initPlanner(root: HTMLElement): void {
       render()
     }),
   )
-  root.querySelector('[data-o=cta]')?.addEventListener('click', () => prefillGuests(Number(range.value)))
+  root.querySelector('[data-o=cta]')?.addEventListener('click', () => prefillForm({ guests: range.value }))
   render()
 }
 

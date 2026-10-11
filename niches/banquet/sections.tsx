@@ -1,11 +1,12 @@
-import { Camera, Flower2, Mic, Music, Phone } from 'lucide-react'
-import { AddressLine, ContactActions, PhoneList } from '@/core/components/Contacts'
+import { Camera, Flower2, Mic, Music } from 'lucide-react'
 import { DemoForm } from '@/core/components/DemoForm'
+import { formLabels } from '@/core/components/formLabels'
+import { StickyBar } from '@/core/components/StickyBar'
 import { ExampleTag } from '@/core/components/ExampleTag'
 import { Faq } from '@/core/components/Faq'
-import { SchemeMap } from '@/core/components/SchemeMap'
+import { LocationSection } from '@/core/components/LocationSection'
 import { Section } from '@/core/components/Section'
-import { formatSum, telHref } from '@/core/format'
+import { formatSum } from '@/core/format'
 import { ui } from '@/core/i18n'
 import { tx } from '@/core/text'
 import type { Lead, Locale } from '@/core/types'
@@ -157,21 +158,18 @@ export function FaqSection({ locale, dir }: BanquetSectionProps) {
 
 export function Location({ lead, locale, dir }: BanquetSectionProps) {
   return (
-    <Section id="adres">
-      <dir.Heading title={tx(copy.location.title, locale)} />
-      <div className="grid gap-10 md:grid-cols-[1fr_1.2fr] md:items-start">
-        <div className="grid gap-6">
-          <AddressLine lead={lead} locale={locale} />
-          <PhoneList lead={lead} locale={locale} />
-          <p className="flex flex-wrap items-center gap-3">
-            {tx(copy.location.parking, locale)}
-            <ExampleTag locale={locale} />
-          </p>
-          <ContactActions lead={lead} locale={locale} stroke={dir.iconStroke} />
-        </div>
-        <SchemeMap lead={lead} locale={locale} />
-      </div>
-    </Section>
+    <LocationSection
+      lead={lead}
+      locale={locale}
+      dir={dir}
+      title={tx(copy.location.title, locale)}
+      extra={
+        <p className="flex flex-wrap items-center gap-3">
+          {tx(copy.location.parking, locale)}
+          <ExampleTag locale={locale} />
+        </p>
+      }
+    />
   )
 }
 
@@ -183,42 +181,23 @@ export function Booking({ lead, locale, dir }: BanquetSectionProps) {
         <dir.Heading title={tx(copy.checkDate, locale)} lead={tx(copy.booking.lead, locale)} />
         <DemoForm
           stroke={dir.iconStroke}
-          choices={copy.eventTypes.map((e) => tx(e, locale))}
-          defaultGuests={data.defaultGuests}
-          maxGuests={Math.max(...data.halls.map((h) => h.capacity))}
-          labels={{
-            name: ui.formName[locale],
-            phone: ui.formPhone[locale],
-            date: ui.formDate[locale],
-            guests: ui.formGuests[locale],
-            choice: ui.formEvent[locale],
-            submit: ui.formSubmit[locale],
-            sent: ui.formSent[locale],
-            sentNote: tx(ui.formSentNote, locale),
-            again: ui.formAgain[locale],
-            required: ui.formRequired[locale],
+          date={{ label: ui.formDate[locale] }}
+          number={{
+            name: 'guests',
+            label: ui.formGuests[locale],
+            value: data.defaultGuests,
+            min: 10,
+            max: Math.max(...data.halls.map((h) => h.capacity)),
+            step: 10,
           }}
+          choices={[{ name: 'event', label: ui.formEvent[locale], options: copy.eventTypes.map((e) => tx(e, locale)) }]}
+          labels={formLabels(locale, ui.formRequired[locale])}
         />
       </div>
     </Section>
   )
 }
 
-/**
- * Нижняя панель на телефоне. Лежит последним элементом в обёртке после первого экрана:
- * sticky держит её внизу, пока обёртка на экране, и сама панель появляется только после первого экрана.
- */
-export function StickyBar({ lead, locale, dir }: BanquetSectionProps) {
-  return (
-    <div className="sticky-bar sticky bottom-0 z-20 border-t border-line bg-bg px-4 py-3 md:hidden">
-      <div className="flex gap-2">
-        <a href="#data" className="btn flex-1">
-          {tx(copy.checkDate, locale)}
-        </a>
-        <a href={telHref(lead.phones[0]!)} className="btn btn-ghost btn-icon" aria-label={ui.call[locale]}>
-          <Phone aria-hidden className="size-5" strokeWidth={dir.iconStroke} />
-        </a>
-      </div>
-    </div>
-  )
+export function BanquetStickyBar({ lead, locale, dir }: BanquetSectionProps) {
+  return <StickyBar label={tx(copy.checkDate, locale)} phone={lead.phones[0]!} locale={locale} stroke={dir.iconStroke} />
 }

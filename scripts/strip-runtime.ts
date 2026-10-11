@@ -32,11 +32,24 @@ function heroFontPreload(html: string): string | null {
   return url ? `<link rel="preload" href="${url}" as="font" type="font/woff2" crossorigin=""/>` : null
 }
 
+/** Убираем @font-face чужих направлений: CSS общий, а странице нужны только её шрифты. */
+function keepOwnFonts(html: string): string {
+  const m = html.match(/data-fonts="([^"]+)"/)
+  if (!m) return html
+  const own = new Set(m[1]!.split('|'))
+  return html.replace(/@font-face\{[^}]*\}/g, (face) => {
+    const family = face.match(/font-family:\s*"?([^";]+)"?;/)?.[1]?.trim()
+    if (!family) return face
+    return own.has(family.replace(/ Fallback$/, '')) ? face : ''
+  })
+}
+
 let stripped = 0
 for (const file of htmlFiles(OUT)) {
   const before = fs.readFileSync(file, 'utf8')
   let html = before.replace(/<script\b(?![^>]*\bdata-concept\b)[^>]*>[\s\S]*?<\/script>/g, '')
   html = html.replace(/<link rel="preload" as="script"[^>]*\/?>/g, '')
+  html = keepOwnFonts(html)
   const preload = heroFontPreload(html)
   if (preload && !html.includes(preload)) html = html.replace(/<head>/, `<head>${preload}`)
   if (html !== before) {

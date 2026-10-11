@@ -222,6 +222,10 @@ html {
   }
 }
 
+.lt[data-done] .lt-pick {
+  display: none;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .concept *,
   .concept *::before,

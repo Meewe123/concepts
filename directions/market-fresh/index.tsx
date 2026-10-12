@@ -86,7 +86,7 @@ function Hero({ lead, locale, langSwitch }: VetHeroProps) {
         {langSwitch}
       </div>
       <div className="mx-auto grid w-full max-w-6xl flex-1 grid-cols-[minmax(0,1fr)] content-center gap-6 md:grid-cols-[1.1fr_1fr] md:items-center">
-        <div data-pet="dog" className="relative mx-auto w-full max-w-[19rem] md:order-2 md:max-w-md">
+        <div data-pet="dog" className="relative mx-auto w-full max-w-[min(19rem,40svh)] md:order-2 md:max-w-md">
           <FlatPet className="block h-auto w-full" tag={locale === 'ru' ? 'привит' : 'emlangan'} />
           <ul className="absolute -top-1 -left-2 grid gap-3 md:-left-10">
             {tags.map((t) => (

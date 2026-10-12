@@ -4,7 +4,7 @@ import { Section } from '@/core/components/Section'
 import { commissioner, playfair } from '@/core/fonts'
 import { formatSum, telHref } from '@/core/format'
 import { ui } from '@/core/i18n'
-import { tx } from '@/core/text'
+import { tx, typo } from '@/core/text'
 import type { L10n, Lead, Locale } from '@/core/types'
 import { capacityLabel, copy, kindLine } from '@/niches/banquet/content'
 import type { BanquetHeroProps, BanquetSkin, SectionProps } from '@/niches/banquet/skin'
@@ -66,9 +66,12 @@ function Hero({ lead, locale, langSwitch }: BanquetHeroProps) {
           </h1>
           <p className="mt-4 text-lg">{kindLine(lead, locale)}</p>
           <p className="mx-auto mt-2 max-w-sm text-ink-2 md:mx-0">
-            {locale === 'ru'
-              ? 'Пакеты и цены — открыто, до звонка: выберите число гостей и посмотрите ориентир.'
-              : 'Paketlar va narxlar — ochiq, qoʻngʻiroqsiz: mehmonlar sonini tanlang va taxminiy narxni koʻring.'}
+            {typo(
+              locale === 'ru'
+                ? 'Пакеты и цены — открыто, до звонка: выберите число гостей и посмотрите ориентир.'
+                : 'Paketlar va narxlar — ochiq, qoʻngʻiroqsiz: mehmonlar sonini tanlang va taxminiy narxni koʻring.',
+              locale,
+            )}
           </p>
           <div className="mt-7 flex justify-center gap-3 md:justify-start">
             <a href="#data" className="btn min-w-[13rem]">

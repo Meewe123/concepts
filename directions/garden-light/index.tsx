@@ -2,7 +2,7 @@ import { Phone } from 'lucide-react'
 import { spectral, ysabeau } from '@/core/fonts'
 import { telHref } from '@/core/format'
 import { ui } from '@/core/i18n'
-import { tx } from '@/core/text'
+import { tx, typo } from '@/core/text'
 import type { Lead, Locale } from '@/core/types'
 import { copy, kindLine } from '@/niches/banquet/content'
 import type { BanquetHeroProps, BanquetSkin } from '@/niches/banquet/skin'
@@ -50,9 +50,12 @@ function Hero({ lead, locale, langSwitch }: BanquetHeroProps) {
         <h1 className="mt-1 font-display text-[clamp(4.8rem,26vw,10rem)] leading-[0.88] font-light italic tracking-[-0.02em]">{lead.name}</h1>
         <p className="mt-4 text-lg">{kindLine(lead, locale)}</p>
         <p className="mt-2 max-w-md text-ink-2">
-          {locale === 'ru'
-            ? 'Свадьба в нашем зале или кейтеринг на вашей площадке — посчитайте оба варианта за минуту.'
-            : 'Zalimizdagi toʻy yoki sizning joyingizda keytering — ikkala variantni bir daqiqada hisoblang.'}
+          {typo(
+            locale === 'ru'
+              ? 'Свадьба в нашем зале или кейтеринг на вашей площадке — посчитайте оба варианта за минуту.'
+              : 'Zalimizdagi toʻy yoki sizning joyingizda keytering — ikkala variantni bir daqiqada hisoblang.',
+            locale,
+          )}
         </p>
         <div className="mt-7 flex gap-3">
           <a href="#data" className="btn flex-1 sm:flex-none sm:px-8">

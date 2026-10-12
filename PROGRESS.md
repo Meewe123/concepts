@@ -5,7 +5,7 @@
 ## Сейчас
 
 - **Фаза 2 готова, ждёт проверки заказчика (стоп).** Ниши vet и education, 9 новых концептов на 9 новых направлениях, кейтеринг, бар и анфилада в планировщике banquet, pitch-наборы, контакт-листы.
-- 12.10 заказчик отписал 8 лидам (короткими сообщениями своими словами, не шаблонами). Bahor и Riks — не писать, у них уже есть сайты. Зооцентр — ветшоп, концепт под клинику не подходит: переделать под магазин (поле `hold` у лида).
+- 12.10 заказчик отписал 7 лидам (короткими сообщениями своими словами, не шаблонами). Bahor и Riks — не писать, у них уже есть сайты. Зооцентр — ветшоп, концепт под клинику не подходит: переделать под магазин. Версаль — Telegram на номере не работает, нужен звонок (поле `hold` у лида).
 - Следующий шаг после «ок» — Фаза 3: dental, beauty, auto.
 
 ## Концепты
@@ -22,7 +22,7 @@
 | Riks | https://concepts.yettikun.workers.dev/c/riks-yxk6 | campus-bold | не писать: уже есть сайт | `pitch/riks-yxk6/` |
 | Royal Rose | https://concepts.yettikun.workers.dev/c/royal-rose-yz34 (`/uz`) | crimson-velvet | sent (12.10) | `pitch/royal-rose-yz34/` |
 | Bahor | https://concepts.yettikun.workers.dev/c/bahor-2utu (`/uz`) | garden-light | не писать: уже есть неплохой сайт | `pitch/bahor-2utu/` |
-| Версаль | https://concepts.yettikun.workers.dev/c/versal-kftc (`/uz`) | marble-brass | sent (12.10) | `pitch/versal-kftc/` |
+| Версаль | https://concepts.yettikun.workers.dev/c/versal-kftc (`/uz`) | marble-brass | не отправлено: Telegram на номере не работает, позвонить | `pitch/versal-kftc/` |
 
 ### Фаза 2: самопроверка
 

@@ -109,18 +109,21 @@ const DEFAULTS: Record<DentalConcernId, Omit<DentalConcern, 'id'>> = {
     price: { from: 250_000, to: 600_000 },
     visits: { ru: '1 визит', uz: '1 ta tashrif' },
     duration: { ru: 'за один визит', uz: 'bir tashrifda' },
+    plan: { visits: 1, months: 0 },
     example: true,
   },
   hygiene: {
     price: { from: 300_000, to: 450_000 },
     visits: { ru: '1 визит', uz: '1 ta tashrif' },
     duration: { ru: 'около часа', uz: 'taxminan bir soat' },
+    plan: { visits: 1, months: 0 },
     example: true,
   },
   whitening: {
     price: { from: 1_200_000, to: 3_000_000 },
     visits: { ru: '1–2 визита', uz: '1–2 ta tashrif' },
     duration: { ru: 'от 1 дня до 2 недель', uz: '1 kundan 2 haftagacha' },
+    plan: { visits: 2, months: 0.5 },
     example: true,
   },
   braces: {
@@ -128,6 +131,7 @@ const DEFAULTS: Record<DentalConcernId, Omit<DentalConcern, 'id'>> = {
     visits: { ru: 'раз в 4–6 недель', uz: 'har 4–6 haftada' },
     duration: { ru: '12–24 месяца', uz: '12–24 oy' },
     installment: true,
+    plan: { visits: 18, months: 24 },
     example: true,
   },
   implant: {
@@ -136,6 +140,7 @@ const DEFAULTS: Record<DentalConcernId, Omit<DentalConcern, 'id'>> = {
     duration: { ru: '3–6 месяцев', uz: '3–6 oy' },
     installment: true,
     note: { ru: 'Один зуб: имплант и коронка.', uz: 'Bitta tish: implant va toj.' },
+    plan: { visits: 4, months: 6 },
     example: true,
   },
 }
@@ -143,6 +148,11 @@ const DEFAULTS: Record<DentalConcernId, Omit<DentalConcern, 'id'>> = {
 /** Шесть вариантов с примерными данными; лид переопределяет нужные поля. */
 export function dentalConcerns(overrides: Partial<Record<DentalConcernId, Partial<DentalConcern>>> = {}): DentalConcern[] {
   return (Object.keys(DEFAULTS) as DentalConcernId[]).map((id) => ({ id, ...DEFAULTS[id], ...overrides[id] }))
+}
+
+/** «12–24 месяца» не рвётся на тире: после него — неразрывный соединитель U+2060. */
+export function keepDash(s: string): string {
+  return s.replace(/–/g, '–\u2060')
 }
 
 /** Платёж в месяц: сумма / месяцы, округление до 1 000 сум. Без процентов. */

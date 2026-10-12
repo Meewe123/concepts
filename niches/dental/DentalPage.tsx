@@ -23,12 +23,12 @@ export function DentalPage({ lead, locale, dir }: { lead: Lead; locale: Locale; 
     return Wrapped
   }
   const sections: Record<DentalSectionId, FC<DentalPageSectionProps>> = {
-    concern: ConcernSection,
+    concern: skin.Concern ? wrap(skin.Concern) : ConcernSection,
     visit: skin.Visit ? wrap(skin.Visit) : DefaultVisit,
-    promos: PromosSection,
+    promos: skin.Promos ? wrap(skin.Promos) : PromosSection,
     family: skin.Family ? wrap(skin.Family) : () => null,
     contacts: skin.Contacts ? wrap(skin.Contacts) : DefaultContacts,
-    booking: Booking,
+    booking: skin.Booking ? wrap(skin.Booking) : Booking,
   }
 
   return (

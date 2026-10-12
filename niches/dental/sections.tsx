@@ -62,7 +62,8 @@ export function PromosSection({ lead, locale, dir }: DentalPageSectionProps) {
       <ul className="grid gap-4 sm:grid-cols-2">
         {promos.map((p) => (
           <li key={p.text.ru} className="dc-promo grid content-start gap-3 border border-line p-5">
-            <p className="text-xl font-semibold">{tx(p.text, locale)}</p>
+            <p className="text-3xl font-semibold">{tx(p.big, locale)}</p>
+            <p className="text-lg">{tx(p.text, locale)}</p>
             <p className="text-sm text-ink-2">
               {p.source} · {tx(copy.promos.check, locale)}
             </p>
@@ -97,24 +98,29 @@ export function DefaultContacts({ lead, locale, dir }: DentalPageSectionProps) {
   )
 }
 
+/** Демо-форма записи: «что беспокоит» (без выбора по умолчанию) и, если нужно, «кого записываете». */
+export function BookingForm({ locale, stroke, family = false }: { locale: Locale; stroke: number; family?: boolean }) {
+  const b = copy.booking
+  return (
+    <DemoForm
+      stroke={stroke}
+      date={{ label: tx(b.date, locale), required: false }}
+      choices={[
+        ...(family ? [{ name: 'who', label: tx(copy.family.who, locale), options: copy.family.whoOptions.map((o) => tx(o, locale)) }] : []),
+        { name: 'concern', label: tx(b.concern, locale), options: Object.values(copy.labels).map((l) => tx(l, locale)), noDefault: true },
+      ]}
+      labels={formLabels(locale, tx(b.required, locale))}
+    />
+  )
+}
+
 export function Booking({ locale, dir }: DentalPageSectionProps) {
   const b = copy.booking
-  const skin = dir.dental!
   return (
     <Section id="zapis">
       <div className="grid gap-2 md:grid-cols-[1fr_1.4fr] md:gap-10">
         <dir.Heading title={tx(b.title, locale)} lead={tx(b.lead, locale)} />
-        <DemoForm
-          stroke={dir.iconStroke}
-          date={{ label: tx(b.date, locale), required: false }}
-          choices={[
-            ...(skin.familyChoice
-              ? [{ name: 'who', label: tx(copy.family.who, locale), options: copy.family.whoOptions.map((o) => tx(o, locale)) }]
-              : []),
-            { name: 'concern', label: tx(b.concern, locale), options: Object.values(copy.labels).map((l) => tx(l, locale)), noDefault: true },
-          ]}
-          labels={formLabels(locale, tx(b.required, locale))}
-        />
+        <BookingForm locale={locale} stroke={dir.iconStroke} family={dir.dental!.familyChoice} />
       </div>
     </Section>
   )

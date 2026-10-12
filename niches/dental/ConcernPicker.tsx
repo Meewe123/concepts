@@ -30,7 +30,7 @@ export function ConcernPicker({ lead, locale, dir }: { lead: Lead; locale: Local
           <label key={x.id} className="dc-opt">
             <input type="radio" name="dc-concern" value={x.id} data-label={tx(copy.labels[x.id], locale)} className="sr-only" />
             <span className="dc-card">
-              <skin.OptionMark id={x.id} index={i} />
+              {skin.OptionMark && <skin.OptionMark id={x.id} index={i} />}
               <span className="dc-label">{tx(copy.labels[x.id], locale)}</span>
             </span>
           </label>

@@ -145,6 +145,8 @@ export interface DentalConcern {
   duration?: L10n
   /** Рассрочка 6 / 12 мес: сумма / месяцы, без процентов */
   installment?: boolean
+  /** Для наглядной шкалы: типичное число визитов и срок в месяцах (0 — за один день). Пример. */
+  plan?: { visits: number; months: number }
   /** Строка к результату: цена или акция из карточки клиники («уточнить») */
   note?: L10n
   example: boolean
@@ -153,7 +155,7 @@ export interface DentalConcern {
 export interface DentalData {
   concerns: DentalConcern[]
   /** Цены и акции из публичной карточки — источник в notes.md, на сайте с пометкой «уточнить» */
-  promos?: { text: L10n; source: string; asOf: string }[]
+  promos?: { big: L10n; text: L10n; source: string; asOf: string }[]
   /** Публично указан детский приём */
   kids?: boolean
 }

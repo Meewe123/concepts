@@ -55,12 +55,14 @@ export default defineLead({
     }),
     promos: [
       {
-        text: { ru: 'Профессиональная чистка — 300 000 сум', uz: 'Professional tozalash — 300 000 soʻm' },
+        big: { ru: '300 000 сум', uz: '300 000 soʻm' },
+        text: { ru: 'Профессиональная чистка', uz: 'Professional tozalash' },
         source: 'Яндекс Карты',
         asOf: '2026-10',
       },
       {
-        text: { ru: 'Скидка 50% на установку брекетов', uz: 'Breket qoʻyishga 50% chegirma' },
+        big: { ru: '−50%', uz: '−50%' },
+        text: { ru: 'На установку брекетов', uz: 'Breket qoʻyishga chegirma' },
         source: 'Яндекс Карты',
         asOf: '2026-10',
       },

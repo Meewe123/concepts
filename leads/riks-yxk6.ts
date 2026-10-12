@@ -17,6 +17,7 @@ export default defineLead({
   langs: ['ru'],
   map: { kind: 'street', street: { ru: 'ул. Айбека', uz: 'Oybek koʻchasi' }, house: '18/1' },
   contactStatus: 'sent',
+  hold: 'у центра уже есть сайт',
   channel: 'instagram',
   messageLang: 'ru',
   signaturePitch: {

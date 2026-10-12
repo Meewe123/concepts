@@ -18,6 +18,7 @@ export default defineLead({
   langs: ['ru', 'uz'],
   map: { kind: 'street', street: { ru: 'ул. Истикбол', uz: 'Istiqbol koʻchasi' }, house: '8' },
   contactStatus: 'sent',
+  hold: 'у зала уже есть неплохой сайт',
   channel: 'whatsapp',
   messageLang: 'ru',
   signaturePitch: {

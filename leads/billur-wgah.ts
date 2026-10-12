@@ -27,6 +27,7 @@ export default defineLead({
     number: '4',
   },
   contactStatus: 'sent',
+  statusChangedAt: '2026-10-12',
   channel: 'telegram',
   messageLang: 'ru',
   signaturePitch: {

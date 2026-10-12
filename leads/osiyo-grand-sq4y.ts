@@ -28,7 +28,8 @@ export default defineLead({
   direction: 'suzani-night',
   langs: ['ru', 'uz'],
   map: { kind: 'street', street: { ru: 'ул. Лабзак', uz: 'Labzak koʻchasi' }, house: '5' },
-  contactStatus: 'read-silent',
+  contactStatus: 'sent',
+  statusChangedAt: '2026-10-12',
   channel: 'telegram',
   messageLang: 'ru',
   signaturePitch: {

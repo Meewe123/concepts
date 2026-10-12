@@ -19,7 +19,8 @@ export default defineLead({
   direction: 'night-vet',
   langs: ['ru'],
   map: { kind: 'street', street: { ru: 'ул. Катартал', uz: 'Qatortol koʻchasi' }, house: '' },
-  contactStatus: 'not-contacted',
+  contactStatus: 'sent',
+  statusChangedAt: '2026-10-12',
   channel: 'telegram',
   messageLang: 'ru',
   signaturePitch: {

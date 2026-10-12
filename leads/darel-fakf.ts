@@ -17,6 +17,7 @@ export default defineLead({
   langs: ['ru'],
   map: { kind: 'street', street: { ru: 'ул. Насаф', uz: 'Nasaf koʻchasi' }, house: '1/1' },
   contactStatus: 'sent',
+  statusChangedAt: '2026-10-12',
   channel: 'instagram',
   messageLang: 'ru',
   signaturePitch: {

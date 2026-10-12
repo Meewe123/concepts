@@ -20,6 +20,7 @@ export default defineLead({
   langs: ['ru'],
   map: { kind: 'street', street: { ru: 'ул. Сарыкуль', uz: 'Sariqoʻl koʻchasi' }, house: '9' },
   contactStatus: 'not-contacted',
+  hold: 'это ветшоп, а концепт сделан под ветклинику — переделать под магазин',
   channel: 'instagram',
   messageLang: 'ru',
   signaturePitch: {

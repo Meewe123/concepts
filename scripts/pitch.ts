@@ -90,7 +90,7 @@ function notes(lead: Lead): string {
 
 ${links}
 
-- Статус: **${lead.contactStatus}**${lead.statusChangedAt ? ` (с ${lead.statusChangedAt})` : ''}, канал: **${lead.channel}**, первым отправлять: **message-${first}.txt**
+${lead.hold ? `- **Пока не писать:** ${lead.hold}.\n` : ''}- Статус: **${lead.contactStatus}**${lead.statusChangedAt ? ` (с ${lead.statusChangedAt})` : ''}, канал: **${lead.channel}**, первым отправлять: **message-${first}.txt**
 - Свои просмотры — открывать со ссылкой \`?me=1\`, тогда счётчик их не учтёт.
 
 ## Хук

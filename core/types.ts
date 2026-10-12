@@ -163,6 +163,8 @@ export interface Lead {
   contactStatus: ContactStatus
   /** '2026-10-09' — когда сменился статус */
   statusChangedAt?: string
+  /** Пока не писать — и почему («уже есть хороший сайт»). */
+  hold?: string
   channel: Channel
   messageLang: Locale
   /** Одна фраза про сигнатурный интерактив — для сообщений read-silent и sent. */

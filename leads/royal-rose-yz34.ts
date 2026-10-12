@@ -17,7 +17,8 @@ export default defineLead({
   direction: 'crimson-velvet',
   langs: ['ru', 'uz'],
   map: { kind: 'street', street: { ru: 'ул. Исмаилата', uz: 'Ismoilota koʻchasi' }, house: '39' },
-  contactStatus: 'forwarded',
+  contactStatus: 'sent',
+  statusChangedAt: '2026-10-12',
   channel: 'telegram',
   messageLang: 'ru',
   signaturePitch: {

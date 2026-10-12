@@ -23,7 +23,8 @@ export default defineLead({
     quarter: { ru: 'массив Гульабад', uz: 'Gulobod massivi' },
     number: '8А',
   },
-  contactStatus: 'not-contacted',
+  contactStatus: 'sent',
+  statusChangedAt: '2026-10-12',
   channel: 'telegram',
   messageLang: 'ru',
   signaturePitch: {

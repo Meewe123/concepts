@@ -18,7 +18,8 @@ export default defineLead({
   direction: 'british-textbook',
   langs: ['ru'],
   map: { kind: 'street', street: { ru: 'ул. Афросиаб', uz: 'Afrosiyob koʻchasi' }, house: '41' },
-  contactStatus: 'read-silent',
+  contactStatus: 'sent',
+  statusChangedAt: '2026-10-12',
   channel: 'telegram',
   messageLang: 'ru',
   signaturePitch: {

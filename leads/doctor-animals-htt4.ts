@@ -31,7 +31,8 @@ export default defineLead({
     quarter: { ru: 'массив Ялангач', uz: 'Yalangʻoch massivi' },
     number: '27А',
   },
-  contactStatus: 'read-silent',
+  contactStatus: 'sent',
+  statusChangedAt: '2026-10-12',
   channel: 'instagram',
   messageLang: 'ru',
   signaturePitch: {

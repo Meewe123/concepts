@@ -5,23 +5,24 @@
 ## Сейчас
 
 - **Фаза 2 готова, ждёт проверки заказчика (стоп).** Ниши vet и education, 9 новых концептов на 9 новых направлениях, кейтеринг, бар и анфилада в планировщике banquet, pitch-наборы, контакт-листы.
+- 12.10 заказчик отписал 8 лидам (короткими сообщениями своими словами, не шаблонами). Bahor и Riks — не писать, у них уже есть сайты. Зооцентр — ветшоп, концепт под клинику не подходит: переделать под магазин (поле `hold` у лида).
 - Следующий шаг после «ок» — Фаза 3: dental, beauty, auto.
 
 ## Концепты
 
 | Лид | Ссылка | Направление | Статус | Набор |
 |---|---|---|---|---|
-| Osiyo Grand | https://concepts.yettikun.workers.dev/c/osiyo-grand-sq4y (`/uz`) | suzani-night | read-silent | `pitch/osiyo-grand-sq4y/` |
-| Billur | https://concepts.yettikun.workers.dev/c/billur-wgah (`/uz`) | crystal-facet | sent | `pitch/billur-wgah/` |
-| Doctor & Animals | https://concepts.yettikun.workers.dev/c/doctor-animals-htt4 | playful-geometry | read-silent | `pitch/doctor-animals-htt4/` |
-| Mr. Gordon’s | https://concepts.yettikun.workers.dev/c/gordons-gc3t | british-textbook | read-silent | `pitch/gordons-gc3t/` |
-| Darel | https://concepts.yettikun.workers.dev/c/darel-fakf | warm-paper | sent | `pitch/darel-fakf/` |
-| Зооцентр | https://concepts.yettikun.workers.dev/c/zoocenter-nm5u | market-fresh | not-contacted | `pitch/zoocenter-nm5u/` |
-| Vet Master | https://concepts.yettikun.workers.dev/c/vet-master-amh9 | night-vet | not-contacted | `pitch/vet-master-amh9/` |
-| Riks | https://concepts.yettikun.workers.dev/c/riks-yxk6 | campus-bold | sent | `pitch/riks-yxk6/` |
-| Royal Rose | https://concepts.yettikun.workers.dev/c/royal-rose-yz34 (`/uz`) | crimson-velvet | forwarded | `pitch/royal-rose-yz34/` |
-| Bahor | https://concepts.yettikun.workers.dev/c/bahor-2utu (`/uz`) | garden-light | sent | `pitch/bahor-2utu/` |
-| Версаль | https://concepts.yettikun.workers.dev/c/versal-kftc (`/uz`) | marble-brass | not-contacted | `pitch/versal-kftc/` |
+| Osiyo Grand | https://concepts.yettikun.workers.dev/c/osiyo-grand-sq4y (`/uz`) | suzani-night | sent (12.10) | `pitch/osiyo-grand-sq4y/` |
+| Billur | https://concepts.yettikun.workers.dev/c/billur-wgah (`/uz`) | crystal-facet | sent (12.10) | `pitch/billur-wgah/` |
+| Doctor & Animals | https://concepts.yettikun.workers.dev/c/doctor-animals-htt4 | playful-geometry | sent (12.10) | `pitch/doctor-animals-htt4/` |
+| Mr. Gordon’s | https://concepts.yettikun.workers.dev/c/gordons-gc3t | british-textbook | sent (12.10) | `pitch/gordons-gc3t/` |
+| Darel | https://concepts.yettikun.workers.dev/c/darel-fakf | warm-paper | sent (12.10) | `pitch/darel-fakf/` |
+| Зооцентр | https://concepts.yettikun.workers.dev/c/zoocenter-nm5u | market-fresh | не писать: это ветшоп, концепт под клинику — переделать | `pitch/zoocenter-nm5u/` |
+| Vet Master | https://concepts.yettikun.workers.dev/c/vet-master-amh9 | night-vet | sent (12.10) | `pitch/vet-master-amh9/` |
+| Riks | https://concepts.yettikun.workers.dev/c/riks-yxk6 | campus-bold | не писать: уже есть сайт | `pitch/riks-yxk6/` |
+| Royal Rose | https://concepts.yettikun.workers.dev/c/royal-rose-yz34 (`/uz`) | crimson-velvet | sent (12.10) | `pitch/royal-rose-yz34/` |
+| Bahor | https://concepts.yettikun.workers.dev/c/bahor-2utu (`/uz`) | garden-light | не писать: уже есть неплохой сайт | `pitch/bahor-2utu/` |
+| Версаль | https://concepts.yettikun.workers.dev/c/versal-kftc (`/uz`) | marble-brass | sent (12.10) | `pitch/versal-kftc/` |
 
 ### Фаза 2: самопроверка
 
@@ -144,3 +145,4 @@ Osiyo Grand и Billur после правок — 100/100/100 и 99/100/100. Roy
 - 2026-10-11 — Поддомен yettikun, ссылки на карточки Яндекс Карт для всех лидов (`leads/maps.ts`), новое узбекское вступление в сообщениях (TODO: проверить носителем). OG и pitch-наборы Фазы 1 пересобраны.
 - 2026-10-11 — Фаза 2: ниши vet и education, Doctor & Animals и Mr. Gordon’s.
 - 2026-10-12 — Фаза 2: Darel, Зооцентр, Vet Master, Riks, Royal Rose, Bahor, Версаль; кейтеринг, бар и анфилада в планировщике; 3 раунда самопроверки, Lighthouse 96–100 / 100 / 100, pitch-наборы всех 11 лидов.
+- 2026-10-12 — Статусы после рассылки заказчика; поле `hold` («пока не писать» и почему) у Bahor, Riks, Зооцентра.

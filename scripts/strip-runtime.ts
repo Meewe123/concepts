@@ -5,7 +5,8 @@ import path from 'node:path'
  * После next build: на страницах остаётся только наш JS — островки, счётчик, данные островков.
  * Рантайм Next и React (~140 КБ) не нужен: страницы полностью статичные, интерактив — в островках.
  * Всё, что мы хотим оставить, помечено атрибутом data-concept.
- * Заодно — предзагрузка шрифта главного заголовка (data-hero-font у обёртки концепта).
+ * Заодно — предзагрузка шрифта главного заголовка (data-hero-font у обёртки концепта)
+ * и встраивание островка прямо в страницу.
  */
 const OUT = 'out'
 
@@ -53,12 +54,22 @@ function dropOrphanFontPreloads(html: string): string {
   return html.replace(/<link rel="preload" href="([^"]+)" as="font"[^>]*\/?>/g, (link, href: string) => (used.has(href) ? link : ''))
 }
 
+/** Островок — в саму страницу: без лишнего запроса, весь JS страницы инлайн (планка качества: ≤ ~150 КБ без шрифтов). */
+function inlineIslands(html: string): string {
+  return html.replace(/<script type="module" src="\/islands\/([a-z-]+)\.js" data-concept=""><\/script>/g, (_, name: string) => {
+    const js = fs.readFileSync(path.join(OUT, 'islands', `${name}.js`), 'utf8').trim()
+    if (/<\/script/i.test(js)) throw new Error(`islands/${name}.js: внутри есть </script — встроить нельзя`)
+    return `<script type="module" data-concept="">${js}</script>`
+  })
+}
+
 let stripped = 0
 for (const file of htmlFiles(OUT)) {
   const before = fs.readFileSync(file, 'utf8')
   let html = before.replace(/<script\b(?![^>]*\bdata-concept\b)[^>]*>[\s\S]*?<\/script>/g, '')
   html = html.replace(/<link rel="preload" as="script"[^>]*\/?>/g, '')
   html = dropOrphanFontPreloads(keepOwnFonts(html))
+  html = inlineIslands(html)
   const preload = heroFontPreload(html)
   if (preload && !html.includes(preload)) html = html.replace(/<head>/, `<head>${preload}`)
   if (html !== before) {

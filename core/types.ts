@@ -131,6 +131,33 @@ export interface EducationData {
   ielts?: boolean
 }
 
+/** Шесть вариантов «Что вас беспокоит?» — порядок фиксирован. */
+export const DENTAL_CONCERNS = ['pain', 'filling', 'hygiene', 'whitening', 'braces', 'implant'] as const
+export type DentalConcernId = (typeof DENTAL_CONCERNS)[number]
+
+export interface DentalConcern {
+  id: DentalConcernId
+  /** Вилка цены, сум. У «болит зуб» цены нет — только запись на осмотр. */
+  price?: { from: number; to: number }
+  /** «1 визит», «раз в 4–6 недель» */
+  visits?: L10n
+  /** «за один визит», «12–24 месяца» */
+  duration?: L10n
+  /** Рассрочка 6 / 12 мес: сумма / месяцы, без процентов */
+  installment?: boolean
+  /** Строка к результату: цена или акция из карточки клиники («уточнить») */
+  note?: L10n
+  example: boolean
+}
+
+export interface DentalData {
+  concerns: DentalConcern[]
+  /** Цены и акции из публичной карточки — источник в notes.md, на сайте с пометкой «уточнить» */
+  promos?: { text: L10n; source: string; asOf: string }[]
+  /** Публично указан детский приём */
+  kids?: boolean
+}
+
 export interface Lead {
   slug: string
   name: string
@@ -141,6 +168,8 @@ export interface Lead {
   /** Своё название вида заведения вместо нишевого: «Школа английского» / «ingliz tili akademiyasi» */
   kind?: L10n
   address: L10n
+  /** Ориентир из карточки: «напротив метро Минор» */
+  landmark?: L10n
   /** '+998 98 128 00 09' */
   phones: string[]
   instagram?: string
@@ -172,10 +201,22 @@ export interface Lead {
   banquet?: BanquetData
   vet?: VetData
   education?: EducationData
+  dental?: DentalData
+  /**
+   * Свой текст сообщения вместо шаблона по статусу; {link} — ссылка на концепт.
+   * Те же проверки: до 350 знаков, одна ссылка, без эмодзи.
+   */
+  pitchText?: Partial<L10n>
   /** Работает круглосуточно (публичный факт из карточки) */
   is24h?: boolean
   /** Часы работы из карточки, если известны */
   hours?: L10n
   /** Заметки для pitch/<slug>/notes.md: что показать, о чём спросить. */
   notes?: string[]
+  /** Почему выбрано это направление — одна строка в notes.md */
+  directionWhy?: string
+  /** Источники публичных фактов для notes.md: что, ссылка, когда проверено */
+  sources?: { what: string; url?: string; checked: string }[]
+  /** Чего проверить не удалось — в notes.md, на сайт не выносится */
+  unverified?: string[]
 }

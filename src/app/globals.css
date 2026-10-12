@@ -69,6 +69,11 @@ html {
   .btn:active {
     transform: scale(0.98);
   }
+  .btn-lg {
+    min-height: 3.5rem;
+    padding: 0 1.75rem;
+    font-size: 1.05rem;
+  }
   .btn-ghost {
     background: transparent;
     color: var(--c-ink);
@@ -223,6 +228,91 @@ html {
 
 .lt[data-done] .lt-pick {
   display: none;
+}
+
+
+/* Наведение — только там, где оно есть (мышь); на телефоне — :active */
+@media (hover: hover) {
+  .concept .btn:hover {
+    background: color-mix(in oklab, var(--c-accent) 86%, var(--c-ink));
+  }
+  .concept .btn-ghost:hover {
+    background: color-mix(in oklab, var(--c-ink) 6%, transparent);
+  }
+  .concept .chip:hover {
+    border-color: var(--c-ink);
+  }
+}
+
+/*
+ * dental: «Что вас беспокоит?». Панель выбранного варианта показывает :has() — работает без JS.
+ * Вид карточек и панели задаёт направление (directions/<id>/style.ts).
+ */
+.dc-panel,
+.dc-monthly {
+  display: none;
+}
+.dc:has(input[name='dc-concern']:checked) .dc-empty {
+  display: none;
+}
+.dc:has(input[value='pain']:checked) [data-panel='pain'],
+.dc:has(input[value='filling']:checked) [data-panel='filling'],
+.dc:has(input[value='hygiene']:checked) [data-panel='hygiene'],
+.dc:has(input[value='whitening']:checked) [data-panel='whitening'],
+.dc:has(input[value='braces']:checked) [data-panel='braces'],
+.dc:has(input[value='implant']:checked) [data-panel='implant'] {
+  display: grid;
+  animation: dc-in 0.22s ease both;
+}
+.dc-panel:has(input[value='6']:checked) .dc-monthly[data-m='6'],
+.dc-panel:has(input[value='12']:checked) .dc-monthly[data-m='12'] {
+  display: block;
+  animation: dc-in 0.18s ease both;
+}
+@keyframes dc-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+}
+.dc-opt {
+  display: block;
+  cursor: pointer;
+}
+.dc-card {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  min-height: 3.5rem;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+.dc-opt:active .dc-card {
+  transform: scale(0.99);
+}
+.dc-opt input:focus-visible + .dc-card {
+  outline: 2px solid var(--c-focus, var(--c-accent));
+  outline-offset: 3px;
+}
+.dc-months {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+.dc-months legend {
+  margin-bottom: 0.5rem;
+}
+.dc-per {
+  display: block;
+}
+.dc-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -37,6 +37,9 @@ export function linkFor(lead: Lead, locale: Locale): string {
 /** Текст сообщения под contactStatus лида. null — писать не нужно (ответили или отказались). */
 export function message(lead: Lead, locale: Locale): string | null {
   const link = linkFor(lead, locale)
+  // свой текст лида — вместо шаблона (заказчик пишет короче и живее шаблонов)
+  const own = lead.pitchText?.[locale]
+  if (own) return own.replace('{link}', link)
   const pitch = dot(lead.signaturePitch[locale])
   const hook = locale === 'ru' ? lead.hook : lead.hookUz
   const needHook = () => {
@@ -93,6 +96,7 @@ ${links}
 ${lead.hold ? `- **Пока не писать:** ${lead.hold}.\n` : ''}- Статус: **${lead.contactStatus}**${lead.statusChangedAt ? ` (с ${lead.statusChangedAt})` : ''}, канал: **${lead.channel}**, первым отправлять: **message-${first}.txt**
 - Свои просмотры — открывать со ссылкой \`?me=1\`, тогда счётчик их не учтёт.
 
+${lead.directionWhy ? `- Направление: ${lead.directionWhy}\n` : ''}
 ## Хук
 
 ${cap(dot(lead.hook))}.
@@ -105,12 +109,28 @@ ${(lead.notes ?? []).map((n) => `- ${n}`).join('\n')}
 
 ${[...lead.facts.map((f) => `- ${f.text.ru} — ${f.source}, ${f.asOf}`), ...(lead.rating ? [`- Рейтинг ${lead.rating.value} и ${lead.rating.count} оценок — ${lead.rating.source}, ${lead.rating.asOf}`] : [])].join('\n') || '- нет'}
 
-Всё остальное (залы, цены, состав меню, FAQ) — пример и помечено на странице.
+Всё остальное на странице (цены, услуги, сроки, залы, меню) — пример и помечено.
+${
+  lead.sources?.length
+    ? `
+## Источники
 
+${lead.sources.map((x) => `- ${x.what}${x.url ? ` — ${x.url}` : ''} (${x.checked})`).join('\n')}
+`
+    : ''
+}${
+  lead.unverified?.length
+    ? `
+## Не проверено
+
+${lead.unverified.map((x) => `- ${x}`).join('\n')}
+`
+    : ''
+}
 ## Проверить руками перед отправкой
 
 - Превью ссылки в Telegram: вставить ссылку в «Избранное». Если картинка старая — @WebpageBot, отправить ему ссылку.
-- Открыть ссылку из Telegram и из Instagram на телефоне: первый экран, ползунок гостей, кнопки «Позвонить» и «Открыть в Яндекс Картах».
+- Открыть ссылку из Telegram и из Instagram на телефоне: первый экран, главный интерактив, кнопки «Позвонить» и «Открыть в Яндекс Картах».
 - Узбекский текст сообщения и страницы — показать носителю (TODO: проверить носителем).
 `
 }

@@ -1,7 +1,9 @@
 import { britishTextbook } from './british-textbook'
 import { campusBold } from './campus-bold'
+import { clinicalSilk } from './clinical-silk'
 import { crimsonVelvet } from './crimson-velvet'
 import { crystalFacet } from './crystal-facet'
+import { familyWarm } from './family-warm'
 import { gardenLight } from './garden-light'
 import { marbleBrass } from './marble-brass'
 import { marketFresh } from './market-fresh'
@@ -23,6 +25,8 @@ export const directions: Record<string, Direction> = {
   [crimsonVelvet.id]: crimsonVelvet,
   [gardenLight.id]: gardenLight,
   [marbleBrass.id]: marbleBrass,
+  [clinicalSilk.id]: clinicalSilk,
+  [familyWarm.id]: familyWarm,
 }
 
 export function getDirection(id: string): Direction {

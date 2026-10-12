@@ -15,6 +15,8 @@ export interface DemoFormChoice {
   name: string
   label: string
   options: string[]
+  /** Не отмечать первый вариант заранее (например, «что беспокоит» — выбирает сам человек) */
+  noDefault?: boolean
 }
 
 /**
@@ -74,7 +76,7 @@ export function DemoForm({
             <div className="flex flex-wrap gap-2">
               {c.options.map((o, i) => (
                 <label key={o}>
-                  <input type="radio" name={c.name} value={o} defaultChecked={i === 0} className="sr-only" />
+                  <input type="radio" name={c.name} value={o} defaultChecked={!c.noDefault && i === 0} className="sr-only" />
                   <span className="chip">{o}</span>
                 </label>
               ))}

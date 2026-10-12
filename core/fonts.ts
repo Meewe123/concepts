@@ -1,4 +1,17 @@
-import { Commissioner, Literata, Onest, Playfair_Display, Source_Code_Pro, Spectral, Tektur, Unbounded, Ysabeau_Office } from 'next/font/google'
+import {
+  Commissioner,
+  IBM_Plex_Mono,
+  IBM_Plex_Sans,
+  Literata,
+  Nunito,
+  Onest,
+  Playfair_Display,
+  Source_Code_Pro,
+  Spectral,
+  Tektur,
+  Unbounded,
+  Ysabeau_Office,
+} from 'next/font/google'
 
 /**
  * Onest — общий текстовый шрифт: страница студии и большинство направлений.
@@ -83,6 +96,33 @@ export const playfair = Playfair_Display({
   weight: 'variable',
   style: ['normal', 'italic'],
   variable: '--font-playfair',
+  display: 'swap',
+  preload: false,
+})
+
+/** IBM Plex Sans — clinical-silk. */
+export const plexSans = IBM_Plex_Sans({
+  subsets: ['latin', 'cyrillic'],
+  weight: 'variable',
+  variable: '--font-plex-sans',
+  display: 'swap',
+  preload: false,
+})
+
+/** IBM Plex Mono — цифры «медицинского бланка» у clinical-silk. */
+export const plexMono = IBM_Plex_Mono({
+  subsets: ['latin', 'cyrillic'],
+  weight: ['400', '500'],
+  variable: '--font-plex-mono',
+  display: 'swap',
+  preload: false,
+})
+
+/** Nunito — family-warm: округлый, мягкий, один шрифт на всё. */
+export const nunito = Nunito({
+  subsets: ['latin', 'cyrillic'],
+  weight: 'variable',
+  variable: '--font-nunito',
   display: 'swap',
   preload: false,
 })

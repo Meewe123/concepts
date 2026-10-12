@@ -1,4 +1,4 @@
-import type { L10n, Lead } from './types'
+import { DENTAL_CONCERNS, type L10n, type Lead } from './types'
 
 const SLUG = /^[a-z0-9]+(?:-[a-z0-9]+)*-[abcdefghjkmnpqrstuvwxyz23456789]{4}$/
 const PHONE = /^\+998 \d{2} \d{3} \d{2} \d{2}$/
@@ -55,6 +55,18 @@ export function defineLead(lead: Lead): Lead {
     const e = lead.education
     if (!e || e.courses.length === 0 || e.groups.length === 0) errors.push(`${at} для education нужны курсы и группы`)
   }
+
+  if (lead.niche === 'dental') {
+    const d = lead.dental
+    if (!d || d.concerns.map((c) => c.id).join() !== DENTAL_CONCERNS.join()) errors.push(`${at} для dental нужны все шесть вариантов в порядке ${DENTAL_CONCERNS.join(', ')}`)
+    else
+      for (const c of d.concerns) {
+        if (c.id === 'pain' && c.price) errors.push(`${at} у «болит зуб» не должно быть цены`)
+        if (c.id !== 'pain' && (!c.price || c.price.from > c.price.to || !c.visits || !c.duration)) errors.push(`${at} у ${c.id} нужны цена от–до, визиты и срок`)
+        if (c.installment && c.id !== 'braces' && c.id !== 'implant') errors.push(`${at} рассрочка — только у брекетов и импланта`)
+      }
+  }
+  if (lead.pitchText) for (const [l, t] of Object.entries(lead.pitchText)) if (!t.includes('{link}')) errors.push(`${at} pitchText.${l}: нет {link}`)
 
   errors.push(...lintL10n(lead, at))
   if (errors.length) throw new Error(errors.join('\n'))

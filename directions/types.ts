@@ -1,6 +1,7 @@
 import type { FC, ReactNode } from 'react'
 import type { Lead, Locale } from '@/core/types'
 import type { BanquetSkin } from '@/niches/banquet/skin'
+import type { DentalSkin } from '@/niches/dental/skin'
 import type { EducationSkin } from '@/niches/education/skin'
 import type { VetSkin } from '@/niches/vet/skin'
 
@@ -45,4 +46,5 @@ export interface Direction {
   banquet?: BanquetSkin
   vet?: VetSkin
   education?: EducationSkin
+  dental?: DentalSkin
 }

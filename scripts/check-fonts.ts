@@ -19,6 +19,7 @@ const LIBRARY = [
   'Commissioner',
   'Ysabeau Office',
   'Source Code Pro',
+  'Nunito',
 ]
 
 const REQUIRED: [string, number][] = [

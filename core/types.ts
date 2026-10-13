@@ -10,6 +10,7 @@ export type NicheId =
   | 'banquet'
   | 'dental'
   | 'vet'
+  | 'petshop'
   | 'beauty'
   | 'education'
   | 'auto'
@@ -163,6 +164,37 @@ export interface DentalData {
   schedule?: { days: number[]; open: string; close: string }
 }
 
+/** Товар витрины — цена «пример», пока нет прайса магазина */
+export interface ShopItem {
+  id: string
+  name: L10n
+  /** «3 кг», «5 л» */
+  size?: L10n
+  price: number
+  from?: boolean
+  pet?: Pet
+  example: boolean
+}
+
+/** Форма средства от блох и клещей: цена по весовым группам (столько же, сколько групп) */
+export interface ParasiteForm {
+  id: string
+  name: L10n
+  note: L10n
+  prices: number[]
+  example: boolean
+}
+
+export interface PetshopData {
+  /** Подбор средства по весу, как на упаковках: верхние границы групп, кг (последняя = максимум шкалы) */
+  parasites: Record<Pet, { bands: number[]; forms: ParasiteForm[]; start: number }>
+  catalog: { id: string; name: L10n; items: ShopItem[] }[]
+  /** Доставка — из публичной карточки */
+  delivery?: boolean
+  /** При магазине принимает ветеринар */
+  vet?: boolean
+}
+
 export interface BeautyService {
   id: string
   name: L10n
@@ -248,6 +280,7 @@ export interface Lead {
   signaturePitch: L10n
   banquet?: BanquetData
   vet?: VetData
+  petshop?: PetshopData
   education?: EducationData
   dental?: DentalData
   beauty?: BeautyData

@@ -1,6 +1,8 @@
 import {
+  Comfortaa,
   Commissioner,
   Cormorant_Garamond,
+  Fira_Sans,
   IBM_Plex_Mono,
   IBM_Plex_Sans,
   Inter_Tight,
@@ -174,6 +176,24 @@ export const interTight = Inter_Tight({
   subsets: ['latin', 'cyrillic'],
   weight: 'variable',
   variable: '--font-inter-tight',
+  display: 'swap',
+  preload: false,
+})
+
+/** Comfortaa — zoo-scales (Зооцентр): округлые буквы и цифры ценников, дружелюбно к хозяевам питомцев. */
+export const comfortaa = Comfortaa({
+  subsets: ['latin', 'cyrillic'],
+  weight: 'variable',
+  variable: '--font-comfortaa',
+  display: 'swap',
+  preload: false,
+})
+
+/** Fira Sans — текст zoo-scales. */
+export const firaSans = Fira_Sans({
+  subsets: ['latin', 'cyrillic'],
+  weight: ['400', '600'],
+  variable: '--font-fira-sans',
   display: 'swap',
   preload: false,
 })

@@ -9,6 +9,8 @@ import { DentalPage } from './dental/DentalPage'
 import { dentalMeta } from './dental/meta'
 import { EducationPage } from './education/EducationPage'
 import { educationMeta } from './education/meta'
+import { petshopMeta } from './petshop/meta'
+import { PetshopPage } from './petshop/PetshopPage'
 import { vetMeta } from './vet/meta'
 import { VetPage } from './vet/VetPage'
 
@@ -20,6 +22,7 @@ export interface NicheModule {
 const niches: Partial<Record<NicheId, NicheModule>> = {
   banquet: { Page: BanquetPage, meta: banquetMeta },
   vet: { Page: VetPage, meta: vetMeta },
+  petshop: { Page: PetshopPage, meta: petshopMeta },
   education: { Page: EducationPage, meta: educationMeta },
   dental: { Page: DentalPage, meta: dentalMeta },
   beauty: { Page: BeautyPage, meta: beautyMeta },

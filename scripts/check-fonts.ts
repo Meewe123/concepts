@@ -23,6 +23,8 @@ const LIBRARY = [
   'Montserrat',
   'Oswald',
   'Inter Tight',
+  'Comfortaa',
+  'Fira Sans',
 ]
 
 const REQUIRED: [string, number][] = [

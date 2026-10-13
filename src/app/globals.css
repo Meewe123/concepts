@@ -350,3 +350,32 @@ html {
     transition-delay: 0ms !important;
   }
 }
+
+/* petshop: какой питомец в подборе — CSS по радиокнопке (работает и без JS) */
+.ps:not(:has(input[name='ps-pet'][value='cat']:checked)) [data-pet-forms='cat'],
+.ps:has(input[name='ps-pet'][value='cat']:checked) [data-pet-forms='dog'],
+.ps:not(:has(input[name='ps-pet'][value='cat']:checked)) [data-pet-only='cat'],
+.ps:has(input[name='ps-pet'][value='cat']:checked) [data-pet-only='dog'] {
+  display: none;
+}
+.ps-add .ps-added-t,
+.ps-add[data-added] .ps-add-t {
+  display: none;
+}
+.ps-add[data-added] .ps-added-t {
+  display: inline-flex;
+}
+.ps-cart[data-state='empty'] .ps-cart-total,
+.ps-cart[data-state='full'] .ps-cart-empty {
+  display: none;
+}
+.ps-fly {
+  position: fixed;
+  z-index: 70;
+  width: 1.6rem;
+  height: 2.1rem;
+  border-radius: 0.3rem;
+  background: var(--c-accent-2, #ffd23f);
+  box-shadow: 0 6px 14px rgb(0 0 0 / 0.25);
+  pointer-events: none;
+}

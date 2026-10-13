@@ -29,7 +29,7 @@ export function Footer({ lead, locale, stroke }: { lead: Lead; locale: Locale; s
         </p>
       )}
       <p className="concept-plaque mx-auto mt-10 max-w-6xl border-t border-line py-6 text-sm text-ink-2">
-        {tx(plaque(lead.name), locale)}
+        {tx(plaque(lead.messageName ?? lead.name), locale)}
       </p>
     </footer>
   )

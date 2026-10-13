@@ -30,6 +30,7 @@ export function DemoForm({
   time,
   number,
   choices = [],
+  hidden = [],
   stroke,
 }: {
   labels: DemoFormLabels
@@ -38,11 +39,16 @@ export function DemoForm({
   time?: { label: string }
   number?: { name: string; label: string; value: number; min: number; max: number; step: number }
   choices?: DemoFormChoice[]
+  /** Скрытые поля, которые заполняет островок (например, список отложенных товаров) */
+  hidden?: string[]
   stroke: number
 }) {
   return (
     <div data-demo-form="">
       <form method="dialog" noValidate className="grid gap-5">
+        {hidden.map((h) => (
+          <input key={h} type="hidden" name={h} />
+        ))}
         <div className="grid gap-5 sm:grid-cols-2">
           <label className="field">
             <span>{labels.name}</span>

@@ -4,6 +4,7 @@ import type { BanquetSkin } from '@/niches/banquet/skin'
 import type { BeautySkin } from '@/niches/beauty/skin'
 import type { DentalSkin } from '@/niches/dental/skin'
 import type { EducationSkin } from '@/niches/education/skin'
+import type { PetshopSkin } from '@/niches/petshop/skin'
 import type { VetSkin } from '@/niches/vet/skin'
 
 export interface HeadingProps {
@@ -46,6 +47,7 @@ export interface Direction {
   Og: FC<{ lead: Lead; locale: Locale }>
   banquet?: BanquetSkin
   vet?: VetSkin
+  petshop?: PetshopSkin
   education?: EducationSkin
   dental?: DentalSkin
   beauty?: BeautySkin

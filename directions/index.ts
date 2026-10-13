@@ -18,6 +18,7 @@ import { tashkentMosaic } from './tashkent-mosaic'
 import type { Direction } from './types'
 import { warmPaper } from './warm-paper'
 import { workshopConcrete } from './workshop-concrete'
+import { zooScales } from './zoo-scales'
 
 export const directions: Record<string, Direction> = {
   [suzaniNight.id]: suzaniNight,
@@ -39,6 +40,7 @@ export const directions: Record<string, Direction> = {
   [workshopConcrete.id]: workshopConcrete,
   [editorialSmile.id]: editorialSmile,
   [tashkentMosaic.id]: tashkentMosaic,
+  [zooScales.id]: zooScales,
 }
 
 export function getDirection(id: string): Direction {

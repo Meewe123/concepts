@@ -34,9 +34,10 @@ export const ui = {
 } satisfies Record<string, L10n>
 
 /** Плашка внизу каждого концепта. */
-export function plaque(name: string): L10n {
+export function plaque(name: string | L10n): L10n {
+  const n = typeof name === 'string' ? { ru: name, uz: name } : name
   return {
-    ru: `Демо-концепт для ${name}. Не официальный сайт. Цены и данные примерные.`,
-    uz: `${name} uchun demo-konsept. Rasmiy sayt emas. Narxlar va maʼlumotlar taxminiy.`,
+    ru: `Демо-концепт для ${n.ru}. Не официальный сайт. Цены и данные примерные.`,
+    uz: `${n.uz} uchun demo-konsept. Rasmiy sayt emas. Narxlar va maʼlumotlar taxminiy.`,
   }
 }

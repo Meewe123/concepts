@@ -74,6 +74,20 @@ export function defineLead(lead: Lead): Lead {
       if (!/^\d\d:\d\d$/.test(b.schedule.open) || !/^\d\d:\d\d$/.test(b.schedule.close) || b.schedule.days.length === 0) errors.push(`${at} график: open/close «ЧЧ:ММ» и хотя бы один рабочий день`)
     }
   }
+  if (lead.niche === 'petshop') {
+    const p = lead.petshop
+    if (!p || p.catalog.length === 0) errors.push(`${at} для petshop нужны подбор и витрина`)
+    else {
+      for (const pet of ['dog', 'cat'] as const) {
+        const { bands, forms, start } = p.parasites[pet]
+        if (bands.some((b, i) => i > 0 && b <= bands[i - 1]!)) errors.push(`${at} ${pet}: весовые группы по возрастанию`)
+        if (start <= 0 || start > bands[bands.length - 1]!) errors.push(`${at} ${pet}: стартовый вес вне шкалы`)
+        for (const f of forms) if (f.prices.length !== bands.length) errors.push(`${at} ${pet}/${f.id}: цен должно быть столько же, сколько групп`)
+      }
+      const ids = p.catalog.flatMap((c) => c.items.map((i) => i.id))
+      if (new Set(ids).size !== ids.length) errors.push(`${at} id товаров должны быть уникальны`)
+    }
+  }
   if (lead.pitchText) for (const [l, t] of Object.entries(lead.pitchText)) if (!t.includes('{link}')) errors.push(`${at} pitchText.${l}: нет {link}`)
 
   errors.push(...lintL10n(lead, at))

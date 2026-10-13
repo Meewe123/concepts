@@ -315,6 +315,31 @@ html {
   gap: 0.75rem;
 }
 
+/* Конфетти из точки касания (островок beauty, data-burst / data-confetti) */
+.cf-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+}
+.cf-layer i {
+  position: absolute;
+  width: 7px;
+  height: 11px;
+  margin: -5px 0 0 -3px;
+  animation: cf-fly 1s cubic-bezier(0.15, 0.7, 0.3, 1) forwards;
+}
+@keyframes cf-fly {
+  55% {
+    transform: translate(var(--x), var(--y)) rotate(calc(var(--r) * 0.6));
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--x), calc(var(--y) + 90px)) rotate(var(--r));
+    opacity: 0;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .concept *,
   .concept *::before,

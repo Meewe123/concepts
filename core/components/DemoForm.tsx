@@ -27,12 +27,15 @@ export interface DemoFormChoice {
 export function DemoForm({
   labels,
   date,
+  time,
   number,
   choices = [],
   stroke,
 }: {
   labels: DemoFormLabels
   date?: { label: string; required?: boolean }
+  /** Время визита (из выбранного окна) */
+  time?: { label: string }
   number?: { name: string; label: string; value: number; min: number; max: number; step: number }
   choices?: DemoFormChoice[]
   stroke: number
@@ -53,6 +56,12 @@ export function DemoForm({
             <label className="field">
               <span>{date.label}</span>
               <input name="date" type="date" required={date.required ?? true} />
+            </label>
+          )}
+          {time && (
+            <label className="field">
+              <span>{time.label}</span>
+              <input name="time" type="time" step={1800} />
             </label>
           )}
           {number && (

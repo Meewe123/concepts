@@ -20,6 +20,7 @@ const LIBRARY = [
   'Ysabeau Office',
   'Source Code Pro',
   'Nunito',
+  'Montserrat',
 ]
 
 const REQUIRED: [string, number][] = [

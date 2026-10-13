@@ -3,6 +3,8 @@ import type { Lead, Locale, NicheId } from '@/core/types'
 import type { Direction } from '@/directions/types'
 import { BanquetPage } from './banquet/BanquetPage'
 import { banquetMeta } from './banquet/meta'
+import { BeautyPage } from './beauty/BeautyPage'
+import { beautyMeta } from './beauty/meta'
 import { DentalPage } from './dental/DentalPage'
 import { dentalMeta } from './dental/meta'
 import { EducationPage } from './education/EducationPage'
@@ -20,6 +22,7 @@ const niches: Partial<Record<NicheId, NicheModule>> = {
   vet: { Page: VetPage, meta: vetMeta },
   education: { Page: EducationPage, meta: educationMeta },
   dental: { Page: DentalPage, meta: dentalMeta },
+  beauty: { Page: BeautyPage, meta: beautyMeta },
 }
 
 export function getNiche(id: NicheId): NicheModule {

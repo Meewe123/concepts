@@ -1,17 +1,21 @@
 import { britishTextbook } from './british-textbook'
 import { campusBold } from './campus-bold'
 import { clinicalSilk } from './clinical-silk'
+import { confettiPop } from './confetti-pop'
 import { crimsonVelvet } from './crimson-velvet'
 import { crystalFacet } from './crystal-facet'
 import { familyWarm } from './family-warm'
 import { gardenLight } from './garden-light'
+import { glossyEditorial } from './glossy-editorial'
 import { marbleBrass } from './marble-brass'
 import { marketFresh } from './market-fresh'
 import { nightVet } from './night-vet'
 import { playfulGeometry } from './playful-geometry'
+import { spaWhisper } from './spa-whisper'
 import { suzaniNight } from './suzani-night'
 import type { Direction } from './types'
 import { warmPaper } from './warm-paper'
+import { workshopConcrete } from './workshop-concrete'
 
 export const directions: Record<string, Direction> = {
   [suzaniNight.id]: suzaniNight,
@@ -27,6 +31,10 @@ export const directions: Record<string, Direction> = {
   [marbleBrass.id]: marbleBrass,
   [clinicalSilk.id]: clinicalSilk,
   [familyWarm.id]: familyWarm,
+  [glossyEditorial.id]: glossyEditorial,
+  [confettiPop.id]: confettiPop,
+  [spaWhisper.id]: spaWhisper,
+  [workshopConcrete.id]: workshopConcrete,
 }
 
 export function getDirection(id: string): Direction {

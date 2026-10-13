@@ -10,6 +10,7 @@ const entries = {
   vet: 'niches/vet/island.ts',
   education: 'niches/education/island.ts',
   dental: 'niches/dental/island.ts',
+  beauty: 'niches/beauty/island.ts',
 }
 
 const result = await build({

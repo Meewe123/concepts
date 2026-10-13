@@ -66,6 +66,14 @@ export function defineLead(lead: Lead): Lead {
         if (c.installment && c.id !== 'braces' && c.id !== 'implant') errors.push(`${at} рассрочка — только у брекетов и импланта`)
       }
   }
+  if (lead.niche === 'beauty') {
+    const b = lead.beauty
+    if (!b || b.services.length < 3) errors.push(`${at} для beauty нужны хотя бы три услуги`)
+    else {
+      if (new Set(b.services.map((x) => x.id)).size !== b.services.length) errors.push(`${at} id услуг должны быть уникальны`)
+      if (!/^\d\d:\d\d$/.test(b.schedule.open) || !/^\d\d:\d\d$/.test(b.schedule.close) || b.schedule.days.length === 0) errors.push(`${at} график: open/close «ЧЧ:ММ» и хотя бы один рабочий день`)
+    }
+  }
   if (lead.pitchText) for (const [l, t] of Object.entries(lead.pitchText)) if (!t.includes('{link}')) errors.push(`${at} pitchText.${l}: нет {link}`)
 
   errors.push(...lintL10n(lead, at))

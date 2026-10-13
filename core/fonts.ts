@@ -1,8 +1,10 @@
 import {
   Commissioner,
+  Cormorant_Garamond,
   IBM_Plex_Mono,
   IBM_Plex_Sans,
   Literata,
+  Montserrat,
   Nunito,
   Onest,
   Playfair_Display,
@@ -123,6 +125,35 @@ export const nunito = Nunito({
   subsets: ['latin', 'cyrillic'],
   weight: 'variable',
   variable: '--font-nunito',
+  display: 'swap',
+  preload: false,
+})
+
+/** Cormorant Garamond для glossy-editorial: светлый, средний и полужирный, с курсивом. */
+export const cormorantEditorial = Cormorant_Garamond({
+  subsets: ['latin', 'cyrillic'],
+  weight: ['300', '500', '600'],
+  style: ['normal', 'italic'],
+  variable: '--font-cormorant-ed',
+  display: 'swap',
+  preload: false,
+})
+
+/** Montserrat — текстовый у confetti-pop (Onest уже у glossy-editorial в той же нише). */
+export const montserrat = Montserrat({
+  subsets: ['latin', 'cyrillic'],
+  weight: 'variable',
+  variable: '--font-montserrat',
+  display: 'swap',
+  preload: false,
+})
+
+/** Spectral ExtraLight / Light с курсивом — шёпот spa-whisper. */
+export const spectralLight = Spectral({
+  subsets: ['latin', 'cyrillic'],
+  weight: ['200', '300'],
+  style: ['normal', 'italic'],
+  variable: '--font-spectral-light',
   display: 'swap',
   preload: false,
 })

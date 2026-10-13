@@ -160,6 +160,49 @@ export interface DentalData {
   kids?: boolean
 }
 
+export interface BeautyService {
+  id: string
+  name: L10n
+  /** Группа в меню: «Волосы», «Ногти» */
+  group?: L10n
+  /** Длительность, минуты (для авто — у базового класса) */
+  minutes: number
+  /** Цена, сум (для авто — у базового класса) */
+  price: number
+  /** «от …» */
+  from?: boolean
+  note?: L10n
+  example: boolean
+}
+
+export interface BeautySchedule {
+  /** Рабочие дни: 0 — воскресенье … 6 — суббота */
+  days: number[]
+  /** '10:00' */
+  open: string
+  /** '20:00'; если раньше open — закрытие после полуночи ('02:00') */
+  close: string
+  /** true — график из публичного источника; false — пример для демо-окон */
+  real: boolean
+}
+
+/** Вариант, меняющий цену и время: класс авто и т. п. */
+export interface BeautyVariant {
+  id: string
+  name: L10n
+  /** Множитель цены */
+  k: number
+  /** Множитель времени */
+  t: number
+}
+
+export interface BeautyData {
+  services: BeautyService[]
+  schedule: BeautySchedule
+  branches?: { id: string; name: L10n; address: L10n }[]
+  variants?: { label: L10n; items: BeautyVariant[] }
+}
+
 export interface Lead {
   slug: string
   name: string
@@ -204,6 +247,7 @@ export interface Lead {
   vet?: VetData
   education?: EducationData
   dental?: DentalData
+  beauty?: BeautyData
   /**
    * Свой текст сообщения вместо шаблона по статусу; {link} — ссылка на концепт.
    * Те же проверки: до 350 знаков, одна ссылка, без эмодзи.

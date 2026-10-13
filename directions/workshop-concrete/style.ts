@@ -143,6 +143,7 @@ export const css = /* css */ `
 .wc-until b { font-family: var(--f-display); font-size: 1.2rem; }
 [data-booker][data-state='slot'] .wc-until { display: block; }
 .wc-ticket [aria-disabled='true'] { opacity: 0.55; }
+.wc-ticket .btn { font-size: 0.82rem; letter-spacing: 0.01em; padding: 0 1rem; text-align: center; }
 
 /* ---------- Пока ждёте ---------- */
 .wc-lounge { display: grid; gap: 1px; margin-top: 2rem; background: rgba(238, 236, 231, 0.18); border: 1px solid rgba(238, 236, 231, 0.18); }

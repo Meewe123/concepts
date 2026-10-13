@@ -25,6 +25,7 @@ const LIBRARY = [
   'Inter Tight',
   'Comfortaa',
   'Fira Sans',
+  'Exo 2',
 ]
 
 const REQUIRED: [string, number][] = [

@@ -195,6 +195,35 @@ export interface PetshopData {
   vet?: boolean
 }
 
+/** Класс машины: множители цены и времени */
+export interface AutoClass {
+  id: string
+  name: L10n
+  k: number
+  t: number
+}
+
+export interface AutoService {
+  id: string
+  name: L10n
+  /** Цена и минуты — для базового класса (седан) */
+  price: number
+  minutes: number
+  example: boolean
+}
+
+export interface AutoData {
+  classes: AutoClass[]
+  services: AutoService[]
+  /** Загрузка по часам работы (0…1), час за часом от open — пример для демо-графика и «очереди сейчас» */
+  load: number[]
+  schedule: BeautySchedule
+  /** Ожидание при полной загрузке, минуты (демо) */
+  maxWait: number
+  /** Зона ожидания / кафе — из карточки */
+  lounge?: boolean
+}
+
 export interface BeautyService {
   id: string
   name: L10n
@@ -281,6 +310,7 @@ export interface Lead {
   banquet?: BanquetData
   vet?: VetData
   petshop?: PetshopData
+  auto?: AutoData
   education?: EducationData
   dental?: DentalData
   beauty?: BeautyData

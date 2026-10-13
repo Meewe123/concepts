@@ -88,6 +88,15 @@ export function defineLead(lead: Lead): Lead {
       if (new Set(ids).size !== ids.length) errors.push(`${at} id товаров должны быть уникальны`)
     }
   }
+  if (lead.niche === 'auto') {
+    const a = lead.auto
+    if (!a || a.classes.length < 2 || a.services.length < 2) errors.push(`${at} для auto нужны классы машин и услуги`)
+    else {
+      const hours = Number(a.schedule.close.slice(0, 2)) - Number(a.schedule.open.slice(0, 2))
+      if (a.load.length !== hours) errors.push(`${at} auto.load: ${a.load.length} значений, а часов работы ${hours}`)
+      if (a.load.some((x) => x < 0 || x > 1)) errors.push(`${at} auto.load: доли от 0 до 1`)
+    }
+  }
   if (lead.pitchText) for (const [l, t] of Object.entries(lead.pitchText)) if (!t.includes('{link}')) errors.push(`${at} pitchText.${l}: нет {link}`)
 
   errors.push(...lintL10n(lead, at))

@@ -12,6 +12,7 @@ import { marbleBrass } from './marble-brass'
 import { marketFresh } from './market-fresh'
 import { nightVet } from './night-vet'
 import { playfulGeometry } from './playful-geometry'
+import { showroomChrome } from './showroom-chrome'
 import { spaWhisper } from './spa-whisper'
 import { suzaniNight } from './suzani-night'
 import { tashkentMosaic } from './tashkent-mosaic'
@@ -41,6 +42,7 @@ export const directions: Record<string, Direction> = {
   [editorialSmile.id]: editorialSmile,
   [tashkentMosaic.id]: tashkentMosaic,
   [zooScales.id]: zooScales,
+  [showroomChrome.id]: showroomChrome,
 }
 
 export function getDirection(id: string): Direction {

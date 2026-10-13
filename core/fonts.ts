@@ -2,6 +2,7 @@ import {
   Comfortaa,
   Commissioner,
   Cormorant_Garamond,
+  Exo_2,
   Fira_Sans,
   IBM_Plex_Mono,
   IBM_Plex_Sans,
@@ -194,6 +195,16 @@ export const firaSans = Fira_Sans({
   subsets: ['latin', 'cyrillic'],
   weight: ['400', '600'],
   variable: '--font-fira-sans',
+  display: 'swap',
+  preload: false,
+})
+
+/** Exo 2 — showroom-chrome (Urus): технический курсив, как шильдики на кузове. */
+export const exo2 = Exo_2({
+  subsets: ['latin', 'cyrillic'],
+  weight: 'variable',
+  style: ['normal', 'italic'],
+  variable: '--font-exo2',
   display: 'swap',
   preload: false,
 })

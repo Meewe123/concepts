@@ -1,6 +1,8 @@
 import type { FC } from 'react'
 import type { Lead, Locale, NicheId } from '@/core/types'
 import type { Direction } from '@/directions/types'
+import { AutoPage } from './auto/AutoPage'
+import { autoMeta } from './auto/meta'
 import { BanquetPage } from './banquet/BanquetPage'
 import { banquetMeta } from './banquet/meta'
 import { BeautyPage } from './beauty/BeautyPage'
@@ -26,6 +28,7 @@ const niches: Partial<Record<NicheId, NicheModule>> = {
   education: { Page: EducationPage, meta: educationMeta },
   dental: { Page: DentalPage, meta: dentalMeta },
   beauty: { Page: BeautyPage, meta: beautyMeta },
+  auto: { Page: AutoPage, meta: autoMeta },
 }
 
 export function getNiche(id: NicheId): NicheModule {

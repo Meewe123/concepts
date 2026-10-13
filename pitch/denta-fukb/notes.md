@@ -4,6 +4,7 @@
 - UZ: https://concepts.yettikun.workers.dev/c/denta-fukb/uz
 
 - Статус: **read-silent**, канал: **instagram**, первым отправлять: **message-ru.txt**
+- Куда писать: Telegram не найден · Instagram: https://www.instagram.com/denta_stomatologiya/
 - Свои просмотры — открывать со ссылкой `?me=1`, тогда счётчик их не учтёт.
 
 - Направление: clinical-silk — клиника у метро Минор с ценами в карточке: точная «бланковая» сетка и цифры Plex Mono делают цены главным, а белый с ледяным голубым читается как чистый кабинет.

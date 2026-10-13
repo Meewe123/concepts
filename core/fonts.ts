@@ -3,10 +3,12 @@ import {
   Cormorant_Garamond,
   IBM_Plex_Mono,
   IBM_Plex_Sans,
+  Inter_Tight,
   Literata,
   Montserrat,
   Nunito,
   Onest,
+  Oswald,
   Playfair_Display,
   Source_Code_Pro,
   Spectral,
@@ -154,6 +156,24 @@ export const spectralLight = Spectral({
   weight: ['200', '300'],
   style: ['normal', 'italic'],
   variable: '--font-spectral-light',
+  display: 'swap',
+  preload: false,
+})
+
+/** Oswald — tashkent-mosaic (Chilonzor Dental Servis): узкие прописные, как буквы на фасадах Чиланзара. */
+export const oswald = Oswald({
+  subsets: ['latin', 'cyrillic'],
+  weight: 'variable',
+  variable: '--font-oswald',
+  display: 'swap',
+  preload: false,
+})
+
+/** Inter Tight — текст tashkent-mosaic. */
+export const interTight = Inter_Tight({
+  subsets: ['latin', 'cyrillic'],
+  weight: 'variable',
+  variable: '--font-inter-tight',
   display: 'swap',
   preload: false,
 })

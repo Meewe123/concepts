@@ -158,6 +158,9 @@ export interface DentalData {
   promos?: { big: L10n; text: L10n; source: string; asOf: string }[]
   /** Публично указан детский приём */
   kids?: boolean
+  branches?: { id: string; name: L10n; address: L10n }[]
+  /** График из справочников — для строки «Сейчас открыто · до 17:00» (время Ташкента) */
+  schedule?: { days: number[]; open: string; close: string }
 }
 
 export interface BeautyService {

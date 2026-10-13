@@ -99,13 +99,25 @@ export function DefaultContacts({ lead, locale, dir }: DentalPageSectionProps) {
 }
 
 /** Демо-форма записи: «что беспокоит» (без выбора по умолчанию) и, если нужно, «кого записываете». */
-export function BookingForm({ locale, stroke, family = false }: { locale: Locale; stroke: number; family?: boolean }) {
+export function BookingForm({
+  locale,
+  stroke,
+  family = false,
+  branches = [],
+}: {
+  locale: Locale
+  stroke: number
+  family?: boolean
+  /** Названия филиалов — выбор «Филиал» первым полем */
+  branches?: string[]
+}) {
   const b = copy.booking
   return (
     <DemoForm
       stroke={stroke}
       date={{ label: tx(b.date, locale), required: false }}
       choices={[
+        ...(branches.length > 1 ? [{ name: 'branch', label: tx({ ru: 'Филиал', uz: 'Filial' }, locale), options: branches }] : []),
         ...(family ? [{ name: 'who', label: tx(copy.family.who, locale), options: copy.family.whoOptions.map((o) => tx(o, locale)) }] : []),
         { name: 'concern', label: tx(b.concern, locale), options: Object.values(copy.labels).map((l) => tx(l, locale)), noDefault: true },
       ]}

@@ -1,5 +1,6 @@
 import { initDemoForm, prefillForm } from '@/core/islands/form'
 import { DENTAL_CONCERNS } from '@/core/types'
+import { tashkentNow } from '@/niches/beauty/slots'
 
 /**
  * Островок ниши dental. Сами панели переключает CSS (:has), здесь — только то, что CSS не умеет:
@@ -68,7 +69,40 @@ function initAnchors(): void {
   })
 }
 
+/**
+ * «Сейчас открыто · до 17:00» по времени Ташкента. Разметка: [data-now] с data-days="1,2,3,4,5" (0 — вс),
+ * data-open / data-close ('09:00'), шаблоны data-t-open и data-t-closed ({day}, {time}), data-t-today,
+ * data-t-tomorrow и data-names — дни недели с воскресенья через запятую. Без JS остаётся график.
+ */
+function initNow(el: HTMLElement): void {
+  const d = el.dataset
+  const days = (d.days ?? '').split(',').map(Number)
+  const names = (d.names ?? '').split(',')
+  const min = (t = '') => Number(t.slice(0, 2)) * 60 + Number(t.slice(3, 5))
+  const open = min(d.open)
+  const close = min(d.close)
+  const out = el.querySelector<HTMLElement>('[data-o=now]')
+  const tick = () => {
+    const now = tashkentNow()
+    const m = now.getHours() * 60 + now.getMinutes()
+    const today = now.getDay()
+    const isOpen = days.includes(today) && m >= open && m < close
+    let text = (d.tOpen ?? '').replace('{time}', d.close ?? '')
+    if (!isOpen) {
+      let k = 0
+      while (k < 7 && !(days.includes((today + k) % 7) && (k > 0 || m < open))) k++
+      const day = k === 0 ? d.tToday : k === 1 ? d.tTomorrow : names[(today + k) % 7]
+      text = (d.tClosed ?? '').replace('{day}', day ?? '').replace('{time}', d.open ?? '')
+    }
+    el.dataset.state = isOpen ? 'open' : 'closed'
+    if (out) out.textContent = text
+  }
+  tick()
+  setInterval(tick, 30000)
+}
+
 document.querySelectorAll<HTMLElement>('[data-concern]').forEach(initConcern)
+document.querySelectorAll<HTMLElement>('[data-now]').forEach(initNow)
 document.querySelectorAll<HTMLElement>('[data-family]').forEach((b) =>
   b.addEventListener('click', () => prefillForm({ who: b.dataset.family ?? '' })),
 )

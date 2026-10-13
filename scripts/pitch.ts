@@ -4,6 +4,7 @@ import path from 'node:path'
 import { conceptPath } from '@/core/paths'
 import type { Lead, Locale } from '@/core/types'
 import { getLead, leads } from '@/leads'
+import { formatPhone, instagramHref, telegramHref, whatsappHref } from '@/core/format'
 import { absoluteUrl } from '@/site.config'
 import { renderOg } from './og'
 import { shoot } from './shoot'
@@ -29,6 +30,17 @@ const FORBIDDEN = [
 const cap = (s: string) => s.charAt(0).toUpperCase() + s.slice(1)
 const low = (s: string) => s.charAt(0).toLowerCase() + s.slice(1)
 const dot = (s: string) => s.replace(/[.\s]+$/, '')
+
+/** Куда отправлять: Telegram, если есть; иначе Instagram, WhatsApp; иначе — что известно. */
+export function sendTo(lead: Lead): string {
+  const out: string[] = []
+  if (lead.telegram) out.push(`Telegram: ${telegramHref(lead.telegram)}`)
+  if (lead.instagram) out.push(`Instagram: ${instagramHref(lead.instagram)}`)
+  if (lead.whatsapp) out.push(`WhatsApp: ${whatsappHref(lead.whatsapp)}`)
+  if (!lead.telegram) out.unshift('Telegram не найден')
+  if (!lead.telegram && !lead.instagram && !lead.whatsapp) out.push(`${lead.channel === 'facebook' ? 'Facebook — ссылка из таблицы заказчика; ' : ''}звонок: ${formatPhone(lead.phones[0]!)}`)
+  return out.join(' · ')
+}
 
 export function linkFor(lead: Lead, locale: Locale): string {
   return absoluteUrl(conceptPath(lead, locale))
@@ -94,6 +106,7 @@ function notes(lead: Lead): string {
 ${links}
 
 ${lead.hold ? `- **Пока не писать:** ${lead.hold}.\n` : ''}- Статус: **${lead.contactStatus}**${lead.statusChangedAt ? ` (с ${lead.statusChangedAt})` : ''}, канал: **${lead.channel}**, первым отправлять: **message-${first}.txt**
+- Куда писать: ${sendTo(lead)}
 - Свои просмотры — открывать со ссылкой \`?me=1\`, тогда счётчик их не учтёт.
 
 ${lead.directionWhy ? `- Направление: ${lead.directionWhy}\n` : ''}
@@ -165,7 +178,7 @@ export async function pitch(slugs: string[], withOg = true): Promise<void> {
     fs.writeFileSync(path.join(dir, 'link.txt'), lead.langs.map((l) => linkFor(lead, l)).join('\n') + '\n')
     for (const [locale, text] of Object.entries(texts[i]!)) {
       fs.writeFileSync(path.join(dir, `message-${locale}.txt`), text + '\n')
-      console.log(`\n— ${lead.name}, message-${locale}.txt (${[...text].length} знаков):\n${text}`)
+      console.log(`\n— ${lead.name}, message-${locale}.txt (${[...text].length} знаков) → ${sendTo(lead)}:\n${text}`)
     }
     fs.writeFileSync(path.join(dir, 'notes.md'), notes(lead))
   })

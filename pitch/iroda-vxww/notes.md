@@ -4,6 +4,7 @@
 - UZ: https://concepts.yettikun.workers.dev/c/iroda-vxww/uz
 
 - Статус: **not-contacted**, канал: **telegram**, первым отправлять: **message-ru.txt**
+- Куда писать: Telegram: https://t.me/irodastom · Instagram: https://www.instagram.com/iroda_stom/
 - Свои просмотры — открывать со ссылкой `?me=1`, тогда счётчик их не учтёт.
 
 - Направление: family-warm — в названии «oilaviy» (семейная), и детский приём указан в каталоге: тёплый песок, мягкий зелёный и округлый Nunito говорят с родителями, а не с «клиникой». Literata + Ysabeau из библиотеки уже у Darel, поэтому здесь один Nunito.

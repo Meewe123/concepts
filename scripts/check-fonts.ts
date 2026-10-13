@@ -21,6 +21,8 @@ const LIBRARY = [
   'Source Code Pro',
   'Nunito',
   'Montserrat',
+  'Oswald',
+  'Inter Tight',
 ]
 
 const REQUIRED: [string, number][] = [

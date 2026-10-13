@@ -29,10 +29,10 @@
 | Bahor | https://concepts.yettikun.workers.dev/c/bahor-2utu (`/uz`) | garden-light | не писать: уже есть неплохой сайт | `pitch/bahor-2utu/` |
 | Denta | https://concepts.yettikun.workers.dev/c/denta-fukb (`/uz`) | clinical-silk | read-silent | `pitch/denta-fukb/` |
 | Iroda | https://concepts.yettikun.workers.dev/c/iroda-vxww (`/uz`) | family-warm | not-contacted | `pitch/iroda-vxww/` |
-| Expert Beauty | https://concepts.yettikun.workers.dev/c/expert-beauty-f8cb (`/uz`) | glossy-editorial | read-silent | `pitch/expert-beauty-f8cb/` |
-| Конфетти | https://concepts.yettikun.workers.dev/c/konfetti-7hgp (`/uz`) | confetti-pop | read-silent | `pitch/konfetti-7hgp/` |
-| Women Secret | https://concepts.yettikun.workers.dev/c/women-secret-ek2b (`/uz`) | spa-whisper | not-contacted | `pitch/women-secret-ek2b/` |
-| Brookland | https://concepts.yettikun.workers.dev/c/brookland-4857 (`/uz`) | workshop-concrete | read-silent | `pitch/brookland-4857/` |
+| Expert Beauty | https://concepts.yettikun.workers.dev/c/expert-beauty-f8cb (`/uz`) | glossy-editorial | sent (13.10) | `pitch/expert-beauty-f8cb/` |
+| Конфетти | https://concepts.yettikun.workers.dev/c/konfetti-7hgp (`/uz`) | confetti-pop | не писать: уже есть сайт, Telegram по номеру не работает | `pitch/konfetti-7hgp/` |
+| Women Secret | https://concepts.yettikun.workers.dev/c/women-secret-ek2b (`/uz`) | spa-whisper | не писать: номер не работает, нужен другой контакт | `pitch/women-secret-ek2b/` |
+| Brookland | https://concepts.yettikun.workers.dev/c/brookland-4857 (`/uz`) | workshop-concrete | sent (13.10) | `pitch/brookland-4857/` |
 | Версаль | https://concepts.yettikun.workers.dev/c/versal-kftc (`/uz`) | marble-brass | не отправлено: Telegram на номере не работает, позвонить | `pitch/versal-kftc/` |
 
 ### Фаза 3: beauty
@@ -185,3 +185,4 @@ Osiyo Grand и Billur после правок — 100/100/100 и 99/100/100. Roy
 - 2026-10-12 — Фаза 3, dental: ниша dental («Что вас беспокоит?», первый визит, рассрочка, хеш), Denta (clinical-silk) и Iroda (family-warm на Nunito), RU/UZ, OG, наборы; островки встроены в страницы, hover у кнопок.
 - 2026-10-12 — Dental переделан после отзыва «слабо, видно что ИИ»: Denta — чек цен из принтера, тёмный подбор с талонами и шкалой визитов; Iroda — семья камешков, волны, цветные блоки.
 - 2026-10-13 — Правило заказчика: только абсолютный максимум (записано вверху). Фаза 3, beauty: ниша beauty (окна записи от текущего времени), Expert Beauty (журнал), Конфетти (конфетти), Women Secret (дыхание), Brookland (чертёж). RU/UZ, OG, наборы.
+- 2026-10-13 — Заказчик отписал Expert Beauty и Brookland (sent). Конфетти — hold (есть сайт, Telegram по номеру не работает, ссылка убрана), Women Secret — hold (номер не работает, Telegram убран).

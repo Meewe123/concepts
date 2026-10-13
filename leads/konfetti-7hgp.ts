@@ -11,7 +11,6 @@ export default defineLead({
   where: { ru: 'в Юнусабаде', uz: 'Yunusoboddagi' },
   address: { ru: 'Ташкент, Юнусабад, 11-й квартал, 52Б', uz: 'Toshkent, Yunusobod, 11-mavze, 52B' },
   phones: ['+998 90 189 83 65'],
-  telegram: '+998901898365',
   whatsapp: '+998901898365',
   mapsUrl: mapsUrlFor('konfetti-7hgp'),
   facts: [],
@@ -22,6 +21,7 @@ export default defineLead({
   langs: ['ru', 'uz'],
   map: { kind: 'quarter', area: { ru: 'Юнусабад', uz: 'Yunusobod' }, quarter: { ru: '11-й квартал', uz: '11-mavze' }, number: '52Б' },
   contactStatus: 'read-silent',
+  hold: 'у салона уже есть сайт, а Telegram по номеру не работает',
   channel: 'telegram',
   messageLang: 'ru',
   signaturePitch: {
@@ -53,7 +53,7 @@ export default defineLead({
   unverified: [
     'Веб-поиск 13.10.2026 салон «Конфетти» в Юнусабаде не нашёл — адрес, телефон и данные о сайте 2019 года только из таблицы заказчика.',
     'Размер скидки за онлайн-бронь неизвестен — на сайте стикер «размер уточнить».',
-    'Telegram и WhatsApp открыты по номеру телефона — если у номера нет аккаунта, ссылки не сработают.',
+    'Telegram по номеру не работает (проверил заказчик 13.10) — ссылка убрана. WhatsApp по номеру не проверен.',
     'График не найден: на сайте «уточняйте по телефону», окна записи — демо по примерному графику 10:00–20:00.',
     'Все услуги, цены и длительности — пример.',
   ],

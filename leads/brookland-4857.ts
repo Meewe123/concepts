@@ -23,7 +23,8 @@ export default defineLead({
     'workshop-concrete — мойка и детейлинг: технический чертёж машины с размерными линиями, бетон, чёрный и «safety»-оранжевый; класс авто меняет чертёж и цену — это язык мастерской, а не салона.',
   langs: ['ru', 'uz'],
   map: { kind: 'street', street: { ru: 'ул. Узбекистон Овози', uz: 'Oʻzbekiston ovozi koʻchasi' }, house: '2/1' },
-  contactStatus: 'read-silent',
+  contactStatus: 'sent',
+  statusChangedAt: '2026-10-13',
   channel: 'instagram',
   messageLang: 'ru',
   signaturePitch: {

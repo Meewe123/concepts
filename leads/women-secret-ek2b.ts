@@ -12,7 +12,6 @@ export default defineLead({
   kind: { ru: 'Спа и уход', uz: 'spa va parvarish saloni' },
   address: { ru: 'Юнусабадский район, тупик ул. Алай Бозори, 59/7', uz: 'Yunusobod tumani, Oloy bozori berk koʻchasi, 59/7' },
   phones: ['+998 55 508 08 81'],
-  telegram: '+998555080881',
   mapsUrl: mapsUrlFor('women-secret-ek2b'),
   facts: [],
   hook: 'ни сайта, ни соцсетей в карточке: новому гостю не на что посмотреть перед визитом',
@@ -22,6 +21,7 @@ export default defineLead({
   langs: ['ru', 'uz'],
   map: { kind: 'street', street: { ru: 'тупик ул. Алай Бозори', uz: 'Oloy bozori berk koʻchasi' }, house: '59/7' },
   contactStatus: 'not-contacted',
+  hold: 'номер +998 55 508 08 81 не работает — нужен другой контакт',
   channel: 'telegram',
   messageLang: 'ru',
   signaturePitch: {
@@ -51,7 +51,7 @@ export default defineLead({
   ],
   unverified: [
     'График: Golden Pages даёт «ежедневно 08:00–22:00», но адрес в выдаче не виден — не уверен, что это тот же салон. На сайте «уточняйте по телефону», окна — демо 09:00–21:00.',
-    'Telegram открыт по номеру телефона — если у номера нет аккаунта, ссылка не сработает.',
+    'Номер +998 55 508 08 81 не работает (проверил заказчик 13.10) — Telegram по нему убран; другого контакта нет.',
     'Написание адреса на узбекском («Oloy bozori berk koʻchasi») — проверить носителем.',
     'Все ритуалы, цены и длительности — пример.',
   ],

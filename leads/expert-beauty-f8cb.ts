@@ -20,7 +20,8 @@ export default defineLead({
     'glossy-editorial — салон с сильным Instagram (~21 тыс.) и двумя адресами: сайт как глянцевый журнал — обложка с мастхедом, меню услуг как «Содержание», окна записи как анонсы; Cormorant с курсивом целыми строками и золотые линии в 1 px.',
   langs: ['ru', 'uz'],
   map: { kind: 'street', street: { ru: 'ул. Абдуллы Каххара', uz: 'Abdulla Qahhor koʻchasi' }, house: '24' },
-  contactStatus: 'read-silent',
+  contactStatus: 'sent',
+  statusChangedAt: '2026-10-13',
   channel: 'instagram',
   messageLang: 'ru',
   signaturePitch: {

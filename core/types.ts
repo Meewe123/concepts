@@ -258,6 +258,8 @@ export interface RestaurantData {
   schedule: BeautySchedule
   /** Особенности из карточек: терраса, детское меню, живая музыка… */
   features?: L10n[]
+  /** Блюдо «пока не кончится» (плов): с какого часа подают и примерно до какого — уровень в казане по времени */
+  pot?: { dish: L10n; from: string; until: string }
 }
 
 export interface Practice {
@@ -349,6 +351,11 @@ export interface BeautyData {
 export interface Lead {
   slug: string
   name: string
+  /**
+   * Витрина студии: вымышленный бренд для страницы `/`. Не лид — в пульт и в рассылку не попадает.
+   * Телефон-заглушка +998 00 000 00 00 (кода оператора 00 нет), Telegram и Instagram не указываются.
+   */
+  showcase?: boolean
   niche: NicheId
   district: L10n
   /** Окончание фразы «Банкетный зал …»: «на Лабзаке» / «Labzakdagi». */

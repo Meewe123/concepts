@@ -1,5 +1,5 @@
 import { formatMonth, formatRating } from '@/core/format'
-import { plaque, ui } from '@/core/i18n'
+import { plaque, showcasePlaque, ui } from '@/core/i18n'
 import { tx } from '@/core/text'
 import type { Lead, Locale } from '@/core/types'
 import { Messengers, PhoneList } from './Contacts'
@@ -28,9 +28,18 @@ export function Footer({ lead, locale, stroke }: { lead: Lead; locale: Locale; s
             : `Reyting ${formatRating(lead.rating.value)} va ${lead.rating.count} ta baho — ${ui.ratingSource.uz}, ${formatMonth(lead.rating.asOf, 'uz')}.`}
         </p>
       )}
-      <p className="concept-plaque mx-auto mt-10 max-w-6xl border-t border-line py-6 text-sm text-ink-2">
-        {tx(plaque(lead.messageName ?? lead.name), locale)}
-      </p>
+      {lead.showcase ? (
+        <p className="concept-plaque mx-auto mt-10 max-w-6xl border-t border-line py-6 text-sm text-ink-2">
+          {tx(showcasePlaque, locale)}{' '}
+          <a href={locale === 'ru' ? '/' : '/uz'} className="underline decoration-1 underline-offset-4">
+            {locale === 'ru' ? 'Вернуться к студии' : 'Studiyaga qaytish'}
+          </a>
+        </p>
+      ) : (
+        <p className="concept-plaque mx-auto mt-10 max-w-6xl border-t border-line py-6 text-sm text-ink-2">
+          {tx(plaque(lead.messageName ?? lead.name), locale)}
+        </p>
+      )}
     </footer>
   )
 }

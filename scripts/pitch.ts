@@ -65,6 +65,7 @@ ${lead.unverified.map((x) => `- ${x}`).join('\n')}
 
 export async function pitch(slugs: string[], withOg = true): Promise<void> {
   const list = slugs.map(getLead)
+  for (const l of list) if (l.showcase) throw new Error(`${l.slug} — витрина студии, сообщений для неё нет`)
   // Сначала тексты: если сообщение не проходит правила, картинки собирать незачем
   const texts = list.map((lead) => {
     const out: Partial<Record<Locale, string>> = {}
@@ -102,7 +103,7 @@ export async function pitch(slugs: string[], withOg = true): Promise<void> {
 const isMain = process.argv[1] && path.resolve(process.argv[1]) === path.resolve(import.meta.filename)
 if (isMain) {
   const args = process.argv.slice(2)
-  const slugs = args.includes('--all') ? leads.map((l) => l.slug) : args.filter((a) => !a.startsWith('--'))
+  const slugs = args.includes('--all') ? leads.filter((l) => !l.showcase).map((l) => l.slug) : args.filter((a) => !a.startsWith('--'))
   if (!slugs.length) throw new Error('Укажите slug или --all')
   await pitch(slugs, !args.includes('--no-og'))
 }

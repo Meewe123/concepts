@@ -5,7 +5,7 @@ import { ui } from '@/core/i18n'
 import { NBSP, tx } from '@/core/text'
 import type { DentalConcern, Lead, Locale } from '@/core/types'
 import type { Direction } from '@/directions/types'
-import { copy, monthly, MONTHS } from './content'
+import { copy, keepDash, monthly, MONTHS } from './content'
 
 /** «300 000 сум» или «6 000 000 – 12 000 000 сум» */
 export function priceRange(from: number, to: number, locale: Locale): string {
@@ -75,11 +75,11 @@ function PricePanel({ concern: x, locale }: { concern: DentalConcern; locale: Lo
       <dl className="dc-facts">
         <div>
           <dt>{tx(c.visits, locale)}</dt>
-          <dd>{tx(x.visits!, locale)}</dd>
+          <dd>{keepDash(tx(x.visits!, locale))}</dd>
         </div>
         <div>
           <dt>{tx(c.duration, locale)}</dt>
-          <dd>{tx(x.duration!, locale)}</dd>
+          <dd>{keepDash(tx(x.duration!, locale))}</dd>
         </div>
       </dl>
       {x.installment && (

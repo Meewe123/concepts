@@ -1,5 +1,6 @@
 import { britishTextbook } from './british-textbook'
 import { campusBold } from './campus-bold'
+import { chinni } from './chinni'
 import { clinicalSilk } from './clinical-silk'
 import { confettiPop } from './confetti-pop'
 import { crimsonVelvet } from './crimson-velvet'
@@ -13,6 +14,8 @@ import { marbleBrass } from './marble-brass'
 import { marketFresh } from './market-fresh'
 import { nightVet } from './night-vet'
 import { playfulGeometry } from './playful-geometry'
+import { qozon } from './qozon'
+import { ustara } from './ustara'
 import { retroGastronom } from './retro-gastronom'
 import { showroomChrome } from './showroom-chrome'
 import { soundSilence } from './sound-silence'
@@ -45,6 +48,9 @@ export const directions: Record<string, Direction> = {
   [editorialSmile.id]: editorialSmile,
   [tashkentMosaic.id]: tashkentMosaic,
   [zooScales.id]: zooScales,
+  [qozon.id]: qozon,
+  [ustara.id]: ustara,
+  [chinni.id]: chinni,
   [showroomChrome.id]: showroomChrome,
   [retroGastronom.id]: retroGastronom,
   [soundSilence.id]: soundSilence,

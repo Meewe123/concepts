@@ -243,7 +243,7 @@ const TABS: { id: Group | 'all'; label: string }[] = [
 ]
 
 export default function InternalPage() {
-  const list = [...leads].sort(byRank)
+  const list = leads.filter((l) => !l.showcase).sort(byRank)
   const count = (g: Group | 'all') => (g === 'all' ? list.length : list.filter((l) => groupOf(l) === g).length)
   let n = 0
   return (

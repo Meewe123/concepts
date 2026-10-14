@@ -1,6 +1,6 @@
 import { initDemoForm, prefillForm } from '@/core/islands/form'
 import { tashkentNow } from '@/niches/beauty/slots'
-import type { BronConfig } from './parts'
+import type { BronConfig, PotConfig } from './parts'
 
 /**
  * Островок ниши restaurant: бронь по схеме зала. Зона и число гостей подсвечивают подходящие столы,
@@ -137,6 +137,41 @@ function initBron(root: HTMLElement): void {
   update(false)
 }
 
+/** Казан: сколько осталось — по ташкентскому времени (демо; на рабочем сайте — кнопка повара в боте). */
+function initPot(root: HTMLElement): void {
+  const cfg = JSON.parse(root.querySelector('script[type="application/json"]')!.textContent!) as PotConfig
+  const L = cfg.labels
+  const from = toMin(cfg.from)
+  const until = toMin(cfg.until)
+  const tick = () => {
+    const now = tashkentNow()
+    const m = now.getHours() * 60 + now.getMinutes()
+    const open = cfg.days.includes(now.getDay())
+    let state: 'soon' | 'serving' | 'out'
+    let level: number
+    if (open && m < from) [state, level] = ['soon', 1]
+    else if (open && m < until) [state, level] = ['serving', 1 - ((m - from) / (until - from)) * 0.86]
+    else [state, level] = ['out', 0.1]
+    // следующий казан: сегодня (если ещё не начали), иначе ближайший рабочий день
+    let next = ''
+    if (state === 'out') {
+      for (let d = 1; d <= 7; d++) {
+        const x = new Date(now.getFullYear(), now.getMonth(), now.getDate() + d)
+        if (!cfg.days.includes(x.getDay())) continue
+        next = d === 1 ? L.tomorrow : L.weekdays[x.getDay()]!
+        break
+      }
+    }
+    root.dataset.pot = state
+    root.style.setProperty('--level', level.toFixed(3))
+    const pct = Math.max(5, Math.round((level * 100) / 5) * 5)
+    const text = (state === 'soon' ? L.soon : state === 'serving' ? L.serving : L.out).replace('{pct}', String(pct)).replace('{next}', next)
+    root.querySelectorAll('[data-o=pot]').forEach((el) => (el.textContent = text))
+  }
+  tick()
+  setInterval(tick, 60_000)
+}
+
 /** Якоря прокручиваем сами, чтобы не затереть выбор в хеше. */
 document.addEventListener('click', (e) => {
   const a = (e.target as Element).closest<HTMLAnchorElement>('a[href^="#"]')
@@ -146,5 +181,6 @@ document.addEventListener('click', (e) => {
   target.scrollIntoView({ block: 'start', behavior: reduced ? 'auto' : 'smooth' })
 })
 
+document.querySelectorAll<HTMLElement>('[data-pot]').forEach(initPot)
 document.querySelectorAll<HTMLElement>('[data-bron]').forEach(initBron)
 document.querySelectorAll<HTMLElement>('[data-demo-form]').forEach(initDemoForm)

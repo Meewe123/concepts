@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react'
+import type { CSSProperties, ReactNode } from 'react'
 import { DemoForm } from '@/core/components/DemoForm'
 import { formLabels } from '@/core/components/formLabels'
 import { StickyBar } from '@/core/components/StickyBar'
@@ -37,6 +37,53 @@ export function BronRoot({ lead, locale, children, className = '' }: { lead: Lea
   }
   return (
     <div data-bron="" data-zone={r.zones[0]!.id} data-guests={r.guests[0]} className={className}>
+      <script type="application/json" data-concept="" dangerouslySetInnerHTML={{ __html: JSON.stringify(cfg) }} />
+      {children}
+    </div>
+  )
+}
+
+/**
+ * Блюдо «пока не кончится»: корень [data-pot] с конфигом; островок ставит data-pot = soon | serving | out,
+ * --level (0…1) — сколько осталось в казане, и текст в [data-o=pot]. Уровень — по времени (демо):
+ * на рабочем сайте его отмечает повар кнопкой в Telegram-боте.
+ */
+export interface PotConfig {
+  locale: Locale
+  from: string
+  until: string
+  days: number[]
+  labels: { soon: string; serving: string; out: string; tomorrow: string; weekdays: string[] }
+}
+
+export function PotRoot({ lead, locale, children, className = '' }: { lead: Lead; locale: Locale; children: ReactNode; className?: string }) {
+  const r = lead.restaurant!
+  const pot = r.pot!
+  const dish = tx(pot.dish, locale)
+  const ru = locale === 'ru'
+  const cfg: PotConfig = {
+    locale,
+    from: pot.from,
+    until: pot.until,
+    days: r.schedule.days,
+    labels: ru
+      ? {
+          soon: `${dish} будет готов к ${pot.from} — казан уже на огне`,
+          serving: `${dish}: в казане сейчас около {pct}%`,
+          out: `${dish} на сегодня закончился — следующий казан {next}, с ${pot.from}`,
+          tomorrow: 'завтра',
+          weekdays: ['в воскресенье', 'в понедельник', 'во вторник', 'в среду', 'в четверг', 'в пятницу', 'в субботу'],
+        }
+      : {
+          soon: `${dish} soat ${pot.from} ga tayyor boʻladi — qozon olovda`,
+          serving: `${dish}: qozonda hozir taxminan {pct}%`,
+          out: `${dish} bugunga tugadi — keyingi qozon {next}, soat ${pot.from} dan`,
+          tomorrow: 'ertaga',
+          weekdays: ['yakshanba', 'dushanba', 'seshanba', 'chorshanba', 'payshanba', 'juma', 'shanba'],
+        },
+  }
+  return (
+    <div data-pot="soon" className={className} style={{ '--level': 1 } as CSSProperties}>
       <script type="application/json" data-concept="" dangerouslySetInnerHTML={{ __html: JSON.stringify(cfg) }} />
       {children}
     </div>

@@ -5,6 +5,7 @@ import billur from './billur-wgah'
 import brookland from './brookland-4857'
 import bukafit from './bukafit-kpqu'
 import chilanzar from './chilanzar-dental-g52b'
+import chinni from './chinni-r8tk'
 import doctorAnimals from './doctor-animals-htt4'
 import expertBeauty from './expert-beauty-f8cb'
 import darel from './darel-fakf'
@@ -16,6 +17,8 @@ import nasimov from './nasimova-ebck'
 import petrovic from './petrovic-xd9v'
 import riks from './riks-yxk6'
 import royalRose from './royal-rose-yz34'
+import sariqSabzi from './sariq-sabzi-q7wm'
+import ustaraShop from './ustara-m4hx'
 import versal from './versal-kftc'
 import urus from './urus-premium-wkr6'
 import womenSecret from './women-secret-ek2b'
@@ -23,7 +26,7 @@ import vetMaster from './vet-master-amh9'
 import zoocenter from './zoocenter-nm5u'
 import osiyoGrand from './osiyo-grand-sq4y'
 
-export const leads: Lead[] = [osiyoGrand, billur, doctorAnimals, gordons, darel, zoocenter, vetMaster, riks, royalRose, bahor, versal, denta, nasimov, chilanzar, iroda, expertBeauty, konfetti, womenSecret, brookland, urus, petrovic, artha, bukafit]
+export const leads: Lead[] = [osiyoGrand, billur, doctorAnimals, gordons, darel, zoocenter, vetMaster, riks, royalRose, bahor, versal, denta, nasimov, chilanzar, iroda, expertBeauty, konfetti, womenSecret, brookland, urus, petrovic, artha, bukafit, sariqSabzi, ustaraShop, chinni]
 
 // Внутри ниши направления не повторяются: пять залов — пять разных миров.
 const seen = new Map<string, string>()

@@ -34,6 +34,12 @@ export const ui = {
 } satisfies Record<string, L10n>
 
 /** Плашка внизу каждого концепта. */
+/** Плашка витрины студии: бренд вымышленный. */
+export const showcasePlaque: L10n = {
+  ru: 'Концепт для вымышленного бренда — пример работы студии. Название, цены, адрес и телефон придуманы.',
+  uz: 'Toʻqima brend uchun konsept — studiya ishidan namuna. Nomi, narxlar, manzil va telefon oʻylab topilgan.',
+}
+
 export function plaque(name: string | L10n): L10n {
   const n = typeof name === 'string' ? { ru: name, uz: name } : name
   return {

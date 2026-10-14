@@ -1,19 +1,25 @@
 import {
+  Alegreya_Sans,
   Comfortaa,
   Commissioner,
   Cormorant_Garamond,
   EB_Garamond,
   Exo_2,
+  Fira_Sans_Extra_Condensed,
   Fira_Sans,
   IBM_Plex_Mono,
   IBM_Plex_Sans,
+  Inter,
   Inter_Tight,
   Literata,
   Lobster,
   Montserrat,
+  Mulish,
+  Noto_Serif_Display,
   Nunito,
   Onest,
   Oswald,
+  Playfair,
   Playfair_Display,
   Podkova,
   Raleway,
@@ -257,6 +263,61 @@ export const robotoFlex = Roboto_Flex({
   weight: 'variable',
   axes: ['wdth'],
   variable: '--font-roboto-flex',
+  display: 'swap',
+  preload: false,
+})
+
+/** Fira Sans Extra Condensed — qozon (Sariq Sabzi): высокие плотные буквы, как вывеска над чайханой. */
+export const firaExtraCondensed = Fira_Sans_Extra_Condensed({
+  subsets: ['latin', 'cyrillic'],
+  weight: ['700', '900'],
+  variable: '--font-fira-xc',
+  display: 'swap',
+  preload: false,
+})
+
+/** Alegreya Sans — текст qozon: тёплый гуманистический гротеск. */
+export const alegreyaSans = Alegreya_Sans({
+  subsets: ['latin', 'cyrillic'],
+  weight: ['400', '500', '700'],
+  variable: '--font-alegreya-sans',
+  display: 'swap',
+  preload: false,
+})
+
+/** Playfair 2 — ustara (Ustara): при большом кегле волосяные засечки, как лезвие; ось ширины — для узкого начертания. */
+export const playfairBlade = Playfair({
+  subsets: ['latin', 'cyrillic'],
+  weight: 'variable',
+  axes: ['opsz', 'wdth'],
+  variable: '--font-playfair-blade',
+  display: 'swap',
+  preload: false,
+})
+
+/** Inter — текст ustara: нейтральный и точный рядом с острыми засечками. */
+export const inter = Inter({
+  subsets: ['latin', 'cyrillic'],
+  weight: 'variable',
+  variable: '--font-inter',
+  display: 'swap',
+  preload: false,
+})
+
+/** Noto Serif Display — chinni (Chinni): тонкий контрастный антиква, как надпись кобальтом на фарфоре. */
+export const notoSerifDisplay = Noto_Serif_Display({
+  subsets: ['latin', 'cyrillic'],
+  weight: 'variable',
+  variable: '--font-noto-serif-display',
+  display: 'swap',
+  preload: false,
+})
+
+/** Mulish — текст chinni: мягкий, светлый, хорошо читается мелко. */
+export const mulish = Mulish({
+  subsets: ['latin', 'cyrillic'],
+  weight: 'variable',
+  variable: '--font-mulish',
   display: 'swap',
   preload: false,
 })

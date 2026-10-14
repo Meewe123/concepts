@@ -32,6 +32,7 @@ export function defineLead(lead: Lead): Lead {
   const at = `lead ${lead.slug}:`
 
   if (!SLUG.test(lead.slug)) errors.push(`${at} slug должен быть «название-xxxx», где xxxx из алфавита без похожих символов`)
+  if (lead.showcase && (lead.phones.join() !== '+998 00 000 00 00' || lead.telegram || lead.instagram || lead.whatsapp)) errors.push(`${at} у витрины только телефон-заглушка +998 00 000 00 00, без мессенджеров`)
   for (const p of lead.phones) if (!PHONE.test(p)) errors.push(`${at} телефон «${p}» — нужен формат +998 XX XXX XX XX`)
   if (lead.phones.length === 0) errors.push(`${at} нет ни одного телефона`)
   if (!lead.langs.includes('ru')) errors.push(`${at} русская версия обязательна`)

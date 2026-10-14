@@ -183,7 +183,7 @@ export const css = /* css */ `
 @media (hover: hover) { .qz-dish:hover .qz-lagan { transform: scale(1.05) rotate(8deg); } }
 .qz-plate { fill: #f3ead6; }
 .qz-plate-ring { fill: none; stroke: #d6c4a2; stroke-width: 2; }
-.qz-plate-dash { fill: var(--carrot-2); }
+.qz-plate-dash { fill: none; stroke: var(--carrot-2); stroke-width: 7; stroke-linecap: round; stroke-dasharray: 0.1 15.62; }
 .qz-mound { fill: #d9a650; }
 .qz-qazi { fill: var(--meat); }
 .qz-qazi-fat { fill: #f3ead6; }

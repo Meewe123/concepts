@@ -1,6 +1,6 @@
 /**
  * ustara: барбершоп — опасная бритва, острые засечки, бордо барбер-шеста.
- * Playfair 2 (узкое начертание, крупный оптический размер — засечки как лезвие) + Inter. Углы прямые.
+ * Playfair Display (контрастные волосяные засечки — как лезвие) + Inter. Углы прямые.
  * Ustara: название «разрезано» росчерком лезвия, бритва раскрывается, по стали бежит блик, полосы шеста бегут внизу.
  */
 const OX = '#8e1b1f'
@@ -23,7 +23,7 @@ export const css = /* css */ `
   --ox-hi: #e0605a;
   --bone: ${BONE};
   --ink: ${INK};
-  --f-display: var(--font-playfair-blade), Georgia, serif;
+  --f-display: var(--font-playfair), Georgia, serif;
   --f-body: var(--font-inter), system-ui, sans-serif;
   --radius-btn: 0;
   --radius-chip: 0;
@@ -53,7 +53,7 @@ export const css = /* css */ `
 [data-direction='ustara'] .btn { font-weight: 600; letter-spacing: 0.01em; }
 .us-red .btn-ghost { box-shadow: inset 0 0 0 1.5px rgba(251, 246, 238, 0.65); }
 .us-wrap { max-width: 72rem; margin: 0 auto; }
-.us-h2 { font-family: var(--f-display); font-weight: 700; font-variation-settings: 'wdth' 87.5; font-size: clamp(2.5rem, 10.5vw, 4.8rem); line-height: 0.98; letter-spacing: -0.015em; text-wrap: balance; }
+.us-h2 { font-family: var(--f-display); font-weight: 700; font-size: clamp(2.5rem, 10.5vw, 4.8rem); line-height: 0.98; letter-spacing: -0.015em; text-wrap: balance; }
 .us-lead { max-width: 36rem; font-size: 1.08rem; line-height: 1.6; color: var(--c-ink-2); }
 .us-eyebrow { margin-bottom: 0.9rem; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--c-accent); }
 .us-ink .us-eyebrow, .us-red-t { color: var(--ox-hi); }
@@ -66,7 +66,7 @@ export const css = /* css */ `
 .us-lang a { padding: 0 0.9rem; box-shadow: inset 0 0 0 1.5px var(--c-line); text-decoration: none; font-weight: 600; color: var(--c-ink); }
 .us-hero-in { max-width: 72rem; margin: 0 auto; padding: 2rem 1rem 3rem; display: grid; grid-template-columns: minmax(0, 1fr); }
 .us-kicker { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--c-ink-2); }
-.us-h1 { margin-top: 0.6rem; font-family: var(--f-display); font-weight: 800; font-variation-settings: 'wdth' 87.5, 'opsz' 1200; font-size: clamp(5rem, 26.5vw, 15rem); line-height: 0.84; letter-spacing: -0.02em; text-transform: uppercase; }
+.us-h1 { margin-top: 0.6rem; font-family: var(--f-display); font-weight: 800; font-size: clamp(4.4rem, 22.5vw, 14rem); line-height: 0.84; letter-spacing: -0.025em; text-transform: uppercase; }
 .us-word { position: relative; display: inline-grid; }
 .us-sl { grid-area: 1 / 1; }
 .us-sl-a { clip-path: polygon(-5% -5%, 105% -5%, 105% 46%, -5% 60%); animation: us-a 0.7s cubic-bezier(0.2, 0.9, 0.2, 1) 1.55s both; }
@@ -142,7 +142,7 @@ export const css = /* css */ `
 @media (hover: hover) { .us-master:hover .us-master-card { transform: translateY(-2px); } }
 .us-services > label:first-of-type { border-top: 2px solid var(--c-ink); }
 .us-svc { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; padding: 1rem 0.15rem; border-bottom: 1px solid var(--c-line); cursor: pointer; transition: background-color 0.25s ease, color 0.25s ease, padding 0.25s ease; }
-.us-svc-name { font-family: var(--f-display); font-variation-settings: 'wdth' 92; font-size: 1.4rem; font-weight: 600; line-height: 1.15; }
+.us-svc-name { font-family: var(--f-display); font-size: 1.4rem; font-weight: 600; line-height: 1.15; }
 .us-svc-name small { display: block; margin-top: 0.2rem; font-family: var(--f-body); font-size: 0.84rem; font-weight: 400; color: var(--c-ink-2); }
 .us-svc-meta { display: grid; justify-items: end; gap: 0.1rem; font-size: 0.82rem; color: var(--c-ink-2); white-space: nowrap; }
 .us-svc-meta b { font-size: 0.98rem; font-weight: 700; color: var(--c-ink); }
@@ -156,10 +156,10 @@ export const css = /* css */ `
 .us-ticket-body { display: none; gap: 1rem; }
 [data-booker]:not([data-state='empty']) .us-empty { display: none; }
 [data-booker]:not([data-state='empty']) .us-ticket-body { display: grid; }
-.us-ticket-title { font-family: var(--f-display); font-variation-settings: 'wdth' 90; font-size: 2rem; font-weight: 700; line-height: 1.05; }
+.us-ticket-title { font-family: var(--f-display); font-size: 2rem; font-weight: 700; line-height: 1.05; }
 .us-stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; padding: 0.9rem 0; border-top: 1px solid var(--c-line); border-bottom: 1px solid var(--c-line); }
 .us-stats dt { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--c-ink-2); }
-.us-stats dd { margin-top: 0.25rem; font-family: var(--f-display); font-variation-settings: 'wdth' 87.5; font-size: 1.5rem; font-weight: 700; white-space: nowrap; }
+.us-stats dd { margin-top: 0.25rem; font-family: var(--f-display); font-size: 1.5rem; font-weight: 700; white-space: nowrap; }
 .us-len { height: 5px; background: var(--c-bg-2); overflow: hidden; }
 .us-len span { display: block; height: 100%; background: var(--ox); transform-origin: 0 50%; transform: scaleX(calc(min(var(--minutes, 0), 120) / 120)); transition: transform 0.6s cubic-bezier(0.3, 0.8, 0.2, 1); }
 .us-slots { display: grid; grid-template-columns: repeat(auto-fill, minmax(5.3rem, 1fr)); gap: 0.4rem; }
@@ -181,10 +181,10 @@ export const css = /* css */ `
 @media (min-width: 760px) { .us-ritual { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2.5rem; } }
 @media (min-width: 1100px) { .us-ritual { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
 .us-ritual li { display: grid; gap: 0.6rem; padding-top: 1.2rem; border-top: 1px solid var(--c-line); }
-.us-ritual-n { font-family: var(--f-display); font-variation-settings: 'wdth' 87.5, 'opsz' 1200; font-size: 3.4rem; font-weight: 700; line-height: 0.9; color: var(--ox-hi); }
+.us-ritual-n { font-family: var(--f-display); font-size: 3.4rem; font-weight: 700; line-height: 0.9; color: var(--ox-hi); }
 .us-ritual-i { width: 3.6rem; height: 3.6rem; }
 .us-ritual-i path { fill: none; stroke: var(--c-ink); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
-.us-ritual-t { font-family: var(--f-display); font-variation-settings: 'wdth' 92; font-size: 1.6rem; font-weight: 600; line-height: 1.1; }
+.us-ritual-t { font-family: var(--f-display); font-size: 1.6rem; font-weight: 600; line-height: 1.1; }
 .us-ritual p { color: var(--c-ink-2); line-height: 1.55; }
 @supports (animation-timeline: view()) {
   .us-ritual li { animation: us-rise linear both; animation-timeline: view(); animation-range: entry 0% entry 70%; }
@@ -200,7 +200,7 @@ export const css = /* css */ `
 .us-facts > div { display: grid; gap: 0.3rem; padding: 0.9rem 0; border-top: 1px solid var(--c-line); }
 .us-facts dt { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--c-ink-2); }
 .us-facts dd { font-size: 1.05rem; }
-.us-tel { display: inline-flex; align-items: center; min-height: 2.75rem; font-family: var(--f-display); font-variation-settings: 'wdth' 87.5; font-size: clamp(1.6rem, 7vw, 2.1rem); font-weight: 700; color: var(--c-ink); text-decoration: none; transition: color 0.2s ease; }
+.us-tel { display: inline-flex; align-items: center; min-height: 2.75rem; font-family: var(--f-display); font-size: clamp(1.6rem, 7vw, 2.1rem); font-weight: 700; color: var(--c-ink); text-decoration: none; transition: color 0.2s ease; }
 @media (hover: hover) { .concept .us-tel:hover { color: var(--ox); } }
 .concept[data-direction='ustara'] .sticky-bar { border-top: 2px solid var(--ink); }
 

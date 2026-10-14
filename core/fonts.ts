@@ -19,7 +19,6 @@ import {
   Nunito,
   Onest,
   Oswald,
-  Playfair,
   Playfair_Display,
   Podkova,
   Raleway,
@@ -108,7 +107,7 @@ export const sourceCode = Source_Code_Pro({
   preload: false,
 })
 
-/** Playfair Display — crimson-velvet, retro-gastronom. */
+/** Playfair Display — crimson-velvet, ustara: контрастные волосяные засечки. */
 export const playfair = Playfair_Display({
   subsets: ['latin', 'cyrillic'],
   weight: 'variable',
@@ -281,16 +280,6 @@ export const alegreyaSans = Alegreya_Sans({
   subsets: ['latin', 'cyrillic'],
   weight: ['400', '500', '700'],
   variable: '--font-alegreya-sans',
-  display: 'swap',
-  preload: false,
-})
-
-/** Playfair 2 — ustara (Ustara): при большом кегле волосяные засечки, как лезвие; ось ширины — для узкого начертания. */
-export const playfairBlade = Playfair({
-  subsets: ['latin', 'cyrillic'],
-  weight: 'variable',
-  axes: ['opsz', 'wdth'],
-  variable: '--font-playfair-blade',
   display: 'swap',
   preload: false,
 })

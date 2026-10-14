@@ -22,3 +22,12 @@ export function absoluteUrl(path: string): string {
  * Пока пустой, счётчик не подключается.
  */
 export const CF_BEACON_TOKEN = '7b64e9b60f974c7d88ebd84cd3a61d6b'
+
+/**
+ * Студия: название для страницы `/` и Telegram для связи.
+ * Название — рабочее (по поддомену yettikun: «yetti kun» — «семь дней»), заказчик подтвердит или заменит.
+ * Telegram задаётся переменной NEXT_PUBLIC_CONTACT_TG при сборке (username без @ или номер +998…);
+ * пока пусто — на странице вместо кнопки надпись «Telegram скоро появится».
+ */
+export const STUDIO_NAME = 'Yetti kun'
+export const CONTACT_TG: string = process.env.NEXT_PUBLIC_CONTACT_TG ?? ''

@@ -1,7 +1,7 @@
 import { MapPin, Phone } from 'lucide-react'
 import type { CSSProperties } from 'react'
 import { ExampleTag } from '@/core/components/ExampleTag'
-import { inter, playfairBlade } from '@/core/fonts'
+import { inter, playfair } from '@/core/fonts'
 import { formatPhone, telHref } from '@/core/format'
 import { ui } from '@/core/i18n'
 import { tx } from '@/core/text'
@@ -367,12 +367,12 @@ function Og({ lead, locale }: { lead: Lead; locale: Locale }) {
 
 export const ustara: Direction = {
   id: 'ustara',
-  fontClass: `${playfairBlade.variable} ${inter.variable}`,
+  fontClass: `${playfair.variable} ${inter.variable}`,
   css,
   iconStroke: STROKE,
   themeColor: '#8e1b1f',
-  fontFamilies: ['Playfair', 'Inter'],
-  heroFont: { family: 'Playfair', weight: 800, style: 'normal' },
+  fontFamilies: ['Playfair Display', 'Inter'],
+  heroFont: { family: 'Playfair Display', weight: 800, style: 'normal' },
   Heading,
   PhotoArt,
   Og,

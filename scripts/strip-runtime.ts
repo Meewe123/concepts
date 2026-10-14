@@ -71,7 +71,8 @@ for (const file of htmlFiles(OUT)) {
   html = dropOrphanFontPreloads(keepOwnFonts(html))
   html = inlineIslands(html)
   const preload = heroFontPreload(html)
-  if (preload && !html.includes(preload)) html = html.replace(/<head>/, `<head>${preload}`)
+  const href = preload?.match(/href="([^"]+)"/)?.[1]
+  if (preload && !html.includes(`<link rel="preload" href="${href}"`)) html = html.replace(/<head>/, `<head>${preload}`)
   if (html !== before) {
     fs.writeFileSync(file, html)
     stripped++

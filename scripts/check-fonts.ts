@@ -33,7 +33,6 @@ const LIBRARY = [
   'Roboto Flex',
   'Fira Sans Extra Condensed',
   'Alegreya Sans',
-  'Playfair',
   'Inter',
   'Noto Serif Display',
   'Mulish',

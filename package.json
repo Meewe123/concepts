@@ -14,7 +14,8 @@
     "og": "tsx scripts/og.ts",
     "pitch": "tsx scripts/pitch.ts",
     "contact-sheet": "tsx scripts/contact-sheet.ts",
-    "check-fonts": "tsx scripts/check-fonts.ts"
+    "check-fonts": "tsx scripts/check-fonts.ts",
+    "studio-shots": "tsx scripts/studio-shots.ts"
   },
   "dependencies": {
     "lucide-react": "1.55.0",

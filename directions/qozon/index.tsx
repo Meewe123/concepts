@@ -24,14 +24,19 @@ function rand(seed: number) {
   }
 }
 
-/** Рис с морковью: зёрна и жёлтые соломки в прямоугольнике w×h. */
-function Rice({ w, h, seed, n = 120 }: { w: number; h: number; seed: number; n?: number }) {
+/**
+ * Рис с морковью — узор-плитка из зёрен и соломок: один <pattern> вместо сотен элементов
+ * (страница остаётся лёгкой). Плитка повёрнута, чтобы повтор не бросался в глаза.
+ */
+function RicePattern({ id, seed, scale = 1 }: { id: string; seed: number; scale?: number }) {
   const r = rand(seed)
+  const W = 58
+  const H = 46
   return (
-    <>
-      {Array.from({ length: n }, (_, i) => {
-        const x = +(r() * w).toFixed(1)
-        const y = +(r() * h).toFixed(1)
+    <pattern id={id} width={W} height={H} patternUnits="userSpaceOnUse" patternTransform={`rotate(17) scale(${scale})`}>
+      {Array.from({ length: 26 }, (_, i) => {
+        const x = +(r() * W).toFixed(1)
+        const y = +(r() * H).toFixed(1)
         const a = Math.round(r() * 180)
         const carrot = i % 4 === 0
         return carrot ? (
@@ -40,7 +45,7 @@ function Rice({ w, h, seed, n = 120 }: { w: number; h: number; seed: number; n?:
           <ellipse key={i} cx={x} cy={y} rx="3.8" ry="1.6" transform={`rotate(${a} ${x} ${y})`} className={i % 3 ? 'qz-grain' : 'qz-grain-2'} />
         )
       })}
-    </>
+    </pattern>
   )
 }
 
@@ -56,6 +61,7 @@ function Kazan({ className = '', still = false }: { className?: string; still?: 
         <clipPath id="qz-cavity">
           <path d={inner} />
         </clipPath>
+        <RicePattern id="qz-rice-k" seed={7} />
       </defs>
       {/* огонь */}
       <g className="qz-fire">
@@ -99,9 +105,7 @@ function Kazan({ className = '', still = false }: { className?: string; still?: 
             ))}
           </g>
           <path d="M40 252 L40 178 C90 146 140 134 180 132 C220 134 270 146 320 178 L320 252 Z" className="qz-rice" />
-          <g transform="translate(48 132)">
-            <Rice w={264} h={118} seed={7} n={260} />
-          </g>
+          <path d="M40 252 L40 178 C90 146 140 134 180 132 C220 134 270 146 320 178 L320 252 Z" fill="url(#qz-rice-k)" />
           <g className="qz-garlic" transform="translate(180 134)">
             <circle r="13" />
             <path d="M-6 -11 Q-9 0 -6 11 M0 -13 V13 M6 -11 Q9 0 6 11" />
@@ -126,18 +130,12 @@ function Lagan({ kind, className = '' }: { kind: string; className?: string }) {
     <svg viewBox="-100 -100 200 200" className={`qz-lagan ${className}`} aria-hidden>
       <circle r="96" className="qz-plate" />
       <circle r="84" className="qz-plate-ring" />
-      {Array.from({ length: 36 }, (_, i) => (
-        <rect key={i} x="-2" y="-93" width="4" height="7" rx="2" transform={`rotate(${i * 10})`} className="qz-plate-dash" />
-      ))}
+      <circle r="89.5" className="qz-plate-dash" />
+      <defs>
+        <RicePattern id={`qz-lg-${kind}`} seed={kind.length * 7 + 3} scale={0.8} />
+      </defs>
       <circle r="66" className="qz-mound" />
-      <clipPath id={`qz-lg-${kind}`}>
-        <circle r="64" />
-      </clipPath>
-      <g clipPath={`url(#qz-lg-${kind})`}>
-        <g transform="translate(-64 -64)">
-          <Rice w={128} h={128} seed={kind.length * 7 + 3} n={170} />
-        </g>
-      </g>
+      <circle r="64" fill={`url(#qz-lg-${kind})`} />
       {kind === 'toshkent' && (
         <g>
           {[0, 1, 2, 3, 4, 5].map((i) => {

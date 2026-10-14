@@ -6,6 +6,7 @@ import type { BeautySkin } from '@/niches/beauty/skin'
 import type { DentalSkin } from '@/niches/dental/skin'
 import type { EducationSkin } from '@/niches/education/skin'
 import type { PetshopSkin } from '@/niches/petshop/skin'
+import type { RestaurantSkin } from '@/niches/restaurant/skin'
 import type { VetSkin } from '@/niches/vet/skin'
 
 export interface HeadingProps {
@@ -53,4 +54,5 @@ export interface Direction {
   dental?: DentalSkin
   beauty?: BeautySkin
   auto?: AutoSkin
+  restaurant?: RestaurantSkin
 }

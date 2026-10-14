@@ -224,6 +224,42 @@ export interface AutoData {
   lounge?: boolean
 }
 
+/** Стол на схеме зала: координаты в процентах от зоны (0…100) */
+export interface RestaurantTable {
+  id: string
+  seats: number
+  x: number
+  y: number
+  shape: 'round' | 'rect' | 'booth'
+}
+
+export interface RestaurantZone {
+  id: string
+  name: L10n
+  note?: L10n
+  /** Работает в сезон (летняя терраса) */
+  seasonal?: boolean
+  tables: RestaurantTable[]
+}
+
+export interface MenuItem {
+  id: string
+  name: L10n
+  price: number
+  note?: L10n
+  example: boolean
+}
+
+export interface RestaurantData {
+  zones: RestaurantZone[]
+  menu: { id: string; name: L10n; items: MenuItem[] }[]
+  /** Варианты числа гостей в брони */
+  guests: number[]
+  schedule: BeautySchedule
+  /** Особенности из карточек: терраса, детское меню, живая музыка… */
+  features?: L10n[]
+}
+
 export interface BeautyService {
   id: string
   name: L10n
@@ -311,6 +347,7 @@ export interface Lead {
   vet?: VetData
   petshop?: PetshopData
   auto?: AutoData
+  restaurant?: RestaurantData
   education?: EducationData
   dental?: DentalData
   beauty?: BeautyData

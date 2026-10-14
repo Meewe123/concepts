@@ -97,6 +97,16 @@ export function defineLead(lead: Lead): Lead {
       if (a.load.some((x) => x < 0 || x > 1)) errors.push(`${at} auto.load: доли от 0 до 1`)
     }
   }
+  if (lead.niche === 'restaurant') {
+    const r = lead.restaurant
+    if (!r || r.zones.length === 0 || r.menu.length === 0) errors.push(`${at} для restaurant нужны зоны зала и меню`)
+    else {
+      const ids = r.zones.flatMap((z) => z.tables.map((t) => t.id))
+      if (new Set(ids).size !== ids.length) errors.push(`${at} id столов должны быть уникальны`)
+      const max = Math.max(...r.zones.flatMap((z) => z.tables.map((t) => t.seats)))
+      if (r.guests.some((g) => g > max)) errors.push(`${at} гостей больше, чем мест за самым большим столом`)
+    }
+  }
   if (lead.pitchText) for (const [l, t] of Object.entries(lead.pitchText)) if (!t.includes('{link}')) errors.push(`${at} pitchText.${l}: нет {link}`)
 
   errors.push(...lintL10n(lead, at))

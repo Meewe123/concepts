@@ -8,11 +8,13 @@ import {
   IBM_Plex_Sans,
   Inter_Tight,
   Literata,
+  Lobster,
   Montserrat,
   Nunito,
   Onest,
   Oswald,
   Playfair_Display,
+  Podkova,
   Source_Code_Pro,
   Spectral,
   Tektur,
@@ -205,6 +207,24 @@ export const exo2 = Exo_2({
   weight: 'variable',
   style: ['normal', 'italic'],
   variable: '--font-exo2',
+  display: 'swap',
+  preload: false,
+})
+
+/** Lobster — retro-gastronom (Petrovic): неоновая вывеска. */
+export const lobster = Lobster({
+  subsets: ['latin', 'cyrillic'],
+  weight: '400',
+  variable: '--font-lobster',
+  display: 'swap',
+  preload: false,
+})
+
+/** Podkova — текст и наборное табло retro-gastronom. */
+export const podkova = Podkova({
+  subsets: ['latin', 'cyrillic'],
+  weight: 'variable',
+  variable: '--font-podkova',
   display: 'swap',
   preload: false,
 })

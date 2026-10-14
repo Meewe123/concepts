@@ -116,6 +116,16 @@ export function defineLead(lead: Lead): Lead {
       for (const p of w.practices) if (!w.kinds.some((k) => k.id === p.kind)) errors.push(`${at} у практики ${p.id} неизвестный вид ${p.kind}`)
     }
   }
+  if (lead.niche === 'fitness') {
+    const f = lead.fitness
+    if (!f || f.clubs.length < 2 || f.goals.length === 0) errors.push(`${at} для fitness нужны клубы и цели`)
+    else {
+      const plans = new Set(f.plans.map((p) => p.id))
+      for (const g of f.goals) if (!plans.has(g.plan)) errors.push(`${at} цель ${g.id}: нет абонемента ${g.plan}`)
+      const clubs = new Set(f.clubs.map((c) => c.id))
+      for (const c of f.classes) if (!clubs.has(c.club)) errors.push(`${at} занятие в неизвестном клубе ${c.club}`)
+    }
+  }
   if (lead.pitchText) for (const [l, t] of Object.entries(lead.pitchText)) if (!t.includes('{link}')) errors.push(`${at} pitchText.${l}: нет {link}`)
 
   errors.push(...lintL10n(lead, at))

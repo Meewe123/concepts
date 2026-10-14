@@ -17,6 +17,7 @@ import {
   Playfair_Display,
   Podkova,
   Raleway,
+  Roboto_Flex,
   Source_Code_Pro,
   Spectral,
   Tektur,
@@ -246,6 +247,16 @@ export const raleway = Raleway({
   subsets: ['latin', 'cyrillic'],
   weight: 'variable',
   variable: '--font-raleway',
+  display: 'swap',
+  preload: false,
+})
+
+/** Roboto Flex — iron-grid (Buka Fit): одна переменная гарнитура, ширина от сверхузкой до широкой — кинетический заголовок. */
+export const robotoFlex = Roboto_Flex({
+  subsets: ['latin', 'cyrillic'],
+  weight: 'variable',
+  axes: ['wdth'],
+  variable: '--font-roboto-flex',
   display: 'swap',
   preload: false,
 })

@@ -3,6 +3,7 @@ import artha from './artha-c6ba'
 import bahor from './bahor-2utu'
 import billur from './billur-wgah'
 import brookland from './brookland-4857'
+import bukafit from './bukafit-kpqu'
 import chilanzar from './chilanzar-dental-g52b'
 import doctorAnimals from './doctor-animals-htt4'
 import expertBeauty from './expert-beauty-f8cb'
@@ -22,7 +23,7 @@ import vetMaster from './vet-master-amh9'
 import zoocenter from './zoocenter-nm5u'
 import osiyoGrand from './osiyo-grand-sq4y'
 
-export const leads: Lead[] = [osiyoGrand, billur, doctorAnimals, gordons, darel, zoocenter, vetMaster, riks, royalRose, bahor, versal, denta, nasimov, chilanzar, iroda, expertBeauty, konfetti, womenSecret, brookland, urus, petrovic, artha]
+export const leads: Lead[] = [osiyoGrand, billur, doctorAnimals, gordons, darel, zoocenter, vetMaster, riks, royalRose, bahor, versal, denta, nasimov, chilanzar, iroda, expertBeauty, konfetti, womenSecret, brookland, urus, petrovic, artha, bukafit]
 
 // Внутри ниши направления не повторяются: пять залов — пять разных миров.
 const seen = new Map<string, string>()

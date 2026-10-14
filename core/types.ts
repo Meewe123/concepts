@@ -286,6 +286,23 @@ export interface WellnessData {
   space?: { title: L10n; text: L10n }[]
 }
 
+export interface FitnessClub {
+  id: string
+  /** Название станции на схеме: «Мирабад», «Минор» */
+  name: L10n
+  address?: L10n
+  landmark?: L10n
+}
+
+export interface FitnessData {
+  clubs: FitnessClub[]
+  /** Цель → абонемент */
+  goals: { id: string; name: L10n; plan: string }[]
+  plans: { id: string; name: L10n; price: number; note: L10n; example: boolean }[]
+  /** Групповые занятия — пример: клуб, день (0 — вс), время, название */
+  classes: { club: string; day: number; time: string; name: L10n }[]
+}
+
 export interface BeautyService {
   id: string
   name: L10n
@@ -375,6 +392,7 @@ export interface Lead {
   auto?: AutoData
   restaurant?: RestaurantData
   wellness?: WellnessData
+  fitness?: FitnessData
   education?: EducationData
   dental?: DentalData
   beauty?: BeautyData

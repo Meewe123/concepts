@@ -10,6 +10,8 @@ import { beautyMeta } from './beauty/meta'
 import { DentalPage } from './dental/DentalPage'
 import { dentalMeta } from './dental/meta'
 import { EducationPage } from './education/EducationPage'
+import { fitnessMeta } from './fitness/meta'
+import { FitnessPage } from './fitness/FitnessPage'
 import { educationMeta } from './education/meta'
 import { petshopMeta } from './petshop/meta'
 import { PetshopPage } from './petshop/PetshopPage'
@@ -35,6 +37,7 @@ const niches: Partial<Record<NicheId, NicheModule>> = {
   auto: { Page: AutoPage, meta: autoMeta },
   restaurant: { Page: RestaurantPage, meta: restaurantMeta },
   wellness: { Page: WellnessPage, meta: wellnessMeta },
+  fitness: { Page: FitnessPage, meta: fitnessMeta },
 }
 
 export function getNiche(id: NicheId): NicheModule {

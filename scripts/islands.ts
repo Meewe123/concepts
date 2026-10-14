@@ -15,6 +15,7 @@ const entries = {
   auto: 'niches/auto/island.ts',
   restaurant: 'niches/restaurant/island.ts',
   wellness: 'niches/wellness/island.ts',
+  fitness: 'niches/fitness/island.ts',
 }
 
 const result = await build({

@@ -7,6 +7,7 @@ import { crystalFacet } from './crystal-facet'
 import { editorialSmile } from './editorial-smile'
 import { familyWarm } from './family-warm'
 import { gardenLight } from './garden-light'
+import { ironGrid } from './iron-grid'
 import { glossyEditorial } from './glossy-editorial'
 import { marbleBrass } from './marble-brass'
 import { marketFresh } from './market-fresh'
@@ -47,6 +48,7 @@ export const directions: Record<string, Direction> = {
   [showroomChrome.id]: showroomChrome,
   [retroGastronom.id]: retroGastronom,
   [soundSilence.id]: soundSilence,
+  [ironGrid.id]: ironGrid,
 }
 
 export function getDirection(id: string): Direction {

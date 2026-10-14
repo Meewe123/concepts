@@ -17,7 +17,8 @@
 - Urus Premium — ниша auto, направление showroom-chrome (13.10).
 - Фаза 4: Petrovic готов (ниша restaurant, retro-gastronom, 14.10).
 - Фаза 4: Artha готов (ниша wellness, sound-silence, 14.10).
-- Следующий шаг: Buka Fit (fitness), страница студии `/`, `/internal` — каждый на максимум.
+- Фаза 4: Buka Fit готов (ниша fitness, iron-grid, 14.10).
+- Следующий шаг: страница студии `/` и пульт `/internal`.
 
 ## Концепты
 
@@ -45,6 +46,7 @@
 | Urus Premium | https://concepts.yettikun.workers.dev/c/urus-premium-wkr6 (`/uz`) | showroom-chrome (ниша auto) | not-contacted → Instagram @urus_uzb | `pitch/urus-premium-wkr6/` |
 | Petrovic | https://concepts.yettikun.workers.dev/c/petrovic-xd9v | retro-gastronom (ниша restaurant) | not-contacted → Telegram +998 98 188 05 88 | `pitch/petrovic-xd9v/` |
 | Artha | https://concepts.yettikun.workers.dev/c/artha-c6ba | sound-silence (ниша wellness) | not-contacted → Telegram @artha_uz | `pitch/artha-c6ba/` |
+| Buka Fit | https://concepts.yettikun.workers.dev/c/bukafit-kpqu | iron-grid (ниша fitness) | not-contacted → Instagram @bukafit_uz | `pitch/bukafit-kpqu/` |
 
 ### Фаза 3: beauty
 
@@ -56,6 +58,13 @@
 - **Brookland — workshop-concrete** (Tektur + Source Code Pro): по ТЗ это автомойка, заказчик отнёс её к beauty — интерактив тот же, язык свой. Машина рисуется линией на миллиметровке с размерными линиями и выносками, полоса «hazard», бетонная фактура. Калькулятор: класс авто меняет силуэт на чертеже и пересчитывает цену и время, услуги — строки наряда W-01…, итог со шкалой времени работ и «В работе 22:00 — 23:15», окна до 02:00. «Пока моем — кофе и игра» (кафе, компьютерный клуб, Wi-Fi — по отзывам).
 - Проверено: все услуги × RU/UZ (длительность, цена, 4 окна, «пример»), классы авто, филиалы, кнопка без окна, заполнение формы; нет горизонтального скролла на 360/375/414; штампов, эмодзи и пустых ссылок нет. Lighthouse mobile: Expert Beauty 96/100/100, Конфетти 99/100/100, Women Secret 96/100/100, Brookland 100/100/100. HTML 92–100 КБ (22–23 КБ gzip).
 - Контакт-лист: `review/beauty-contact-sheet.png`.
+
+### Ниша fitness: Buka Fit
+
+- **«Какой клуб вам подходит»** (`[data-fit]`): клубы — своя линия метро (не копия ташкентской); станция — это радиокнопка: нажатая загорается, «поезд» едет к ней (`--pos`). Цель → абонемент, время (утро / день / вечер) → ближайшее групповое в этом клубе от текущего времени Ташкента; всё уходит в заявку на гостевой визит, выбор — в хеше (`#mirabad-weight-morning`).
+- **iron-grid** (одна гарнитура Roboto Flex с осью ширины; графит, белый, сигнальный красный): «BUKA FIT» при загрузке сжимается как пружина (ось `wdth` 151 → 25), мини-линия в первом экране рисуется, по ней бегает поезд; абонементы — карточки с «блинами» штанги (вращаются при прокрутке); «Все станции» с адресами.
+- Данные: подтверждён только филиал на Мирабаде (Golden Pages, ориентир «Kamolon milliy taomlar»); Минор, Bahor, Куйлюк — из таблицы, у Bahor адрес «уточняйте по телефону». Связь с Buka Gym не проверена — не вынесено.
+- Проверено: станции, цели, время, «нет занятий», хеш; нет горизонтального скролла 360–1280. Lighthouse mobile 100 / 100 / 100. Только RU.
 
 ### Ниша wellness: Artha
 
@@ -234,3 +243,4 @@ Osiyo Grand и Billur после правок — 100/100/100 и 99/100/100. Roy
 - 2026-10-13 — Urus Premium: ниша auto (калькулятор «готово к…», загрузка по часам, окна без очереди), направление showroom-chrome (сцена мойки), RU/UZ, OG, набор.
 - 2026-10-14 — Фаза 4: Petrovic — ниша restaurant (бронь по схеме зала), направление retro-gastronom (неон, табло), OG, набор.
 - 2026-10-14 — Фаза 4: Artha — ниша wellness (подбор практики и ближайшего занятия, неделя с фильтром), направление sound-silence (чаша и круги звука), OG, набор.
+- 2026-10-14 — Фаза 4: Buka Fit — ниша fitness (линия метро из клубов, абонемент и ближайшее занятие), направление iron-grid (Roboto Flex, ось ширины), OG, набор.

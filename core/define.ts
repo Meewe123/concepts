@@ -107,6 +107,15 @@ export function defineLead(lead: Lead): Lead {
       if (r.guests.some((g) => g > max)) errors.push(`${at} гостей больше, чем мест за самым большим столом`)
     }
   }
+  if (lead.niche === 'wellness') {
+    const w = lead.wellness
+    if (!w || w.practices.length < 2 || w.quiz.length !== 3) errors.push(`${at} для wellness нужны практики и ровно три вопроса`)
+    else {
+      const ids = new Set(w.practices.map((p) => p.id))
+      for (const c of w.week) if (!ids.has(c.practice)) errors.push(`${at} в расписании неизвестная практика ${c.practice}`)
+      for (const p of w.practices) if (!w.kinds.some((k) => k.id === p.kind)) errors.push(`${at} у практики ${p.id} неизвестный вид ${p.kind}`)
+    }
+  }
   if (lead.pitchText) for (const [l, t] of Object.entries(lead.pitchText)) if (!t.includes('{link}')) errors.push(`${at} pitchText.${l}: нет {link}`)
 
   errors.push(...lintL10n(lead, at))

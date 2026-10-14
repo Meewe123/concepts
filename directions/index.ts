@@ -14,6 +14,7 @@ import { nightVet } from './night-vet'
 import { playfulGeometry } from './playful-geometry'
 import { retroGastronom } from './retro-gastronom'
 import { showroomChrome } from './showroom-chrome'
+import { soundSilence } from './sound-silence'
 import { spaWhisper } from './spa-whisper'
 import { suzaniNight } from './suzani-night'
 import { tashkentMosaic } from './tashkent-mosaic'
@@ -45,6 +46,7 @@ export const directions: Record<string, Direction> = {
   [zooScales.id]: zooScales,
   [showroomChrome.id]: showroomChrome,
   [retroGastronom.id]: retroGastronom,
+  [soundSilence.id]: soundSilence,
 }
 
 export function getDirection(id: string): Direction {

@@ -28,6 +28,8 @@ const LIBRARY = [
   'Exo 2',
   'Lobster',
   'Podkova',
+  'EB Garamond',
+  'Raleway',
 ]
 
 const REQUIRED: [string, number][] = [

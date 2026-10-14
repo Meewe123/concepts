@@ -16,6 +16,8 @@ import { PetshopPage } from './petshop/PetshopPage'
 import { restaurantMeta } from './restaurant/meta'
 import { RestaurantPage } from './restaurant/RestaurantPage'
 import { vetMeta } from './vet/meta'
+import { wellnessMeta } from './wellness/meta'
+import { WellnessPage } from './wellness/WellnessPage'
 import { VetPage } from './vet/VetPage'
 
 export interface NicheModule {
@@ -32,6 +34,7 @@ const niches: Partial<Record<NicheId, NicheModule>> = {
   beauty: { Page: BeautyPage, meta: beautyMeta },
   auto: { Page: AutoPage, meta: autoMeta },
   restaurant: { Page: RestaurantPage, meta: restaurantMeta },
+  wellness: { Page: WellnessPage, meta: wellnessMeta },
 }
 
 export function getNiche(id: NicheId): NicheModule {

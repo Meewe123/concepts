@@ -2,6 +2,7 @@ import {
   Comfortaa,
   Commissioner,
   Cormorant_Garamond,
+  EB_Garamond,
   Exo_2,
   Fira_Sans,
   IBM_Plex_Mono,
@@ -15,6 +16,7 @@ import {
   Oswald,
   Playfair_Display,
   Podkova,
+  Raleway,
   Source_Code_Pro,
   Spectral,
   Tektur,
@@ -225,6 +227,25 @@ export const podkova = Podkova({
   subsets: ['latin', 'cyrillic'],
   weight: 'variable',
   variable: '--font-podkova',
+  display: 'swap',
+  preload: false,
+})
+
+/** EB Garamond — sound-silence (Артха): спокойный книжный курсив. */
+export const ebGaramond = EB_Garamond({
+  subsets: ['latin', 'cyrillic'],
+  weight: 'variable',
+  style: ['normal', 'italic'],
+  variable: '--font-eb-garamond',
+  display: 'swap',
+  preload: false,
+})
+
+/** Raleway — текст sound-silence: лёгкий, много воздуха. */
+export const raleway = Raleway({
+  subsets: ['latin', 'cyrillic'],
+  weight: 'variable',
+  variable: '--font-raleway',
   display: 'swap',
   preload: false,
 })

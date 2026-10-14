@@ -1,0 +1,151 @@
+import { defineLead } from '@/core/define'
+import { mapsUrlFor } from './maps'
+
+// Сайт только на русском; узбекские строки нужны типу. TODO: проверить носителем
+export default defineLead({
+  slug: 'artha-c6ba',
+  name: 'Artha',
+  niche: 'wellness',
+  district: { ru: 'Ташкент', uz: 'Toshkent' },
+  where: { ru: 'на Мукими', uz: 'Muqimiydagi' },
+  kind: { ru: 'Пространство практик', uz: 'amaliyotlar maskani' },
+  address: { ru: 'Ташкент, 1-й проезд Мукими, 8А', uz: 'Toshkent, Muqimiy 1-tor koʻchasi, 8A' },
+  phones: ['+998 90 066 99 11'],
+  telegram: 'artha_uz',
+  instagram: 'artha.uz',
+  mapsUrl: mapsUrlFor('artha-c6ba'),
+  facts: [],
+  hook: 'нет онлайн-расписания: чтобы попасть на саундхилинг, нужно писать в директ',
+  direction: 'sound-silence',
+  directionWhy:
+    'sound-silence — йога, саундхилинг и тишина: песок, шалфей и шафран, много воздуха, поющая чаша, от которой расходятся круги звука; квиз из трёх вопросов вместо длинного прайса. EB Garamond курсивом + Raleway (Literata + Ysabeau из плана уже у Darel).',
+  langs: ['ru'],
+  map: { kind: 'street', street: { ru: '1-й проезд Мукими', uz: 'Muqimiy 1-tor koʻchasi' }, house: '8А' },
+  contactStatus: 'not-contacted',
+  channel: 'telegram',
+  messageLang: 'ru',
+  signaturePitch: {
+    ru: 'Человек отвечает на три вопроса — и видит, какая практика ему подойдёт и когда ближайшее занятие',
+    uz: 'Odam uchta savolga javob beradi — qaysi amaliyot mosligi va eng yaqin mashgʻulot qachonligini koʻradi',
+  },
+  pitchText: {
+    ru: 'Здравствуйте! Сделал концепт сайта для Artha: {link}. Человек отвечает на три вопроса — и сразу видит, какая практика ему подойдёт и когда ближайшее занятие, записаться можно там же. Посмотрите с телефона; если заинтересует — напишите.',
+  },
+  wellness: {
+    kinds: [
+      { id: 'yoga', name: { ru: 'Йога', uz: 'Yoga' } },
+      { id: 'sound', name: { ru: 'Звук', uz: 'Tovush' } },
+      { id: 'meditation', name: { ru: 'Медитация', uz: 'Meditatsiya' } },
+    ],
+    practices: [
+      {
+        id: 'hatha',
+        name: { ru: 'Хатха-йога', uz: 'Xatxa-yoga' },
+        about: { ru: 'Мягкая практика для тела: асаны, дыхание и расслабление в конце.', uz: 'Tana uchun yumshoq amaliyot: asanalar, nafas va oxirida boʻshashish.' },
+        kind: 'yoga',
+        minutes: 75,
+        price: 100_000,
+        tags: ['body', 'new', 'some', 'morning'],
+        example: true,
+      },
+      {
+        id: 'sound',
+        name: { ru: 'Саундхилинг', uz: 'Saundxiling' },
+        about: { ru: 'Лёжа на коврике — звук поющих чаш и гонга. Ничего не нужно уметь.', uz: 'Gilamchada yotib — kuylovchi kosalar va gong tovushi. Hech narsa bilish shart emas.' },
+        kind: 'sound',
+        minutes: 60,
+        price: 150_000,
+        tags: ['sound', 'calm', 'new', 'evening'],
+        example: true,
+      },
+      {
+        id: 'meditation',
+        name: { ru: 'Медитация', uz: 'Meditatsiya' },
+        about: { ru: 'Тихая практика внимания и дыхания — сорок пять минут без спешки.', uz: 'Diqqat va nafasning sokin amaliyoti — shoshilmasdan qirq besh daqiqa.' },
+        kind: 'meditation',
+        minutes: 45,
+        price: 80_000,
+        tags: ['calm', 'some', 'regular', 'morning'],
+        example: true,
+      },
+      {
+        id: 'mantra',
+        name: { ru: 'Мантра-йога', uz: 'Mantra-yoga' },
+        about: { ru: 'Йога, пранаяма и пение мантр вместе с музыкантами.', uz: 'Yoga, pranayama va musiqachilar bilan mantra kuylash.' },
+        kind: 'sound',
+        minutes: 90,
+        price: 0,
+        donation: true,
+        tags: ['sound', 'body', 'regular', 'weekend'],
+        example: true,
+      },
+    ],
+    quiz: [
+      {
+        id: 'want',
+        q: { ru: 'Чего хочется?', uz: 'Nima xohlaysiz?' },
+        options: [
+          { id: 'calm', label: { ru: 'Тишины и покоя', uz: 'Sokinlik va xotirjamlik' } },
+          { id: 'body', label: { ru: 'Размяться, почувствовать тело', uz: 'Tanani his qilish' } },
+          { id: 'sound', label: { ru: 'Раствориться в звуке', uz: 'Tovushga singib ketish' } },
+        ],
+      },
+      {
+        id: 'level',
+        q: { ru: 'Как давно практикуете?', uz: 'Qachondan beri shugʻullanasiz?' },
+        options: [
+          { id: 'new', label: { ru: 'Впервые', uz: 'Birinchi marta' } },
+          { id: 'some', label: { ru: 'Иногда', uz: 'Baʼzan' } },
+          { id: 'regular', label: { ru: 'Регулярно', uz: 'Muntazam' } },
+        ],
+      },
+      {
+        id: 'when',
+        q: { ru: 'Когда удобно?', uz: 'Qachon qulay?' },
+        options: [
+          { id: 'morning', label: { ru: 'Утром', uz: 'Ertalab' } },
+          { id: 'evening', label: { ru: 'Вечером', uz: 'Kechqurun' } },
+          { id: 'weekend', label: { ru: 'В выходные', uz: 'Dam olish kunlari' } },
+        ],
+      },
+    ],
+    week: [
+      { day: 1, time: '08:00', practice: 'hatha' },
+      { day: 1, time: '19:30', practice: 'sound' },
+      { day: 2, time: '08:00', practice: 'meditation' },
+      { day: 2, time: '19:00', practice: 'hatha' },
+      { day: 3, time: '08:00', practice: 'hatha' },
+      { day: 3, time: '20:00', practice: 'sound' },
+      { day: 4, time: '08:00', practice: 'meditation' },
+      { day: 4, time: '19:00', practice: 'hatha' },
+      { day: 5, time: '19:30', practice: 'sound' },
+      { day: 6, time: '11:00', practice: 'hatha' },
+      { day: 6, time: '18:00', practice: 'mantra' },
+      { day: 0, time: '10:00', practice: 'meditation' },
+      { day: 0, time: '17:00', practice: 'sound' },
+    ],
+    space: [
+      { title: { ru: 'Веган-кафе', uz: 'Vegan-kafe' }, text: { ru: 'После практики — чай и веганская еда, не выходя из пространства.', uz: 'Amaliyotdan keyin — choy va vegan taomlar, maskandan chiqmasdan.' } },
+      { title: { ru: 'Коворкинг', uz: 'Kovorking' }, text: { ru: 'Тихое место, чтобы поработать до или после занятия.', uz: 'Mashgʻulotdan oldin yoki keyin ishlash uchun sokin joy.' } },
+      {
+        title: { ru: 'Вечера', uz: 'Kechalar' },
+        text: { ru: 'Мантра-йога с живой музыкой по донации, концерты индийской музыки — сарод и табла (по анонсам Afisha, 2024).', uz: 'Jonli musiqa bilan mantra-yoga, hind musiqasi kontsertlari — sarod va tabla (Afisha eʼlonlari, 2024).' },
+      },
+    ],
+  },
+  sources: [
+    { what: 'Мантра-йога в Artha: йога, пранаяма, пение мантр с музыкантами, вход по донации, запись по +998 90 066 99 11', url: 'https://www.afisha.uz/ru/gorod/2024/09/20/mantra-yoga', checked: '2026-10-14, по выдаче веб-поиска' },
+    { what: 'Вечер индийской музыки в Artha: сарод и табла', url: 'https://www.afisha.uz/ru/gorod/2024/09/19/artha', checked: '2026-10-14, по выдаче веб-поиска' },
+    { what: '1-й пр. Мукими, 8А; +998 90 066 99 11; Instagram @artha.uz (≈9 тыс.), Telegram @artha_uz; йога, саундхилинг, веган-кафе, коворкинг; нет сайта и онлайн-расписания', checked: 'таблица заказчика, 10.2026' },
+  ],
+  unverified: [
+    'Адрес (1-й пр. Мукими, 8А), веган-кафе и коворкинг — из таблицы заказчика; поиск их не подтвердил и не опроверг.',
+    'Часы работы не найдены — на сайте их нет, только расписание-пример.',
+    'Практики, расписание недели, длительность и цены — пример (донация у мантра-йоги — как в анонсе Afisha 2024).',
+  ],
+  notes: [
+    'Показать: «Подобрать практику» — три ответа, круги расходятся от выбранного; практика и ближайшее занятие с учётом «утром / вечером / в выходные», запись с уже заполненной практикой и временем. Ниже — неделя с фильтром «Йога / Звук / Медитация».',
+    'Хук для разговора: чтобы попасть на саундхилинг, нужно писать в директ — расписание на сайте и запись снимают переписку.',
+    'Если ответят — спросить: реальное расписание и цены, кто ведёт практики, нужны ли абонементы, как устроены кафе и коворкинг.',
+  ],
+})

@@ -260,6 +260,32 @@ export interface RestaurantData {
   features?: L10n[]
 }
 
+export interface Practice {
+  id: string
+  name: L10n
+  about: L10n
+  /** Фильтр расписания: yoga / sound / meditation … */
+  kind: string
+  minutes: number
+  price: number
+  /** Вход по донации (как в их анонсах) */
+  donation?: boolean
+  /** Ответы квиза, которым подходит практика */
+  tags: string[]
+  example: boolean
+}
+
+export interface WellnessData {
+  practices: Practice[]
+  /** Расписание недели — пример: день (0 — вс), время, практика */
+  week: { day: number; time: string; practice: string }[]
+  /** Три вопроса «Подобрать практику»; id ответов — теги практик; вопрос с id 'when' фильтрует время занятия */
+  quiz: { id: string; q: L10n; options: { id: string; label: L10n }[] }[]
+  kinds: { id: string; name: L10n }[]
+  /** Пространство: кафе, коворкинг — из профиля */
+  space?: { title: L10n; text: L10n }[]
+}
+
 export interface BeautyService {
   id: string
   name: L10n
@@ -348,6 +374,7 @@ export interface Lead {
   petshop?: PetshopData
   auto?: AutoData
   restaurant?: RestaurantData
+  wellness?: WellnessData
   education?: EducationData
   dental?: DentalData
   beauty?: BeautyData

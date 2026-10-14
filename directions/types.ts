@@ -8,6 +8,7 @@ import type { EducationSkin } from '@/niches/education/skin'
 import type { PetshopSkin } from '@/niches/petshop/skin'
 import type { RestaurantSkin } from '@/niches/restaurant/skin'
 import type { VetSkin } from '@/niches/vet/skin'
+import type { WellnessSkin } from '@/niches/wellness/skin'
 
 export interface HeadingProps {
   title: string
@@ -55,4 +56,5 @@ export interface Direction {
   beauty?: BeautySkin
   auto?: AutoSkin
   restaurant?: RestaurantSkin
+  wellness?: WellnessSkin
 }

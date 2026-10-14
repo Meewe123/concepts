@@ -13,5 +13,7 @@ export default function config(phase: string): NextConfig {
     // CSS прямо в <head>: на 4G это минус один блокирующий запрос до первой отрисовки
     experimental: { inlineCss: true },
     devIndicators: false,
+    // next dev не пишет AGENTS.md в корень репозитория
+    agentRules: false,
   }
 }
